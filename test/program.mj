@@ -1,0 +1,21 @@
+program test302
+
+const int a = 1, b = 2;
+const bool c = true, d = false;
+int e, f[];
+{
+
+	void func (int a, char b[], bool c) {
+
+	}
+
+	
+
+	
+	void main() int a; char b[];
+	{
+		a = 'c' + 1;
+
+	}
+}
+

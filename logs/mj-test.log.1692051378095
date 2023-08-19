@@ -1,0 +1,29 @@
+INFO  00:15:43,179 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  00:15:43,206 - #2 program
+INFO  00:15:43,206 - #47 TEST
+INFO  00:15:43,206 - #47 aaa
+INFO  00:15:43,206 - #41 [
+INFO  00:15:43,206 - #42 ]
+INFO  00:15:43,206 - #5 ;
+INFO  00:15:43,207 - #3 {
+INFO  00:15:43,207 - #4 }
+INFO  00:15:43,207 - S class: Symbol
+INFO  00:15:43,211 - Program(
+ TEST
+  ConstVarDecl_Multiple(
+    EmptyConstVarDeclList_None(
+    ) [EmptyConstVarDeclList_None]
+    VarDecl_Single(
+      VarDecl_OneOrMany(
+        Var_Array(
+         aaa
+        ) [Var_Array]
+        VarDecl_None(
+        ) [VarDecl_None]
+      ) [VarDecl_OneOrMany]
+    ) [VarDecl_Single]
+  ) [ConstVarDecl_Multiple]
+) [Program]
+INFO  00:15:43,211 - ===================================
+INFO  00:15:43,215 -  Print count calls = 0
+INFO  00:15:43,215 -  Deklarisanih promenljivih ima = 0

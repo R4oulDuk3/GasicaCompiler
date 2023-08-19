@@ -1,0 +1,9 @@
+INFO  00:14:32,291 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  00:14:32,316 - #2 program
+INFO  00:14:32,316 - #47 TEST
+INFO  00:14:32,316 - #47 aaa
+INFO  00:14:32,316 - #41 [
+ERROR 00:14:32,317 - 
+Sintaksna greska: #41 na liniji 4
+ERROR 00:14:32,317 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 4
+INFO  00:14:32,317 - S class: Symbol

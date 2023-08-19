@@ -1,0 +1,162 @@
+INFO  20:59:50,681 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  20:59:50,707 - #2 program
+INFO  20:59:50,707 - #49 test302
+INFO  20:59:50,708 - #21 const
+INFO  20:59:50,708 - #49 int
+INFO  20:59:50,709 - #49 a
+INFO  20:59:50,709 - #12 =
+INFO  20:59:50,710 - #48 1
+INFO  20:59:50,710 - #8 ,
+INFO  20:59:50,711 - #49 b
+INFO  20:59:50,711 - #12 =
+INFO  20:59:50,712 - #48 2
+INFO  20:59:50,712 - #5 ;
+INFO  20:59:50,712 - #21 const
+INFO  20:59:50,713 - #49 bool
+INFO  20:59:50,713 - #49 c
+INFO  20:59:50,713 - #12 =
+INFO  20:59:50,713 - #46 true
+INFO  20:59:50,713 - #8 ,
+INFO  20:59:50,714 - #49 d
+INFO  20:59:50,714 - #12 =
+INFO  20:59:50,714 - #46 false
+INFO  20:59:50,714 - #5 ;
+INFO  20:59:50,714 - #49 int
+INFO  20:59:50,715 - #49 e
+INFO  20:59:50,715 - #8 ,
+INFO  20:59:50,715 - #49 f
+INFO  20:59:50,715 - #41 [
+INFO  20:59:50,716 - #42 ]
+INFO  20:59:50,716 - #5 ;
+INFO  20:59:50,716 - #3 {
+INFO  20:59:50,716 - #13 void
+INFO  20:59:50,717 - #49 main
+INFO  20:59:50,717 - #6 (
+INFO  20:59:50,717 - #7 )
+INFO  20:59:50,718 - #3 {
+INFO  20:59:50,719 - #49 a
+INFO  20:59:50,719 - #12 =
+INFO  20:59:50,720 - #48 1
+INFO  20:59:50,720 - #5 ;
+INFO  20:59:50,720 - #49 a
+INFO  20:59:50,720 - #37 ++
+INFO  20:59:50,720 - #5 ;
+INFO  20:59:50,721 - #4 }
+INFO  20:59:50,721 - #4 }
+INFO  20:59:50,724 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConstVarDecl_Multiple(
+    ConstVarDecl_Multiple(
+      ConstVarDecl_Multiple(
+        EmptyConstVarDeclList_None(
+        ) [EmptyConstVarDeclList_None]
+        ConstDecl_Single(
+          ConstDecl(
+            Type(
+             int
+            ) [Type]
+            NumConst_Single(
+             a
+              Assign(
+              ) [Assign]
+             1
+            ) [NumConst_Single]
+            NumCharBoolConst_Multiple(
+              NumCharBoolConst_None(
+              ) [NumCharBoolConst_None]
+              NumConst_Single(
+               b
+                Assign(
+                ) [Assign]
+               2
+              ) [NumConst_Single]
+            ) [NumCharBoolConst_Multiple]
+          ) [ConstDecl]
+        ) [ConstDecl_Single]
+      ) [ConstVarDecl_Multiple]
+      ConstDecl_Single(
+        ConstDecl(
+          Type(
+           bool
+          ) [Type]
+          BoolConst_Single(
+           c
+            Assign(
+            ) [Assign]
+           true
+          ) [BoolConst_Single]
+          NumCharBoolConst_Multiple(
+            NumCharBoolConst_None(
+            ) [NumCharBoolConst_None]
+            BoolConst_Single(
+             d
+              Assign(
+              ) [Assign]
+             false
+            ) [BoolConst_Single]
+          ) [NumCharBoolConst_Multiple]
+        ) [ConstDecl]
+      ) [ConstDecl_Single]
+    ) [ConstVarDecl_Multiple]
+    VarDecl_Single(
+      VarDecl_OneOrMany(
+        Type(
+         int
+        ) [Type]
+        Var_Single(
+         e
+        ) [Var_Single]
+        Var_Multiple(
+          Var_None(
+          ) [Var_None]
+          Var_Array(
+           f
+          ) [Var_Array]
+        ) [Var_Multiple]
+      ) [VarDecl_OneOrMany]
+    ) [VarDecl_Single]
+  ) [ConstVarDecl_Multiple]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl_Void(
+     main
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_None(
+      ) [VarDeclList_None]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_None(
+          ) [Statement_None]
+          DesignatorStatement_(
+            DesignatorStatement_Assign(
+              Designator_Single(
+               a
+              ) [Designator_Single]
+              Assign(
+              ) [Assign]
+              Expr_Term(
+                Term_Factor(
+                  Factor_NumConst(
+                   1
+                  ) [Factor_NumConst]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [DesignatorStatement_Assign]
+          ) [DesignatorStatement_]
+        ) [Statement_Multiple]
+        DesignatorStatement_(
+          DesignatorStatement_Increment(
+            Designator_Single(
+             a
+            ) [Designator_Single]
+          ) [DesignatorStatement_Increment]
+        ) [DesignatorStatement_]
+      ) [Statement_Multiple]
+    ) [MethodDecl_Void]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  20:59:50,764 - ===================================
