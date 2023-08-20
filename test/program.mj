@@ -1,0 +1,21 @@
+program bzvz
+
+int b[], c[];
+{
+    void main() int a; {
+    	a = 0;
+        a = a + 1;
+        if ( 'a' > 'c' ){
+        	a = 1;
+        } else {
+        	a = 2;
+        }
+        
+        if ( b > c ) {
+        	b = c;
+        }
+    }
+
+}
+
+

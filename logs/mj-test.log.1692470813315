@@ -1,0 +1,55 @@
+INFO  20:41:44,228 - Compiling source file: C:\Users\gavrilov\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  20:41:44,253 - #2 program
+INFO  20:41:44,253 - #49 bzvz
+INFO  20:41:44,253 - #3 {
+INFO  20:41:44,254 - #13 void
+INFO  20:41:44,254 - #49 MaiN
+INFO  20:41:44,255 - #6 (
+INFO  20:41:44,255 - #7 )
+INFO  20:41:44,256 - #3 {
+INFO  20:41:44,256 - #9 print
+INFO  20:41:44,256 - #6 (
+INFO  20:41:44,256 - #25 -
+INFO  20:41:44,256 - #47 'n'
+INFO  20:41:44,257 - #7 )
+INFO  20:41:44,257 - #5 ;
+INFO  20:41:44,257 - #4 }
+INFO  20:41:44,257 - #4 }
+INFO  20:41:44,258 - Program(
+  ProgramName(
+   bzvz
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       MaiN
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_None(
+      ) [VarDeclList_None]
+      Statement_Multiple(
+        Statement_None(
+        ) [Statement_None]
+        PrintStatement(
+          Expr_MinusTerm(
+            Term_Factor(
+              Factor_CharConst(
+               'n'
+              ) [Factor_CharConst]
+            ) [Term_Factor]
+          ) [Expr_MinusTerm]
+          NumConstList_None(
+          ) [NumConstList_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  20:41:44,284 - ===================================

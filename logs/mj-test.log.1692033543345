@@ -1,0 +1,14 @@
+INFO  19:07:18,609 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  19:07:18,614 - #2 program
+INFO  19:07:18,614 - #47 TEST
+INFO  19:07:18,614 - #3 {
+INFO  19:07:18,614 - #29 ==
+INFO  19:07:18,614 - #4 }
+INFO  19:07:18,615 - Program(
+ TEST
+  Equals(
+  ) [Equals]
+) [Program]
+INFO  19:07:18,615 - ===================================
+INFO  19:07:18,617 -  Print count calls = 0
+INFO  19:07:18,617 -  Deklarisanih promenljivih ima = 0

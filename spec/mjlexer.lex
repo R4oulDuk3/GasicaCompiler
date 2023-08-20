@@ -51,6 +51,8 @@ import java_cup.runtime.Symbol;
 "extends"       { return new_symbol(sym.EXTENDS, yytext()); }
 "continue"      { return new_symbol(sym.CONTINUE, yytext()); }
 "foreach"       { return new_symbol(sym.FOREACH, yytext()); }
+"findAny"       { return new_symbol(sym.FINDANY, yytext()); }
+"findAndReplace" { return new_symbol(sym.FINDANDREPLACE, yytext()); }
 
 "+"             { return new_symbol(sym.PLUS, yytext()); }
 "-"             { return new_symbol(sym.MINUS, yytext()); }

@@ -1,0 +1,50 @@
+INFO  00:26:00,486 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  00:26:00,508 - #2 program
+INFO  00:26:00,508 - #47 TEST
+INFO  00:26:00,508 - #47 int
+INFO  00:26:00,508 - #47 a
+INFO  00:26:00,509 - #5 ;
+INFO  00:26:00,509 - #47 int
+INFO  00:26:00,509 - #47 b
+INFO  00:26:00,509 - #8 ,
+INFO  00:26:00,509 - #47 c
+INFO  00:26:00,509 - #41 [
+INFO  00:26:00,509 - #42 ]
+INFO  00:26:00,509 - #5 ;
+INFO  00:26:00,510 - #21 const
+INFO  00:26:00,510 - #47 int
+INFO  00:26:00,510 - #47 d
+INFO  00:26:00,510 - #12 =
+INFO  00:26:00,510 - #46 1
+INFO  00:26:00,510 - #5 ;
+INFO  00:26:00,510 - #21 const
+INFO  00:26:00,510 - #47 int
+INFO  00:26:00,510 - #47 e
+INFO  00:26:00,510 - #12 =
+INFO  00:26:00,511 - #46 1
+INFO  00:26:00,511 - #8 ,
+INFO  00:26:00,511 - #47 f
+INFO  00:26:00,511 - #12 =
+INFO  00:26:00,511 - #46 2
+INFO  00:26:00,511 - #5 ;
+INFO  00:26:00,511 - #21 const
+INFO  00:26:00,511 - #47 char
+INFO  00:26:00,511 - #47 g
+INFO  00:26:00,511 - #12 =
+INFO  00:26:00,511 - #44 's'
+INFO  00:26:00,511 - #5 ;
+INFO  00:26:00,511 - #21 const
+INFO  00:26:00,511 - #47 bool
+INFO  00:26:00,511 - #47 testBool
+INFO  00:26:00,511 - #12 =
+INFO  00:26:00,512 - #45 true
+INFO  00:26:00,512 - #5 ;
+INFO  00:26:00,512 - #3 {
+INFO  00:26:00,512 - #13 void
+INFO  00:26:00,512 - #47 f
+INFO  00:26:00,512 - #6 (
+INFO  00:26:00,512 - #47 int
+ERROR 00:26:00,512 - 
+Sintaksna greska na liniji 10
+ERROR 00:26:00,512 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 10
+INFO  00:26:00,512 - S class: Symbol
