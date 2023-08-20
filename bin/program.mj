@@ -1,21 +1,21 @@
-program test302
+program bzvz
 
-const int a = 1, b = 2;
-const bool c = true, d = false;
-int e, f[];
+int b[], c[];
 {
+    void main() int a; {
+    	a = 0;
+        a = a + 1;
+        if ( 'a' > 'c' ){
+        	a = 1;
+        } else {
+        	a = 2;
+        }
+        
+        if ( b > c ) {
+        	b = c;
+        }
+    }
 
-	void func (int a, char b[], bool c) {
-
-	}
-
-	
-
-	
-	void main() int a; char b[];
-	{
-		a = 'c' + 1;
-
-	}
 }
+
 

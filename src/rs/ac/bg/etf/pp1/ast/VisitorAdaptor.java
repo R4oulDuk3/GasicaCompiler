@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 19/7/2023 15:47:25
+// 19/7/2023 23:44:40
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -37,8 +37,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(OptionalParams OptionalParams) { }
     public void visit(Statement Statement) { }
     public void visit(VarDecl VarDecl) { }
-    public void visit(OptionalActParsOneOrMany OptionalActParsOneOrMany) { }
     public void visit(CondFact CondFact) { }
+    public void visit(OptionalActParsOneOrMany OptionalActParsOneOrMany) { }
     public void visit(MethodDeclList MethodDeclList) { }
     public void visit(OptionalMinus OptionalMinus) { }
     public void visit(MoreParams MoreParams) { }
@@ -56,7 +56,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Assign Assign) { visit(); }
     public void visit(LabelIdent LabelIdent) { visit(); }
     public void visit(Designator_Array Designator_Array) { visit(); }
-    public void visit(Designator_Dot Designator_Dot) { visit(); }
     public void visit(Designator_Single Designator_Single) { visit(); }
     public void visit(Factor_Expr Factor_Expr) { visit(); }
     public void visit(Factor_NewObject Factor_NewObject) { visit(); }
@@ -64,7 +63,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Factor_BoolConst Factor_BoolConst) { visit(); }
     public void visit(Factor_CharConst Factor_CharConst) { visit(); }
     public void visit(Factor_NumConst Factor_NumConst) { visit(); }
-    public void visit(Factor_DesignatorActPars Factor_DesignatorActPars) { visit(); }
+    public void visit(Factor_DesignatorFuncCall Factor_DesignatorFuncCall) { visit(); }
     public void visit(Factor_Designator Factor_Designator) { visit(); }
     public void visit(Term_MulopFactor Term_MulopFactor) { visit(); }
     public void visit(Term_Factor Term_Factor) { visit(); }
@@ -92,6 +91,10 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NumConstList_Multiple NumConstList_Multiple) { visit(); }
     public void visit(ElseStatement_None ElseStatement_None) { visit(); }
     public void visit(ElseStatement_ ElseStatement_) { visit(); }
+    public void visit(WhileStart WhileStart) { visit(); }
+    public void visit(ForeachStart ForeachStart) { visit(); }
+    public void visit(ForEachDesignator ForEachDesignator) { visit(); }
+    public void visit(ForEachInterator ForEachInterator) { visit(); }
     public void visit(IfStatement IfStatement) { visit(); }
     public void visit(BlockStatement BlockStatement) { visit(); }
     public void visit(ForeachStatement ForeachStatement) { visit(); }

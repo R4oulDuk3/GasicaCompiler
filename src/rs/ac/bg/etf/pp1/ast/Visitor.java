@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 19/7/2023 15:47:25
+// 19/7/2023 23:44:40
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -37,8 +37,8 @@ public interface Visitor {
     public void visit(OptionalParams OptionalParams);
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
-    public void visit(OptionalActParsOneOrMany OptionalActParsOneOrMany);
     public void visit(CondFact CondFact);
+    public void visit(OptionalActParsOneOrMany OptionalActParsOneOrMany);
     public void visit(MethodDeclList MethodDeclList);
     public void visit(OptionalMinus OptionalMinus);
     public void visit(MoreParams MoreParams);
@@ -56,7 +56,6 @@ public interface Visitor {
     public void visit(Assign Assign);
     public void visit(LabelIdent LabelIdent);
     public void visit(Designator_Array Designator_Array);
-    public void visit(Designator_Dot Designator_Dot);
     public void visit(Designator_Single Designator_Single);
     public void visit(Factor_Expr Factor_Expr);
     public void visit(Factor_NewObject Factor_NewObject);
@@ -64,7 +63,7 @@ public interface Visitor {
     public void visit(Factor_BoolConst Factor_BoolConst);
     public void visit(Factor_CharConst Factor_CharConst);
     public void visit(Factor_NumConst Factor_NumConst);
-    public void visit(Factor_DesignatorActPars Factor_DesignatorActPars);
+    public void visit(Factor_DesignatorFuncCall Factor_DesignatorFuncCall);
     public void visit(Factor_Designator Factor_Designator);
     public void visit(Term_MulopFactor Term_MulopFactor);
     public void visit(Term_Factor Term_Factor);
@@ -92,6 +91,10 @@ public interface Visitor {
     public void visit(NumConstList_Multiple NumConstList_Multiple);
     public void visit(ElseStatement_None ElseStatement_None);
     public void visit(ElseStatement_ ElseStatement_);
+    public void visit(WhileStart WhileStart);
+    public void visit(ForeachStart ForeachStart);
+    public void visit(ForEachDesignator ForEachDesignator);
+    public void visit(ForEachInterator ForEachInterator);
     public void visit(IfStatement IfStatement);
     public void visit(BlockStatement BlockStatement);
     public void visit(ForeachStatement ForeachStatement);

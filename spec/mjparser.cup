@@ -74,9 +74,9 @@ nonterminal OneOfVarDecl, ZeroOrManyVarDecl;
 nonterminal MethodDecl, OptionalParams, MoreParams, Parameter, StatementList, Statement, MatchedStatement, UnmatchedStatement, DesignatorStatement;
 nonterminal Condition, NumConstList;
 nonterminal OptionalActPars, OptionalActParsOneOrMany;
-nonterminal CondTerm, CondFact, OptionalMinus, ElseStatement;
-nonterminal MethodName, ReturnType;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr;
+nonterminal OptionalMinus, ElseStatement, ForEachInterator;
+nonterminal MethodName, ReturnType, WhileStart, ForeachStart, ForEachDesignator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr, CondTerm, CondFact;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
 precedence left ELSE;
 
@@ -175,17 +175,24 @@ StatementList ::= (Statement_Multiple) StatementList Statement
 Statement ::= (DesignatorStatement_) DesignatorStatement SEMI |
     (DesignatorFindAnyStatement) Designator Assignop Designator DOT FINDANY LPAREN Expr RPAREN SEMI |
     (DesignatorFindAndReplaceStatement) Designator Assignop Designator DOT FINDANDREPLACE LPAREN Expr COMMA IDENT ARROW Expr RPAREN SEMI |
-    (WhileStatement) WHILE LPAREN Condition RPAREN Statement |
+    (WhileStatement) WhileStart WHILE LPAREN Condition RPAREN Statement |
     (BreakStatement) BREAK SEMI |
     (ContinueStatement) CONTINUE SEMI |
     (ReturnVoidStatement) RETURN SEMI |
     (ReturnStatement) RETURN Expr SEMI |
     (ReadStatement) READ LPAREN Designator RPAREN SEMI |
     (PrintStatement) PRINT LPAREN Expr NumConstList RPAREN SEMI |
-    (ForeachStatement) Designator DOT FOREACH LPAREN IDENT ARROW Statement RPAREN SEMI |
+    (ForeachStatement) ForEachDesignator ForeachStart DOT FOREACH LPAREN ForEachInterator ARROW Statement RPAREN SEMI |
     (BlockStatement) LBRACE StatementList RBRACE |
     (IfStatement) IF LPAREN Condition RPAREN Statement ElseStatement;
 
+ForEachInterator ::= (ForEachInterator) IDENT;
+
+ForEachDesignator ::= (ForEachDesignator) Designator;
+
+ForeachStart ::= (ForeachStart) /* epsilon */;
+
+WhileStart ::= (WhileStart) /* epsilon */;
 
 ElseStatement ::= (ElseStatement_) ELSE Statement
                 | (ElseStatement_None) /* epsilon */;
@@ -268,7 +275,7 @@ Term ::= (Term_Factor) Factor
 */
 
 Factor ::= (Factor_Designator) Designator
-         | (Factor_DesignatorActPars) Designator LPAREN OptionalActPars RPAREN
+         | (Factor_DesignatorFuncCall) Designator LPAREN OptionalActPars RPAREN // No class methods for B
          | (Factor_NumConst) NUMBER
          | (Factor_CharConst) CHARCONST
          | (Factor_BoolConst) BOOLCONST
@@ -281,7 +288,7 @@ Factor ::= (Factor_Designator) Designator
 */
 
 Designator ::= (Designator_Single) IDENT
-             | (Designator_Dot) Designator DOT IDENT
+            // | (Designator_Dot) Designator DOT IDENT // No class methods for B
              | (Designator_Array) Designator LBRACKET Expr RBRACKET;
 
 /*

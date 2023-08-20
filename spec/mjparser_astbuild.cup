@@ -97,13 +97,15 @@ nonterminal Condition Condition;
 nonterminal NumConstList NumConstList;
 nonterminal OptionalActPars OptionalActPars;
 nonterminal OptionalActParsOneOrMany OptionalActParsOneOrMany;
-nonterminal CondTerm CondTerm;
-nonterminal CondFact CondFact;
 nonterminal OptionalMinus OptionalMinus;
 nonterminal ElseStatement ElseStatement;
+nonterminal ForEachInterator ForEachInterator;
 nonterminal MethodName MethodName;
 nonterminal ReturnType ReturnType;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr;
+nonterminal WhileStart WhileStart;
+nonterminal ForeachStart ForeachStart;
+nonterminal ForEachDesignator ForEachDesignator;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr, CondTerm, CondFact;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
 precedence left ELSE;
 
@@ -202,17 +204,24 @@ StatementList ::= (Statement_Multiple) StatementList:S1 Statement:S2 {: RESULT=n
 Statement ::= (DesignatorStatement_) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStatement_(D1); RESULT.setLine(D1left); :} |
     (DesignatorFindAnyStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FINDANY LPAREN Expr:E4 RPAREN SEMI {: RESULT=new DesignatorFindAnyStatement(D1, A2, D3, E4); RESULT.setLine(D1left); :} |
     (DesignatorFindAndReplaceStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FINDANDREPLACE LPAREN Expr:E4 COMMA IDENT:I5 ARROW Expr:E6 RPAREN SEMI {: RESULT=new DesignatorFindAndReplaceStatement(D1, A2, D3, E4, I5, E6); RESULT.setLine(D1left); :} |
-    (WhileStatement) WHILE LPAREN Condition:C1 RPAREN Statement:S2 {: RESULT=new WhileStatement(C1, S2); RESULT.setLine(C1left); :} |
+    (WhileStatement) WhileStart:W1 WHILE LPAREN Condition:C2 RPAREN Statement:S3 {: RESULT=new WhileStatement(W1, C2, S3); RESULT.setLine(W1left); :} |
     (BreakStatement) BREAK SEMI {: RESULT=new BreakStatement(); :} |
     (ContinueStatement) CONTINUE SEMI {: RESULT=new ContinueStatement(); :} |
     (ReturnVoidStatement) RETURN SEMI {: RESULT=new ReturnVoidStatement(); :} |
     (ReturnStatement) RETURN Expr:E1 SEMI {: RESULT=new ReturnStatement(E1); RESULT.setLine(E1left); :} |
     (ReadStatement) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new ReadStatement(D1); RESULT.setLine(D1left); :} |
     (PrintStatement) PRINT LPAREN Expr:E1 NumConstList:N2 RPAREN SEMI {: RESULT=new PrintStatement(E1, N2); RESULT.setLine(E1left); :} |
-    (ForeachStatement) Designator:D1 DOT FOREACH LPAREN IDENT:I2 ARROW Statement:S3 RPAREN SEMI {: RESULT=new ForeachStatement(D1, I2, S3); RESULT.setLine(D1left); :} |
+    (ForeachStatement) ForEachDesignator:F1 ForeachStart:F2 DOT FOREACH LPAREN ForEachInterator:F3 ARROW Statement:S4 RPAREN SEMI {: RESULT=new ForeachStatement(F1, F2, F3, S4); RESULT.setLine(F1left); :} |
     (BlockStatement) LBRACE StatementList:S1 RBRACE {: RESULT=new BlockStatement(S1); RESULT.setLine(S1left); :} |
     (IfStatement) IF LPAREN Condition:C1 RPAREN Statement:S2 ElseStatement:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :};
 
+ForEachInterator ::= (ForEachInterator) IDENT:I1 {: RESULT=new ForEachInterator(I1); RESULT.setLine(I1left); :};
+
+ForEachDesignator ::= (ForEachDesignator) Designator:D1 {: RESULT=new ForEachDesignator(D1); RESULT.setLine(D1left); :};
+
+ForeachStart ::= (ForeachStart) {: RESULT=new ForeachStart(); :} /* epsilon */;
+
+WhileStart ::= (WhileStart) {: RESULT=new WhileStart(); :} /* epsilon */;
 
 ElseStatement ::= (ElseStatement_) ELSE Statement:S1 {: RESULT=new ElseStatement_(S1); RESULT.setLine(S1left); :}
                 | (ElseStatement_None) {: RESULT=new ElseStatement_None(); :} /* epsilon */;
@@ -295,7 +304,7 @@ Term ::= (Term_Factor) Factor:F1 {: RESULT=new Term_Factor(F1); RESULT.setLine(F
 */
 
 Factor ::= (Factor_Designator) Designator:D1 {: RESULT=new Factor_Designator(D1); RESULT.setLine(D1left); :}
-         | (Factor_DesignatorActPars) Designator:D1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new Factor_DesignatorActPars(D1, O2); RESULT.setLine(D1left); :}
+         | (Factor_DesignatorFuncCall) Designator:D1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new Factor_DesignatorFuncCall(D1, O2); RESULT.setLine(D1left); :} // No class methods for B
          | (Factor_NumConst) NUMBER:N1 {: RESULT=new Factor_NumConst(N1); RESULT.setLine(N1left); :}
          | (Factor_CharConst) CHARCONST:C1 {: RESULT=new Factor_CharConst(C1); RESULT.setLine(C1left); :}
          | (Factor_BoolConst) BOOLCONST:B1 {: RESULT=new Factor_BoolConst(B1); RESULT.setLine(B1left); :}
@@ -308,7 +317,7 @@ Factor ::= (Factor_Designator) Designator:D1 {: RESULT=new Factor_Designator(D1)
 */
 
 Designator ::= (Designator_Single) IDENT:I1 {: RESULT=new Designator_Single(I1); RESULT.setLine(I1left); :}
-             | (Designator_Dot) Designator:D1 DOT IDENT:I2 {: RESULT=new Designator_Dot(D1, I2); RESULT.setLine(D1left); :}
+            // | (Designator_Dot) Designator DOT IDENT // No class methods for B
              | (Designator_Array) Designator:D1 LBRACKET Expr:E2 RBRACKET {: RESULT=new Designator_Array(D1, E2); RESULT.setLine(D1left); :};
 
 /*
