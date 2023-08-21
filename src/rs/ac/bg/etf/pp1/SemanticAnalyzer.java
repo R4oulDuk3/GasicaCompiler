@@ -3,6 +3,8 @@ package rs.ac.bg.etf.pp1;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.logging.Logger;
 
 import java_cup.runtime.Symbol;
@@ -11,29 +13,10 @@ import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.*;
 
 public class SemanticAnalyzer extends VisitorAdaptor {
-
-    public static String callMethod(SyntaxNode instance, String methodName) {
-        try {
-            Method method = instance.getClass().getMethod(methodName);
-            if (String.class.equals(method.getReturnType())) {
-                return (String) method.invoke(instance);
-            } else {
-                return "Error: Method does not return a String";
-            }
-        } catch (NoSuchMethodException e) {
-            return "Error: Method not found";
-        } catch (Exception e) {
-            // Handle other exceptions: e.g., IllegalAccessException, InvocationTargetException
-            return "Error: " + e.getMessage();
-        }
-    }
-
     private Obj boolType;
-    private Obj invalidType;
     public SemanticAnalyzer() {
         Tab.init();
         boolType = Tab.insert(Obj.Type, "bool", new Struct(Struct.Bool));
-        invalidType = Tab.insert(Obj.Type, "invalid", new Struct(Struct.None));
     }
 
     public void dumpState() {
@@ -44,154 +27,234 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public boolean errorDetected = false;
 
-    private Obj currentProgram;
-
     private Struct currentType;
 
     public void report_error(String message, Object info) {
     	errorDetected = true;
     	StringBuilder msg = new StringBuilder(message); 
-    	if (info instanceof Symbol)
-            msg.append (" na liniji ").append(((Symbol)info).left);
+    	if (info instanceof SyntaxNode)
+            msg.append (" na liniji ").append(((SyntaxNode)info).getLine());
         log.severe(msg.toString());
     }
+
+    public boolean print_info = false;
     
     public void report_info(String message, Object info) {
+        if (!print_info)
+            return;
     	StringBuilder msg = new StringBuilder(message); 
-    	if (info instanceof Symbol)
-            msg.append (" na liniji ").append(((Symbol)info).left);
+    	if (info instanceof SyntaxNode)
+            msg.append (" na liniji ").append(((SyntaxNode)info).getLine());
         log.info(msg.toString());
+    }
+    /* Program = "program" ident {ConstDecl | VarDecl | ClassDecl | RecordDecl } "{" {MethodDecl} "}". */
+
+    /* U programu mora postojati metoda sa imenom main. Ona mora biti deklarisana kao void metoda
+        bez argumenata. 
+    */
+
+    static class Pair<T, U> {
+        public final T condition;
+        public final U errorHandler;
+    
+        public Pair(T condition, U errorHandler) {
+            this.condition = condition;
+            this.errorHandler = errorHandler;
+        }
+    }
+
+    @SafeVarargs
+    public final void executeWithFailureConditions(Consumer<Void> action, Pair<Function<Void, Boolean>, Consumer<Void>>... failureConditions) {
+        for (Pair<Function<Void, Boolean>, Consumer<Void>> failureCondition : failureConditions) {
+            if (failureCondition.condition.apply(null)) {
+                failureCondition.errorHandler.accept(null);
+                return;
+            }
+        }
+        action.accept(null);
+    }
+
+    static class State {
+        public static Obj currentProgram;
+        public static Obj currentMethod;
+        public static Struct currentMethodReturnType = Tab.noType;
+        public static boolean returnTypeExpected = false;
+        public static boolean returnFound = false;
+        public static List<Struct> calledMethodParams = new ArrayList<>();
+        public static boolean symbolAlreadyDeclared(String name) {
+            if (currentMethod == null)
+                return Tab.find(name) != Tab.noObj;
+            
+            return Tab.currentScope().findSymbol(name) != null;
+        }
     }
 
     @Override
     public void visit(Program program) {
-        Tab.chainLocalSymbols(currentProgram);
+        Obj main = Tab.find("main");
+        executeWithFailureConditions(
+            (Void) -> { 
+                report_info("Pronadjena main metoda u ispravnom stanju", program);
+            }, 
+            new Pair<>((Void) -> main == Tab.noObj, (Void) -> report_error("Greska: Main metoda nije pronadjena", program)),
+            new Pair<>((Void) -> main.getKind() != Obj.Meth, (Void) -> report_error("Greska: Main nije deklarisan kao metoda", program)),
+            new Pair<>((Void) -> main.getType() != Tab.noType, (Void) -> report_error("Greska: Main ima povratnu vrednost razlicitu od Void", program)),
+            new Pair<>((Void) -> main.getLevel() != 0, (Void) -> report_error("Error: Main ima vise parametre", program))
+        );
+        Tab.chainLocalSymbols(State.currentProgram);
         Tab.closeScope();
     }
 
+    
+
     @Override
     public void visit(ProgramName programName) {
-        currentProgram = Tab.insert(Obj.Prog, programName.getI1(), Tab.noType);
+        State.currentProgram = Tab.insert(Obj.Prog, programName.getI1(), Tab.noType);
         Tab.openScope();
     }
 
     /* Const and Var declarations */
 
-    public boolean isAlreadyDeclared(String name) {
-        if (currentMethod == null)
-            return Tab.find(name) != Tab.noObj;
-        
-        return Tab.currentScope().findSymbol(name) != null;
-    }
 
     public Obj find(String name) {
 
-        if (!isAlreadyDeclared(name))
+        if (!State.symbolAlreadyDeclared(name))
             throw new RuntimeException("Greska: Ime " + name + " nije deklarisano");
 
-        if (currentMethod == null)
+        if (State.currentMethod == null)
             return Tab.find(name);
         
         return Tab.currentScope().findSymbol(name);
     }
 
+    /*
+     * Tip reference
+        Nizovi i klase su tipa reference.
+        [Validation required]
+     */
+
+    /*
+     * Tip konstante
+        ‐ Tip celobrojne konstante (npr. 17) je int.
+        ‐ Tip znakovne konstante (npr. 'x') je char.
+        ‐ Tip logičke konstante (npr. true) je bool. 
+     */
+
     @Override
-    public void visit(Type type){
+    public void visit(Type type) {
         Obj typeNode = Tab.find(type.getI1());
-        if(typeNode == Tab.noObj){
-            report_error("Nije pronadjen tip " + type.getI1() + " u tabeli simbola", null);
-            currentType = Tab.noType;
-        }
-        if (typeNode.getKind() != Obj.Type) {
-            report_error("Greska: Ime " + type.getI1() + " ne predstavlja tip ", type);
-            currentType = Tab.noType;
-        } else {
-            currentType = typeNode.getType();
-            report_info("Koriscenje tipa " + type.getI1(), type);
-        }
+    
+        executeWithFailureConditions(
+            (Void) -> {
+                currentType = typeNode.getType();
+                report_info("Koriscenje tipa " + type.getI1(), type);
+            },
+            new Pair<>((Void) -> typeNode == Tab.noObj, 
+                       (Void) -> {
+                           report_error("Nije pronadjen tip " + type.getI1() + " u tabeli simbola", type);
+                           currentType = Tab.noType;
+                       }),
+            new Pair<>((Void) -> typeNode.getKind() != Obj.Type,
+                       (Void) -> {
+                           report_error("Greska: Ime " + type.getI1() + " ne predstavlja tip ", type);
+                           currentType = Tab.noType;
+                       })
+        );
     }
 
     @Override
     public void visit (NumConst_Single numConst){
-        report_info("Deklarisana konstanta numericka", numConst);
-        if (isAlreadyDeclared(numConst.getI1())) {
-            report_error("Greska: Konstanta " + numConst.getI1() + " je vec deklarisana", numConst);
-        } else if (currentType != Tab.intType) {
-            report_error("Greska: Konstanta " + numConst.getI1() + " nije tipa int", numConst);
-        } else {
+        executeWithFailureConditions((Void) ->{
             Obj constObj = Tab.insert(Obj.Con, numConst.getI1(), Tab.intType);
             constObj.setAdr(numConst.getN3());
-        }
+            report_info("Deklarisana konstanta numericka", numConst);
+        }, 
+            new Pair<>((Void) -> State.symbolAlreadyDeclared(numConst.getI1()), (Void) -> report_error("Greska: Konstanta " + numConst.getI1() + " je vec deklarisana", numConst)),
+            new Pair<>((Void) -> currentType != Tab.intType , (Void) -> report_error("Greska: Konstanta " + numConst.getI1() + " nije tipa int", numConst))
+        );
     }
 
     @Override
     public void visit (CharConst_Single charConst){
-        report_info("Deklarisana konstanta char", charConst);
-        if (isAlreadyDeclared(charConst.getI1())) {
-            report_error("Greska: Konstanta " + charConst.getI1() + " je vec deklarisana", charConst);
-        } else if (currentType != Tab.charType) {
-            report_error("Greska: Konstanta " + charConst.getI1() + " nije tipa char", charConst);
-        } else {
+        executeWithFailureConditions((Void) -> {
+            report_info("Deklarisana konstanta char", charConst);
             Obj constObj = Tab.insert(Obj.Con, charConst.getI1(), Tab.charType);
             constObj.setAdr(charConst.getC3().charAt(0));
-        }
+            
+        }, new Pair <>((Void) -> State.symbolAlreadyDeclared(charConst.getI1()), (Void) -> report_error("Greska: Konstanta " + charConst.getI1() + " je vec deklarisana", charConst)),
+            new Pair<>((Void) -> currentType != Tab.charType, (Void) -> report_error("Greska: Konstanta " + charConst.getI1() + " nije tipa char", charConst))
+        );
     }
 
    @Override
    public void visit (BoolConst_Single boolConst){
-       report_info("Deklarisana konstanta bool", boolConst);
-       if (isAlreadyDeclared(boolConst.getI1())) {
-           report_error("Greska: Konstanta " + boolConst.getI1() + " je vec deklarisana", boolConst);
-       } else if (currentType != boolType.getType()) {
-           report_error("Greska: Konstanta " + boolConst.getI1() + " nije tipa bool", boolConst);
-       } else {
-           Obj constObj = Tab.insert(Obj.Con, boolConst.getI1(), boolType.getType());
-           constObj.setAdr(boolConst.getB3() ? 1 : 0);
-       }
+       executeWithFailureConditions(
+           (Void) -> {
+                report_info("Deklarisana konstanta bool", boolConst);
+                Obj constObj = Tab.insert(Obj.Con, boolConst.getI1(), boolType.getType());
+                constObj.setAdr(boolConst.getB3() ? 1 : 0);
+           },
+           new Pair<>((Void) -> State.symbolAlreadyDeclared(boolConst.getI1()), (Void) -> report_error("Greska: Konstanta " + boolConst.getI1() + " je vec deklarisana", boolConst)),
+           new Pair<>((Void) -> currentType != boolType.getType(), (Void) -> report_error("Greska: Konstanta " + boolConst.getI1() + " nije tipa bool", boolConst))
+       );
     }
-
-
 
     @Override 
     public void visit (Var_Single varDecl){
-        if (isAlreadyDeclared(varDecl.getI1())) {
-            report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana u ovom scopeu", varDecl);
-        } else {
-            Tab.insert(Obj.Var, varDecl.getI1(), currentType);
-            report_info("Deklarisana promenljiva " + varDecl.getI1(), varDecl);
-        }
+
+        executeWithFailureConditions((Void) -> {
+                Tab.insert(Obj.Var, varDecl.getI1(), currentType);
+                report_info("Deklarisana promenljiva " + varDecl.getI1(), varDecl);
+            }, 
+            new Pair<>((Void) -> State.symbolAlreadyDeclared(varDecl.getI1()), (Void) -> report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl))
+        );
     }
 
     @Override 
     public void visit (Var_Array varDecl){
-        log.info("Deklarisan niz " + varDecl.getI1() + " tipa " + currentType.getKind());
-        if (isAlreadyDeclared(varDecl.getI1())) {
-            report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl);
-        } else {
-            Tab.insert(Obj.Var, varDecl.getI1(), currentType);
-            report_info("Deklarisana promenljiva " + varDecl.getI1(), new Struct(Struct.Array, currentType));
-        }
+        executeWithFailureConditions(
+            (Void) -> {
+                Tab.insert(Obj.Var, varDecl.getI1(), new Struct(Struct.Array, currentType));
+                report_info("Deklarisana niz " + varDecl.getI1(), varDecl);
+            },
+            new Pair<>((Void) -> State.symbolAlreadyDeclared(varDecl.getI1()), (Void) -> report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl))
+        );
     }
 
+    @Override
+    public void visit(ReturnType_Void returnType){
+
+        State.currentMethodReturnType = Tab.noType;
+        State.returnTypeExpected = false;
+        
+    }
+    /*
+     * MethodDecl = (Type | "void") ident "(" [FormPars] ")" {VarDecl} "{" {Statement} "}".
+        • Ako metoda nije tipa void, mora imati iskaz return unutar svog tela (uslov treba da se proverava u
+        vreme izvršavanja programa). 
+     */
+
     /* Method declarations */
-    private Obj currentMethod = null;
-    private Struct currentMethodReturnType = Tab.noType;
-    private boolean returnTypeExpected = false;
+
     @Override
     public void visit (ReturnType_Type returnType){
         Obj typeNode = Tab.find(returnType.getType().getI1());
-        if(typeNode == Tab.noObj){
-            report_error("Nije pronadjen tip " + returnType.getType().getI1() + " u tabeli simbola", null);
-            currentMethodReturnType = Tab.noType;
-        }
-        if (typeNode.getKind() != Obj.Type) {
-            report_error("Greska: Ime " + returnType.getType().getI1() + " ne predstavlja tip ", returnType);
-            currentMethodReturnType = Tab.noType;
-        } else {
-            currentMethodReturnType = typeNode.getType();
-            report_info("Koriscenje tipa " + returnType.getType().getI1(), returnType);
-            returnTypeExpected = true;
-        }
+        executeWithFailureConditions(
+            (Void) -> {
+                report_info("Koriscenje tipa " + returnType.getType().getI1() +" na liniji " , returnType);
+                State.currentMethodReturnType = typeNode.getType();
+                State.returnTypeExpected = true;
+            }, 
+            new Pair<>((Void) -> typeNode == Tab.noObj,
+                (Void) -> {
+                report_error("Nije pronadjen tip " + returnType.getType().getI1() + " u tabeli simbola", null);
+                State.currentMethodReturnType = Tab.noType;
+            }),
+            new Pair<>((Void) -> typeNode.getKind() != Obj.Type, (Void) -> {
+                report_error("Greska: Ime " + returnType.getType().getI1() + " ne predstavlja tip ", returnType);
+                State.currentMethodReturnType = Tab.noType;
+            })
+        );   
     }
 
     @Override
@@ -200,35 +263,39 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (obj != Tab.noObj) {
             report_error("Greska: Metoda " + methodName.getI1() + " je vec deklarisana", methodName);
         } else {
-            Tab.insert(Obj.Meth, methodName.getI1(), currentMethodReturnType);
-            currentMethod = Tab.find(methodName.getI1());
+            Tab.insert(Obj.Meth, methodName.getI1(), State.currentMethodReturnType);
+            State.currentMethod = Tab.find(methodName.getI1());
             Tab.openScope();
             
-            report_info("Obradjuje se funkcija " + methodName.getI1(), methodName);
+            report_info("Obradjuje se funkcija " + methodName.getI1() , methodName);
         }
     }
 
     @Override
     public void visit (MethodDecl methodDecl){
-        Tab.chainLocalSymbols(currentMethod);
+        Tab.chainLocalSymbols(State.currentMethod);
         Tab.closeScope();
-        currentMethod = Tab.noObj;
-        returnTypeExpected = false;
+        State.currentMethod = Tab.noObj;
+        if (State.returnTypeExpected && !State.returnFound) {
+            report_error("Greska: Funkcija " + methodDecl.getMethodName().getI1() + " nema return iskaz", methodDecl);
+        }
+        State.returnTypeExpected = false;
+        State.returnFound = false;
         report_info("Zavrseno je obradjivanje funkcije " + methodDecl.getMethodName().getI1(), methodDecl);
     }
 
     public boolean isInMainMethod(){
-        return currentMethod.getName().equals("main");
+        return State.currentMethod.getName().equals("main");
     }
 
     public void registerParam(Obj obj){
         obj.setFpPos(1);
-        currentMethod.setLevel(currentMethod.getLevel() + 1);
+        State.currentMethod.setLevel(State.currentMethod.getLevel() + 1);
     }
 
     @Override
     public void visit (Param_Single paramSingle){
-        if (isAlreadyDeclared(paramSingle.getI2())) {
+        if (State.symbolAlreadyDeclared(paramSingle.getI2())) {
             report_error("Greska: Parametar / Varijabla " + paramSingle.getI2() + " je vec deklarisan", paramSingle);
         } else if(isInMainMethod()){
             report_error("Greska: Variabla ne moze biti prosledjena kao parametar main emthoda", paramSingle);
@@ -242,7 +309,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit (Param_Array paramArray){
-        if (isAlreadyDeclared(paramArray.getI2())) {
+        if (State.symbolAlreadyDeclared(paramArray.getI2())) {
             report_error("Greska: Parametar / Varijabla " + paramArray.getI2() + " je vec deklarisan", paramArray);
         }else if(isInMainMethod()){
             report_error("Greska: Variabla ne moze biti prosledjena kao parametar main emthoda", paramArray);
@@ -267,13 +334,20 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         • Tip neterminala Expr mora biti kompatibilan pri dodeli sa tipom neterminala Designator
      */
 
+    public boolean isAssignable(Struct designatorType, Struct exprType){
+        if (designatorType.getKind() == Struct.Array && exprType.getKind() == Struct.Array) {
+            return designatorType.getElemType().assignableTo(exprType.getElemType());
+        } 
+        return designatorType.assignableTo(exprType);
+    }
+
     @Override
     public void visit (DesignatorStatement_Assign statement_DesignatorStatement_Assign){
         Struct designatorType = getTypeOrNull(statement_DesignatorStatement_Assign.getDesignator().obj);
         Struct exprType = statement_DesignatorStatement_Assign.getExpr().struct;
         Assignop assignop = statement_DesignatorStatement_Assign.getAssignop();
-
-        if (!designatorType.assignableTo(exprType)){
+        log.info("Designator type " + designatorType.getKind() + " Expr type " + exprType.getKind());
+        if (!isAssignable(designatorType, exprType)){
             report_error("Greska: Tipovi u dodeli se ne poklapaju na liniji: " + statement_DesignatorStatement_Assign.getLine(), assignop);
         }
     }
@@ -311,11 +385,35 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         • Designator mora označavati nestatičku metodu unutrašnje klase ili globalnu funkciju glavnog
         programa. 
      */
+
+     public List<Struct> getMethodParams(Designator designator){
+         List<Struct> params = new ArrayList<Struct>();
+         for (Obj obj : designator.obj.getLocalSymbols()){
+            if(obj.getFpPos() > 0) params.add(obj.getType());
+         }
+         return params;
+     }
+
     @Override
     public void visit (DesignatorStatement_ActPars designatorStatement_ActPars){
-        if (designatorStatement_ActPars.getDesignator().obj != null || designatorStatement_ActPars.getDesignator().obj.getKind() != Obj.Meth){
+        if (designatorStatement_ActPars.getDesignator().obj == null || designatorStatement_ActPars.getDesignator().obj.getKind() != Obj.Meth){
             report_error("Greska: Designator mora označavati nestatičku metodu unutrašnje klase ili globalnu funkciju glavnog programa na liniji: " + designatorStatement_ActPars.getLine(), designatorStatement_ActPars);
+            return;
+        } else {
+            List<Struct> methodParams = getMethodParams(designatorStatement_ActPars.getDesignator());
+            List<Struct> calledMethodParams = State.calledMethodParams;
+            if (methodParams.size() != calledMethodParams.size()){
+                report_error(String.format("Broj parametara se ne pokpala [deklarisani: %d, dati: %d]", methodParams.size(), calledMethodParams.size()), designatorStatement_ActPars);
+                return;
+            }
+            for (int i = 0; i < methodParams.size(); i++){
+                if (!calledMethodParams.get(i).assignableTo(methodParams.get(i))){
+                    report_error("Greska: Tipovi parametara se ne poklapaju ", designatorStatement_ActPars);
+                    return;
+                }
+            }
         } 
+        State.calledMethodParams = new ArrayList<>();
     }
 
     /*
@@ -359,12 +457,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
      @Override
      public void visit(ReadStatement readStatement){
         Struct designatorType = readStatement.getDesignator().obj.getType();
+        int designatorKind = readStatement.getDesignator().obj.getKind();
         if (designatorType.getKind() != Struct.Int && designatorType.getKind() != Struct.Char && designatorType.getKind() != Struct.Bool){
             report_error("Greska: Designator mora biti tipa int, char ili bool na liniji: " + readStatement.getLine(), readStatement);
         }
-        int designatorKind = readStatement.getDesignator().obj.getKind();
-        if (designatorKind != Obj.Var && designatorKind != Obj.Elem){
+        else if (designatorKind != Obj.Var && designatorKind != Obj.Elem){
             report_error("Greska: Designator mora biti promenljiva, element niza ili polje objekta unutrasnje klase na liniji: " + readStatement.getLine(), readStatement);
+        } else {
+            report_info("Read statement ", readStatement);
         }
      }
      
@@ -378,8 +478,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         Struct exprType = printStatement.getExpr().struct;
         if (exprType.getKind() != Struct.Int && exprType.getKind() != Struct.Char && exprType.getKind() != Struct.Bool){
             report_error("Greska: Expr mora biti tipa int, char ili bool na liniji: " + printStatement.getLine(), printStatement);
+        } else {
+            report_info("Print statement ", printStatement);
         }
     }
+
 
     /*
      * Statement = "return" [Expr] .
@@ -390,19 +493,21 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(ReturnVoidStatement returnVoidStatement){
-        if (returnTypeExpected){
-            report_error("Greska: Return nema povratnu vrendost na liniji: " + returnVoidStatement.getLine(), returnVoidStatement);
+        if (State.returnTypeExpected){
+            report_error("Greska: Return nema povratnu vrendost na liniji: ", returnVoidStatement);
         }
+        State.returnFound = true;
     }
 
     @Override
     public void visit(ReturnStatement returnStatement) {
-        if (!returnTypeExpected){
+        State.returnFound = true;
+        if (!State.returnTypeExpected){
             report_error("Greska: Return ima povratnu vrendost na liniji: " + returnStatement.getLine(), returnStatement);
         }
         Struct exprType = returnStatement.getExpr().struct;
-        if (exprType.getKind() != currentMethodReturnType.getKind()){
-            report_error("Greska: Tip neterminala Expr mora biti ekvivalentan povratnom tipu tekuće metode/ globalne funkcije na liniji: " + returnStatement.getLine(), returnStatement);
+        if (exprType.getKind() != State.currentMethodReturnType.getKind()){
+            report_error("Greska: Tip neterminala Expr mora biti ekvivalentan povratnom tipu tekuće metode/ globalne funkcije " + returnStatement.getLine(), returnStatement);
         }
     }
     
@@ -481,7 +586,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit (ForEachInterator forEachInterator){
-        if (!isAlreadyDeclared(forEachInterator.getI1())){
+        if (!State.symbolAlreadyDeclared(forEachInterator.getI1())){
             report_error("Greska: Ident mora biti lokalna ili globalna promenljiva istog tipa kao i elementi niza koji opisuje Designator na liniji: " + forEachInterator.getLine(), forEachInterator);
         }
         Obj iteratorObj = find(forEachInterator.getI1());
@@ -496,8 +601,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         argumenta na odgovarajućoj poziciji. 
      */
     
-    // TODO: Dodati ovo
+    @Override
+    public void visit(OptionalActParsOneOrMany_Single optionalActParsOneOrMany_Single){
+        State.calledMethodParams.add(optionalActParsOneOrMany_Single.getExpr().struct);
+    }
 
+    @Override
+    public void visit(OptionalActParsOneOrMany_Multiple optionalActParsOneOrMany_Multiple){
+        State.calledMethodParams.add(optionalActParsOneOrMany_Multiple.getExpr().struct);
+    }
 
      /*
       * CondTerm = CondFact {"&&" CondFact}.
@@ -516,7 +628,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         Struct expr0Type = condFact_ExprRelopExpr.getExpr().struct;
         Struct expr1Type = condFact_ExprRelopExpr.getExpr1().struct;
         Relop relop = condFact_ExprRelopExpr.getRelop();
-        report_info("Trenutno u conditionalFactu sa Relop", expr0Type);
+        report_info("Trenutno u conditionalFactu sa Relop", condFact_ExprRelopExpr);
         if (expr0Type.getKind() != expr1Type.getKind()){
             report_error("Greska: Tipovi u relacionoj operaciji se ne poklapaju na liniji: " + condFact_ExprRelopExpr.getLine(), relop);
         } else if ( expr0Type.getKind() == Struct.Array){
@@ -626,6 +738,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
      public Struct getTypeOrNull(Obj obj) {
     	 if (obj == null) {
+            log.info("Objekat je null, ne moze se dobiti tip");
     		 return Tab.noType;
     	 }
     	 return obj.getType();
@@ -634,6 +747,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
      @Override 
      public void visit(Factor_Designator factor_Designator){
          factor_Designator.struct = getTypeOrNull(factor_Designator.getDesignator().obj);
+     }
+
+     @Override
+     public void visit(Factor_DesignatorFuncCall factor_DesignatorFuncCall){
+         factor_DesignatorFuncCall.struct = factor_DesignatorFuncCall.getDesignator().obj.getType();
      }
 
      @Override
@@ -669,15 +787,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(Designator_Single designator_Single){
         Obj obj = Tab.find(designator_Single.getI1());
         if (obj == Tab.noObj) {
-            report_error("Greska: Varijabla " + designator_Single.getI1() + " nije deklarisana", designator_Single);
+            report_error("Greska: " + designator_Single.getI1() + " nije deklarisana", designator_Single);
             designator_Single.obj = Tab.noObj;
         }else {
             designator_Single.obj = obj;
             int kind = obj.getKind();
             if (kind == Obj.Con) {
-                report_info("Pristup konstanti " + designator_Single.getI1(), designator_Single);
+                report_info("Pristup konstanti " + designator_Single.getI1() , designator_Single);
             } else if (kind == Obj.Var) {
-                report_info("Pristup promenljivoj " + designator_Single.getI1(), designator_Single);
+                report_info("Pristup promenljivoj " + designator_Single.getI1()+ " tipa " + obj.getType().getKind(), designator_Single);
             } else if (kind == Obj.Fld) {
                 report_info("Pristup polju " + designator_Single.getI1(), designator_Single);
             } else if (kind == Obj.Meth) {
@@ -700,7 +818,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             report_error("Greska: Izraz mora biti tipa int", designator_Array);
         } else if ( designator_Array.getDesignator().obj.getType().getKind() != Struct.Array ){
             report_error("Greska: Designator nije niz", designator_Array);
-        } 
+        } else {
+            designator_Array.obj = new Obj(Obj.Elem, designator_Array.getDesignator().obj.getName(), designator_Array.getDesignator().obj.getType().getElemType());
+        }
     }
 
 

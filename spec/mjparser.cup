@@ -216,6 +216,7 @@ DesignatorStatement ::= (DesignatorStatement_Assign) Designator Assignop Expr
                       | (DesignatorStatement_ActPars) Designator LPAREN OptionalActPars RPAREN
                       | (DesignatorStatement_Increment) Designator INCREMENT
                       | (DesignatorStatement_Decrement) Designator DECREMENT;
+
 /*
     ActPars = Expr {"," Expr}.
 */

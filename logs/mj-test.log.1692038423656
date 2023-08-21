@@ -1,8 +1,0 @@
-INFO  20:37:55,358 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
-INFO  20:37:55,367 - #2 program
-INFO  20:37:55,367 - #47 TEST
-INFO  20:37:55,367 - #21 const
-INFO  20:37:55,368 - #47 int
-ERROR 20:37:55,368 - 
-Sintaksna greska na liniji 1
-ERROR 20:37:55,368 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 1
