@@ -27,7 +27,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public boolean errorDetected = false;
 
-    private Struct currentType;
+    
 
     public void report_error(String message, Object info) {
     	errorDetected = true;
@@ -75,6 +75,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     static class State {
+        public static Struct currentType;
         public static Obj currentProgram;
         public static Obj currentMethod;
         public static Struct currentMethodReturnType = Tab.noType;
@@ -82,11 +83,26 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         public static boolean returnFound = false;
         public static List<Struct> calledMethodParams = new ArrayList<>();
         public static boolean symbolAlreadyDeclared(String name) {
-            if (currentMethod == null)
-                return Tab.find(name) != Tab.noObj;
+            // System.out.println("Checking if " + name + " is already declared");
             
-            return Tab.currentScope().findSymbol(name) != null;
+            if (currentMethod == null){
+                // System.out.println("Current method is null");
+                return Tab.find(name) != Tab.noObj;
+            }
+            return Tab.currentScope().findSymbol(name) != null || Tab.find(name) != Tab.noObj;
         }
+
+        public static Obj find(String name) {
+
+        if (!State.symbolAlreadyDeclared(name))
+            throw new RuntimeException("Greska: Ime " + name + " nije deklarisano");
+
+        if (State.currentMethod == null)
+            return Tab.find(name);
+        Obj obj = Tab.currentScope().findSymbol(name);
+        if (obj!=null) return obj;
+        return Tab.find(name);
+    }
     }
 
     @Override
@@ -116,16 +132,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /* Const and Var declarations */
 
 
-    public Obj find(String name) {
 
-        if (!State.symbolAlreadyDeclared(name))
-            throw new RuntimeException("Greska: Ime " + name + " nije deklarisano");
-
-        if (State.currentMethod == null)
-            return Tab.find(name);
-        
-        return Tab.currentScope().findSymbol(name);
-    }
 
     /*
      * Tip reference
@@ -146,18 +153,18 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     
         executeWithFailureConditions(
             (Void) -> {
-                currentType = typeNode.getType();
+                State.currentType = typeNode.getType();
                 report_info("Koriscenje tipa " + type.getI1(), type);
             },
             new Pair<>((Void) -> typeNode == Tab.noObj, 
                        (Void) -> {
                            report_error("Nije pronadjen tip " + type.getI1() + " u tabeli simbola", type);
-                           currentType = Tab.noType;
+                           State.currentType = Tab.noType;
                        }),
             new Pair<>((Void) -> typeNode.getKind() != Obj.Type,
                        (Void) -> {
                            report_error("Greska: Ime " + type.getI1() + " ne predstavlja tip ", type);
-                           currentType = Tab.noType;
+                           State.currentType = Tab.noType;
                        })
         );
     }
@@ -170,7 +177,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             report_info("Deklarisana konstanta numericka", numConst);
         }, 
             new Pair<>((Void) -> State.symbolAlreadyDeclared(numConst.getI1()), (Void) -> report_error("Greska: Konstanta " + numConst.getI1() + " je vec deklarisana", numConst)),
-            new Pair<>((Void) -> currentType != Tab.intType , (Void) -> report_error("Greska: Konstanta " + numConst.getI1() + " nije tipa int", numConst))
+            new Pair<>((Void) -> State.currentType != Tab.intType , (Void) -> report_error("Greska: Konstanta " + numConst.getI1() + " nije tipa int", numConst))
         );
     }
 
@@ -182,7 +189,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             constObj.setAdr(charConst.getC3().charAt(0));
             
         }, new Pair <>((Void) -> State.symbolAlreadyDeclared(charConst.getI1()), (Void) -> report_error("Greska: Konstanta " + charConst.getI1() + " je vec deklarisana", charConst)),
-            new Pair<>((Void) -> currentType != Tab.charType, (Void) -> report_error("Greska: Konstanta " + charConst.getI1() + " nije tipa char", charConst))
+            new Pair<>((Void) -> State.currentType != Tab.charType, (Void) -> report_error("Greska: Konstanta " + charConst.getI1() + " nije tipa char", charConst))
         );
     }
 
@@ -195,7 +202,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                 constObj.setAdr(boolConst.getB3() ? 1 : 0);
            },
            new Pair<>((Void) -> State.symbolAlreadyDeclared(boolConst.getI1()), (Void) -> report_error("Greska: Konstanta " + boolConst.getI1() + " je vec deklarisana", boolConst)),
-           new Pair<>((Void) -> currentType != boolType.getType(), (Void) -> report_error("Greska: Konstanta " + boolConst.getI1() + " nije tipa bool", boolConst))
+           new Pair<>((Void) -> State.currentType != boolType.getType(), (Void) -> report_error("Greska: Konstanta " + boolConst.getI1() + " nije tipa bool", boolConst))
        );
     }
 
@@ -203,7 +210,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit (Var_Single varDecl){
 
         executeWithFailureConditions((Void) -> {
-                Tab.insert(Obj.Var, varDecl.getI1(), currentType);
+                Tab.insert(Obj.Var, varDecl.getI1(), State.currentType);
                 report_info("Deklarisana promenljiva " + varDecl.getI1(), varDecl);
             }, 
             new Pair<>((Void) -> State.symbolAlreadyDeclared(varDecl.getI1()), (Void) -> report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl))
@@ -214,7 +221,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit (Var_Array varDecl){
         executeWithFailureConditions(
             (Void) -> {
-                Tab.insert(Obj.Var, varDecl.getI1(), new Struct(Struct.Array, currentType));
+                Tab.insert(Obj.Var, varDecl.getI1(), new Struct(Struct.Array, State.currentType));
                 report_info("Deklarisana niz " + varDecl.getI1(), varDecl);
             },
             new Pair<>((Void) -> State.symbolAlreadyDeclared(varDecl.getI1()), (Void) -> report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl))
@@ -301,7 +308,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             report_error("Greska: Variabla ne moze biti prosledjena kao parametar main emthoda", paramSingle);
             
         } else {
-            Obj obj =Tab.insert(Obj.Var, paramSingle.getI2(), currentType);
+            Obj obj =Tab.insert(Obj.Var, paramSingle.getI2(), State.currentType);
             registerParam(obj);
             report_info("Deklarisan parametar " + paramSingle.getI2(), paramSingle);
         }
@@ -314,7 +321,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }else if(isInMainMethod()){
             report_error("Greska: Variabla ne moze biti prosledjena kao parametar main emthoda", paramArray);
         } else {
-            Obj obj = Tab.insert(Obj.Var, paramArray.getI2(), new Struct(Struct.Array, currentType));
+            Obj obj = Tab.insert(Obj.Var, paramArray.getI2(), new Struct(Struct.Array, State.currentType));
             registerParam(obj);
             report_info("Deklarisan parametar " + paramArray.getI2(), paramArray);
         }
@@ -346,7 +353,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         Struct designatorType = getTypeOrNull(statement_DesignatorStatement_Assign.getDesignator().obj);
         Struct exprType = statement_DesignatorStatement_Assign.getExpr().struct;
         Assignop assignop = statement_DesignatorStatement_Assign.getAssignop();
-        log.info("Designator type " + designatorType.getKind() + " Expr type " + exprType.getKind());
+        // log.info("Designator type " + designatorType.getKind() + " Expr type " + exprType.getKind());
         if (!isAssignable(designatorType, exprType)){
             report_error("Greska: Tipovi u dodeli se ne poklapaju na liniji: " + statement_DesignatorStatement_Assign.getLine(), assignop);
         }
@@ -510,7 +517,69 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             report_error("Greska: Tip neterminala Expr mora biti ekvivalentan povratnom tipu tekuće metode/ globalne funkcije " + returnStatement.getLine(), returnStatement);
         }
     }
+
+    /*
+     * Statement := Designator ʺ=ʺ Designator ʺ.ʺ ʺfindAnyʺ "(" Expr ")" ";"
+     *  Designator sa desne strane znaka jednakosti mora označavati jednodimenzionalni niz
+        ugrađenog tipa.
+        ● Designator sa leve strane znaka jednakosti mora označavati promenljivu tipa bool.
+        ● Funkcija ʺfindAnyʺ iterira kroz niz od prvog do poslednjeg elementa niza.
+        ● Rezultat funkcije je true ukoliko u nizu kroz koji se iterira postoji element koji po vrednosti
+        odgovara rezultatu izraza Expr. U suprotnom je rezultat funkcije false.
+     */
+
+    @Override
+    public void visit(DesignatorFindAnyStatement designatorFindAnyStatement){
+        Designator findAnyResult = designatorFindAnyStatement.getDesignator();
+        Designator findAnyArray = designatorFindAnyStatement.getDesignator1();
+        // log.info("findAnyResult: " + findAnyResult.obj.getType().getKind() + " findAnyArray: " + findAnyArray.obj.getType().getKind());
+        // log.info("Booltype: " + boolType.getKind());
+        if(findAnyArray.obj.getType().getKind() != Struct.Array){
+            report_error("Greska: Designator sa desne strane znaka jednakosti mora označavati jednodimenzionalni niz ugrađenog tipa na liniji: " + designatorFindAnyStatement.getLine(), designatorFindAnyStatement);
+        } else if ( findAnyArray.obj.getType().getElemType().getKind() == Struct.Array){
+            report_error("Greska: Designator sa desne strane je visedimenzionalni niz", designatorFindAnyStatement);
+        } else if (findAnyResult.obj.getType().getKind() != boolType.getType().getKind()){
+            report_error("Greska: Designator sa leve strane znaka jednakosti mora označavati promenljivu tipa bool na liniji: " + designatorFindAnyStatement.getLine(), designatorFindAnyStatement);
+        } else {
+            report_info("Designator findAny statement ", designatorFindAnyStatement);
+        }
+    }
     
+    /**
+     * Statement := Designator ʺ=ʺ Designator ʺ.ʺ ʺfindAndReplaceʺ "(" Expr "," ident "=>" Expr ")" ";".
+        ● Designator mora označavati jednodimenzionalni niz ugrađenog tipa.
+        ● ident mora biti lokalna ili globalna promenljiva istog tipa kao i elementi niza koji opisuje
+        Designator.
+        ● Funkcija ʺfindAndReplaceʺ iterira kroz niz tako što u svakoj iteraciji ident označava tekući
+        element niza, pri čemu iteriranje počinje od prvog elementa niza i završava se sa poslednjim.
+        ● Rezultat funkcije je novi niz, iste dužine kao originalni, čije su vrednosti formirane
+        primenom izraza Expr (iz drugog argumenta funkcije) nad svakim elementom ident
+        originalnog niza za koji važi da po vrednosti odgovara rezultatu evaluacije izraza Expr (prvi
+        argument funkcije). Ostali elementi originalnog niza se prepisuju u novi niz neizmenjeni.
+        Novi niz prethodno mora biti deklarisan.     
+     */
+
+
+
+    @Override
+    public void visit(DesignatorFindAndReplaceStatement designatorFindAndReplaceStatement){
+        Designator findAndReplaceResult = designatorFindAndReplaceStatement.getDesignator();
+        Designator findAndReplaceArray = designatorFindAndReplaceStatement.getDesignator1();
+        if(findAndReplaceResult.obj.getType().getKind() != Struct.Array){
+            report_error("Greska: Resultat findAndReplace statmenta mora biti deklarisan niz", designatorFindAndReplaceStatement);
+        } else if (findAndReplaceArray.obj.getType().getKind() != Struct.Array){
+            report_error("Greska: Designator koji se koristi za findAndReplace mora da bude niz", findAndReplaceArray);
+        } else if (!State.symbolAlreadyDeclared(designatorFindAndReplaceStatement.getI5())){
+            report_error("Greska: Element niza mora biti deklarisan pre pozivanja", findAndReplaceArray);
+        } else {
+            Obj arrayElement = State.find(designatorFindAndReplaceStatement.getI5());
+            if (arrayElement.getType().getKind() != findAndReplaceArray.obj.getType().getElemType().getKind()){
+                report_error("Greska: Element niza mora biti istog tipa kao i niz", findAndReplaceArray);
+            } else {
+                report_info("Designator findAndReplace statement ", designatorFindAndReplaceStatement);
+            }
+        }
+    }
 
     /* Conditions */
 
@@ -589,7 +658,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (!State.symbolAlreadyDeclared(forEachInterator.getI1())){
             report_error("Greska: Ident mora biti lokalna ili globalna promenljiva istog tipa kao i elementi niza koji opisuje Designator na liniji: " + forEachInterator.getLine(), forEachInterator);
         }
-        Obj iteratorObj = find(forEachInterator.getI1());
+        Obj iteratorObj = State.find(forEachInterator.getI1());
         if (iteratorObj.getType().getKind() != currentForeachType.getKind()){
             report_error("Greska: Ident mora biti lokalna ili globalna promenljiva istog tipa kao i elementi niza koji opisuje Designator na liniji: " + forEachInterator.getLine(), forEachInterator);
         }
@@ -775,7 +844,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (factor_NewArray.getExpr().struct != Tab.intType) {
             report_error("Greska: Izraz mora biti tipa int", factor_NewArray);
         } else {
-           factor_NewArray.struct = new Struct(Struct.Array, currentType);
+           factor_NewArray.struct = new Struct(Struct.Array, State.currentType);
         }
     }
 

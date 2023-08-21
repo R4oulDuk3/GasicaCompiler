@@ -1,0 +1,1125 @@
+INFO  11:15:48,390 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  11:15:48,414 - #2 program
+INFO  11:15:48,414 - #49 test302
+INFO  11:15:48,414 - #21 const
+INFO  11:15:48,415 - #49 int
+INFO  11:15:48,415 - #49 jedan
+INFO  11:15:48,415 - #12 =
+INFO  11:15:48,415 - #48 1
+INFO  11:15:48,416 - #5 ;
+INFO  11:15:48,416 - #49 int
+INFO  11:15:48,417 - #49 i
+INFO  11:15:48,417 - #5 ;
+INFO  11:15:48,418 - #49 bool
+INFO  11:15:48,418 - #49 ibool
+INFO  11:15:48,418 - #5 ;
+INFO  11:15:48,419 - #49 int
+INFO  11:15:48,419 - #49 niz2
+INFO  11:15:48,419 - #5 ;
+INFO  11:15:48,420 - #3 {
+INFO  11:15:48,420 - #49 int
+INFO  11:15:48,420 - #49 sum
+INFO  11:15:48,421 - #6 (
+INFO  11:15:48,421 - #49 int
+INFO  11:15:48,422 - #49 z
+INFO  11:15:48,422 - #8 ,
+INFO  11:15:48,422 - #49 int
+INFO  11:15:48,422 - #49 d
+INFO  11:15:48,423 - #7 )
+INFO  11:15:48,423 - #3 {
+INFO  11:15:48,424 - #10 return
+INFO  11:15:48,424 - #49 z
+INFO  11:15:48,424 - #11 +
+INFO  11:15:48,425 - #49 d
+INFO  11:15:48,425 - #5 ;
+INFO  11:15:48,426 - #4 }
+INFO  11:15:48,426 - #49 int
+INFO  11:15:48,427 - #49 inkrement
+INFO  11:15:48,427 - #6 (
+INFO  11:15:48,427 - #49 int
+INFO  11:15:48,427 - #49 a
+INFO  11:15:48,428 - #8 ,
+INFO  11:15:48,428 - #49 int
+INFO  11:15:48,428 - #49 inc
+INFO  11:15:48,428 - #7 )
+INFO  11:15:48,429 - #49 int
+INFO  11:15:48,429 - #49 pom
+INFO  11:15:48,429 - #5 ;
+INFO  11:15:48,430 - #3 {
+INFO  11:15:48,430 - #14 if
+INFO  11:15:48,430 - #6 (
+INFO  11:15:48,430 - #49 inc
+INFO  11:15:48,431 - #29 ==
+INFO  11:15:48,431 - #49 jedan
+INFO  11:15:48,432 - #7 )
+INFO  11:15:48,432 - #49 pom
+INFO  11:15:48,432 - #12 =
+INFO  11:15:48,432 - #48 1
+INFO  11:15:48,432 - #5 ;
+INFO  11:15:48,433 - #15 else
+INFO  11:15:48,433 - #14 if
+INFO  11:15:48,433 - #6 (
+INFO  11:15:48,433 - #49 inc
+INFO  11:15:48,433 - #29 ==
+INFO  11:15:48,434 - #48 2
+INFO  11:15:48,434 - #7 )
+INFO  11:15:48,434 - #49 pom
+INFO  11:15:48,434 - #12 =
+INFO  11:15:48,434 - #49 a
+INFO  11:15:48,435 - #5 ;
+INFO  11:15:48,435 - #10 return
+INFO  11:15:48,435 - #49 sum
+INFO  11:15:48,436 - #6 (
+INFO  11:15:48,436 - #49 a
+INFO  11:15:48,436 - #8 ,
+INFO  11:15:48,437 - #49 pom
+INFO  11:15:48,437 - #7 )
+INFO  11:15:48,437 - #5 ;
+INFO  11:15:48,437 - #4 }
+INFO  11:15:48,437 - #49 bool
+INFO  11:15:48,438 - #49 verify
+INFO  11:15:48,438 - #6 (
+INFO  11:15:48,438 - #7 )
+INFO  11:15:48,438 - #3 {
+INFO  11:15:48,439 - #9 print
+INFO  11:15:48,439 - #6 (
+INFO  11:15:48,439 - #47 'v'
+INFO  11:15:48,439 - #7 )
+INFO  11:15:48,440 - #5 ;
+INFO  11:15:48,440 - #10 return
+INFO  11:15:48,440 - #46 false
+INFO  11:15:48,440 - #5 ;
+INFO  11:15:48,441 - #4 }
+INFO  11:15:48,441 - #13 void
+INFO  11:15:48,441 - #49 main
+INFO  11:15:48,442 - #6 (
+INFO  11:15:48,442 - #7 )
+INFO  11:15:48,442 - #3 {
+INFO  11:15:48,442 - #14 if
+INFO  11:15:48,442 - #6 (
+INFO  11:15:48,443 - #48 1
+INFO  11:15:48,443 - #30 !=
+INFO  11:15:48,443 - #48 1
+INFO  11:15:48,443 - #7 )
+INFO  11:15:48,443 - #9 print
+INFO  11:15:48,444 - #6 (
+INFO  11:15:48,444 - #25 -
+INFO  11:15:48,444 - #48 6
+INFO  11:15:48,444 - #7 )
+INFO  11:15:48,444 - #5 ;
+INFO  11:15:48,444 - #15 else
+INFO  11:15:48,445 - #9 print
+INFO  11:15:48,445 - #6 (
+INFO  11:15:48,445 - #48 0
+INFO  11:15:48,445 - #7 )
+INFO  11:15:48,445 - #5 ;
+INFO  11:15:48,445 - #49 ibool
+INFO  11:15:48,446 - #12 =
+INFO  11:15:48,446 - #46 false
+INFO  11:15:48,446 - #5 ;
+INFO  11:15:48,446 - #49 i
+INFO  11:15:48,446 - #12 =
+INFO  11:15:48,446 - #48 0
+INFO  11:15:48,447 - #5 ;
+INFO  11:15:48,447 - #49 do
+INFO  11:15:48,447 - #3 {
+ERROR 11:15:48,447 - 
+Sintaksna greska na liniji 39
+INFO  11:15:48,447 - #14 if
+INFO  11:15:48,447 - #6 (
+INFO  11:15:48,448 - #49 i
+INFO  11:15:48,448 - #29 ==
+INFO  11:15:48,448 - #48 2
+INFO  11:15:48,449 - #7 )
+INFO  11:15:48,449 - #49 ibool
+INFO  11:15:48,449 - #12 =
+INFO  11:15:48,449 - #46 true
+INFO  11:15:48,449 - #5 ;
+INFO  11:15:48,449 - #49 i
+INFO  11:15:48,449 - #37 ++
+INFO  11:15:48,449 - #5 ;
+ERROR 11:15:48,452 - DesignatorStatement_Error. Line 1
+INFO  11:15:48,452 - #4 }
+INFO  11:15:48,452 - #16 while
+ERROR 11:15:48,453 - 
+Sintaksna greska na liniji 42
+INFO  11:15:48,453 - #6 (
+INFO  11:15:48,453 - #49 i
+INFO  11:15:48,453 - #33 <
+INFO  11:15:48,453 - #48 5
+INFO  11:15:48,453 - #7 )
+INFO  11:15:48,453 - #5 ;
+INFO  11:15:48,454 - #14 if
+INFO  11:15:48,454 - #6 (
+INFO  11:15:48,454 - #49 ibool
+ERROR 11:15:48,454 - DesignatorStatement_Error. Line 1
+INFO  11:15:48,454 - #7 )
+INFO  11:15:48,454 - #14 if
+INFO  11:15:48,454 - #6 (
+INFO  11:15:48,455 - #49 i
+INFO  11:15:48,455 - #29 ==
+INFO  11:15:48,455 - #48 5
+INFO  11:15:48,455 - #7 )
+INFO  11:15:48,455 - #9 print
+INFO  11:15:48,455 - #6 (
+INFO  11:15:48,455 - #48 1
+INFO  11:15:48,456 - #7 )
+INFO  11:15:48,456 - #5 ;
+INFO  11:15:48,456 - #15 else
+INFO  11:15:48,456 - #9 print
+INFO  11:15:48,456 - #6 (
+INFO  11:15:48,456 - #25 -
+INFO  11:15:48,456 - #48 1
+INFO  11:15:48,456 - #7 )
+INFO  11:15:48,457 - #5 ;
+INFO  11:15:48,457 - #14 if
+INFO  11:15:48,457 - #6 (
+INFO  11:15:48,457 - #49 verify
+INFO  11:15:48,457 - #6 (
+INFO  11:15:48,457 - #7 )
+INFO  11:15:48,458 - #7 )
+INFO  11:15:48,458 - #9 print
+INFO  11:15:48,459 - #6 (
+INFO  11:15:48,459 - #49 ord
+INFO  11:15:48,459 - #6 (
+INFO  11:15:48,459 - #47 'A'
+INFO  11:15:48,459 - #7 )
+INFO  11:15:48,459 - #7 )
+INFO  11:15:48,459 - #5 ;
+INFO  11:15:48,459 - #15 else
+INFO  11:15:48,460 - #9 print
+INFO  11:15:48,460 - #6 (
+INFO  11:15:48,460 - #49 ord
+INFO  11:15:48,460 - #6 (
+INFO  11:15:48,460 - #47 'a'
+INFO  11:15:48,460 - #7 )
+INFO  11:15:48,461 - #7 )
+INFO  11:15:48,461 - #5 ;
+INFO  11:15:48,461 - #9 print
+INFO  11:15:48,461 - #6 (
+INFO  11:15:48,462 - #49 eol
+INFO  11:15:48,462 - #7 )
+INFO  11:15:48,462 - #5 ;
+INFO  11:15:48,462 - #14 if
+INFO  11:15:48,462 - #6 (
+INFO  11:15:48,462 - #49 i
+INFO  11:15:48,463 - #29 ==
+INFO  11:15:48,463 - #48 3
+INFO  11:15:48,463 - #35 &&
+INFO  11:15:48,463 - #49 verify
+INFO  11:15:48,463 - #6 (
+INFO  11:15:48,463 - #7 )
+INFO  11:15:48,463 - #7 )
+INFO  11:15:48,464 - #9 print
+INFO  11:15:48,464 - #6 (
+INFO  11:15:48,464 - #25 -
+INFO  11:15:48,464 - #48 4
+INFO  11:15:48,464 - #7 )
+INFO  11:15:48,464 - #5 ;
+INFO  11:15:48,464 - #15 else
+INFO  11:15:48,464 - #9 print
+INFO  11:15:48,465 - #6 (
+INFO  11:15:48,465 - #48 4
+INFO  11:15:48,465 - #7 )
+INFO  11:15:48,465 - #5 ;
+INFO  11:15:48,465 - #9 print
+INFO  11:15:48,465 - #6 (
+INFO  11:15:48,465 - #49 eol
+INFO  11:15:48,465 - #7 )
+INFO  11:15:48,465 - #5 ;
+INFO  11:15:48,466 - #9 print
+INFO  11:15:48,466 - #6 (
+INFO  11:15:48,466 - #49 sum
+INFO  11:15:48,466 - #6 (
+INFO  11:15:48,466 - #49 sum
+INFO  11:15:48,466 - #6 (
+INFO  11:15:48,466 - #49 t1
+INFO  11:15:48,466 - #40 .
+ERROR 11:15:48,467 - 
+Sintaksna greska na liniji 57
+INFO  11:15:48,487 - #49 niz
+INFO  11:15:48,487 - #41 [
+INFO  11:15:48,488 - #48 0
+INFO  11:15:48,488 - #42 ]
+INFO  11:15:48,488 - #8 ,
+INFO  11:15:48,488 - #49 t1
+INFO  11:15:48,488 - #40 .
+INFO  11:15:48,488 - #49 niz
+INFO  11:15:48,489 - #41 [
+INFO  11:15:48,489 - #48 1
+INFO  11:15:48,489 - #42 ]
+INFO  11:15:48,489 - #7 )
+INFO  11:15:48,489 - #8 ,
+INFO  11:15:48,489 - #49 t1
+INFO  11:15:48,489 - #40 .
+INFO  11:15:48,489 - #49 niz
+INFO  11:15:48,490 - #41 [
+INFO  11:15:48,490 - #48 2
+INFO  11:15:48,490 - #42 ]
+INFO  11:15:48,490 - #7 )
+INFO  11:15:48,490 - #7 )
+INFO  11:15:48,490 - #5 ;
+INFO  11:15:48,491 - #9 print
+INFO  11:15:48,491 - #6 (
+INFO  11:15:48,491 - #49 eol
+ERROR 11:15:48,491 - DesignatorStatement_Error. Line 1
+INFO  11:15:48,491 - #7 )
+INFO  11:15:48,491 - #5 ;
+INFO  11:15:48,492 - #9 print
+INFO  11:15:48,492 - #6 (
+INFO  11:15:48,492 - #49 inkrement
+INFO  11:15:48,492 - #6 (
+INFO  11:15:48,492 - #49 t1
+INFO  11:15:48,492 - #40 .
+ERROR 11:15:48,493 - 
+Sintaksna greska na liniji 60
+INFO  11:15:48,493 - #49 niz
+INFO  11:15:48,493 - #41 [
+INFO  11:15:48,493 - #48 2
+INFO  11:15:48,493 - #42 ]
+INFO  11:15:48,493 - #8 ,
+INFO  11:15:48,494 - #48 2
+INFO  11:15:48,494 - #7 )
+INFO  11:15:48,494 - #7 )
+INFO  11:15:48,494 - #5 ;
+INFO  11:15:48,494 - #9 print
+INFO  11:15:48,494 - #6 (
+INFO  11:15:48,495 - #49 eol
+ERROR 11:15:48,495 - DesignatorStatement_Error. Line 1
+INFO  11:15:48,495 - #7 )
+INFO  11:15:48,496 - #5 ;
+INFO  11:15:48,496 - #49 i
+INFO  11:15:48,496 - #12 =
+INFO  11:15:48,496 - #48 0
+INFO  11:15:48,496 - #5 ;
+INFO  11:15:48,497 - #49 niz2
+INFO  11:15:48,497 - #12 =
+INFO  11:15:48,497 - #48 0
+INFO  11:15:48,497 - #5 ;
+INFO  11:15:48,498 - #9 print
+INFO  11:15:48,498 - #6 (
+INFO  11:15:48,498 - #49 niz2
+INFO  11:15:48,498 - #7 )
+INFO  11:15:48,499 - #5 ;
+INFO  11:15:48,499 - #9 print
+INFO  11:15:48,499 - #6 (
+INFO  11:15:48,499 - #49 eol
+INFO  11:15:48,499 - #7 )
+INFO  11:15:48,500 - #5 ;
+INFO  11:15:48,500 - #4 }
+INFO  11:15:48,500 - #4 }
+INFO  11:15:48,507 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConstVarDecl_Multiple(
+    ConstVarDecl_Multiple(
+      ConstVarDecl_Multiple(
+        ConstVarDecl_Multiple(
+          EmptyConstVarDeclList_None(
+          ) [EmptyConstVarDeclList_None]
+          ConstDecl_Single(
+            ConstDecl(
+              Type(
+               int
+              ) [Type]
+              NumConst_Single(
+               jedan
+                Assign(
+                ) [Assign]
+               1
+              ) [NumConst_Single]
+              NumCharBoolConst_None(
+              ) [NumCharBoolConst_None]
+            ) [ConstDecl]
+          ) [ConstDecl_Single]
+        ) [ConstVarDecl_Multiple]
+        VarDecl_Single(
+          VarDecl_OneOrMany(
+            Type(
+             int
+            ) [Type]
+            Var_Single(
+             i
+            ) [Var_Single]
+            Var_None(
+            ) [Var_None]
+          ) [VarDecl_OneOrMany]
+        ) [VarDecl_Single]
+      ) [ConstVarDecl_Multiple]
+      VarDecl_Single(
+        VarDecl_OneOrMany(
+          Type(
+           bool
+          ) [Type]
+          Var_Single(
+           ibool
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDecl_Single]
+    ) [ConstVarDecl_Multiple]
+    VarDecl_Single(
+      VarDecl_OneOrMany(
+        Type(
+         int
+        ) [Type]
+        Var_Single(
+         niz2
+        ) [Var_Single]
+        Var_None(
+        ) [Var_None]
+      ) [VarDecl_OneOrMany]
+    ) [VarDecl_Single]
+  ) [ConstVarDecl_Multiple]
+  MethodDecl_Multiple(
+    MethodDecl_Multiple(
+      MethodDecl_Multiple(
+        MethodDecl_Multiple(
+          MethodDecl_None(
+          ) [MethodDecl_None]
+          MethodDecl(
+            ReturnType_Type(
+              Type(
+               int
+              ) [Type]
+            ) [ReturnType_Type]
+            MethodName(
+             sum
+            ) [MethodName]
+            OptionalParams_OneOrMany(
+              Param_Single(
+                Type(
+                 int
+                ) [Type]
+               z
+              ) [Param_Single]
+              MoreParamsDerived1(
+                Param_Single(
+                  Type(
+                   int
+                  ) [Type]
+                 d
+                ) [Param_Single]
+                MoreParamsDerived2(
+                ) [MoreParamsDerived2]
+              ) [MoreParamsDerived1]
+            ) [OptionalParams_OneOrMany]
+            VarDeclList_None(
+            ) [VarDeclList_None]
+            Statement_Multiple(
+              Statement_None(
+              ) [Statement_None]
+              ReturnStatement(
+                Expr_AddopTerm(
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_Designator(
+                        Designator_Single(
+                         z
+                        ) [Designator_Single]
+                      ) [Factor_Designator]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                  Addition(
+                  ) [Addition]
+                  Term_Factor(
+                    Factor_Designator(
+                      Designator_Single(
+                       d
+                      ) [Designator_Single]
+                    ) [Factor_Designator]
+                  ) [Term_Factor]
+                ) [Expr_AddopTerm]
+              ) [ReturnStatement]
+            ) [Statement_Multiple]
+          ) [MethodDecl]
+        ) [MethodDecl_Multiple]
+        MethodDecl(
+          ReturnType_Type(
+            Type(
+             int
+            ) [Type]
+          ) [ReturnType_Type]
+          MethodName(
+           inkrement
+          ) [MethodName]
+          OptionalParams_OneOrMany(
+            Param_Single(
+              Type(
+               int
+              ) [Type]
+             a
+            ) [Param_Single]
+            MoreParamsDerived1(
+              Param_Single(
+                Type(
+                 int
+                ) [Type]
+               inc
+              ) [Param_Single]
+              MoreParamsDerived2(
+              ) [MoreParamsDerived2]
+            ) [MoreParamsDerived1]
+          ) [OptionalParams_OneOrMany]
+          VarDeclList_Multiple(
+            VarDeclList_None(
+            ) [VarDeclList_None]
+            VarDecl_OneOrMany(
+              Type(
+               int
+              ) [Type]
+              Var_Single(
+               pom
+              ) [Var_Single]
+              Var_None(
+              ) [Var_None]
+            ) [VarDecl_OneOrMany]
+          ) [VarDeclList_Multiple]
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_None(
+              ) [Statement_None]
+              IfStatement(
+                Condition_Single(
+                  CondTerm_Single(
+                    CondFact_ExprRelopExpr(
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_Designator(
+                            Designator_Single(
+                             inc
+                            ) [Designator_Single]
+                          ) [Factor_Designator]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                      Equals(
+                      ) [Equals]
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_Designator(
+                            Designator_Single(
+                             jedan
+                            ) [Designator_Single]
+                          ) [Factor_Designator]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                    ) [CondFact_ExprRelopExpr]
+                  ) [CondTerm_Single]
+                ) [Condition_Single]
+                DesignatorStatement_(
+                  DesignatorStatement_Assign(
+                    Designator_Single(
+                     pom
+                    ) [Designator_Single]
+                    Assign(
+                    ) [Assign]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         1
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [DesignatorStatement_Assign]
+                ) [DesignatorStatement_]
+                ElseStatement_(
+                  IfStatement(
+                    Condition_Single(
+                      CondTerm_Single(
+                        CondFact_ExprRelopExpr(
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_Designator(
+                                Designator_Single(
+                                 inc
+                                ) [Designator_Single]
+                              ) [Factor_Designator]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                          Equals(
+                          ) [Equals]
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_NumConst(
+                               2
+                              ) [Factor_NumConst]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                        ) [CondFact_ExprRelopExpr]
+                      ) [CondTerm_Single]
+                    ) [Condition_Single]
+                    DesignatorStatement_(
+                      DesignatorStatement_Assign(
+                        Designator_Single(
+                         pom
+                        ) [Designator_Single]
+                        Assign(
+                        ) [Assign]
+                        Expr_Term(
+                          Term_Factor(
+                            Factor_Designator(
+                              Designator_Single(
+                               a
+                              ) [Designator_Single]
+                            ) [Factor_Designator]
+                          ) [Term_Factor]
+                        ) [Expr_Term]
+                      ) [DesignatorStatement_Assign]
+                    ) [DesignatorStatement_]
+                    ElseStatement_None(
+                    ) [ElseStatement_None]
+                  ) [IfStatement]
+                ) [ElseStatement_]
+              ) [IfStatement]
+            ) [Statement_Multiple]
+            ReturnStatement(
+              Expr_Term(
+                Term_Factor(
+                  Factor_DesignatorFuncCall(
+                    Designator_Single(
+                     sum
+                    ) [Designator_Single]
+                    OptionalActPars_OneOrMany(
+                      OptionalActParsOneOrMany_Multiple(
+                        OptionalActParsOneOrMany_Single(
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_Designator(
+                                Designator_Single(
+                                 a
+                                ) [Designator_Single]
+                              ) [Factor_Designator]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                        ) [OptionalActParsOneOrMany_Single]
+                        Expr_Term(
+                          Term_Factor(
+                            Factor_Designator(
+                              Designator_Single(
+                               pom
+                              ) [Designator_Single]
+                            ) [Factor_Designator]
+                          ) [Term_Factor]
+                        ) [Expr_Term]
+                      ) [OptionalActParsOneOrMany_Multiple]
+                    ) [OptionalActPars_OneOrMany]
+                  ) [Factor_DesignatorFuncCall]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [ReturnStatement]
+          ) [Statement_Multiple]
+        ) [MethodDecl]
+      ) [MethodDecl_Multiple]
+      MethodDecl(
+        ReturnType_Type(
+          Type(
+           bool
+          ) [Type]
+        ) [ReturnType_Type]
+        MethodName(
+         verify
+        ) [MethodName]
+        OptionalParams_None(
+        ) [OptionalParams_None]
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_None(
+            ) [Statement_None]
+            PrintStatement(
+              Expr_Term(
+                Term_Factor(
+                  Factor_CharConst(
+                   'v'
+                  ) [Factor_CharConst]
+                ) [Term_Factor]
+              ) [Expr_Term]
+              NumConstList_None(
+              ) [NumConstList_None]
+            ) [PrintStatement]
+          ) [Statement_Multiple]
+          ReturnStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_BoolConst(
+                 false
+                ) [Factor_BoolConst]
+              ) [Term_Factor]
+            ) [Expr_Term]
+          ) [ReturnStatement]
+        ) [Statement_Multiple]
+      ) [MethodDecl]
+    ) [MethodDecl_Multiple]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_None(
+      ) [VarDeclList_None]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_Multiple(
+                Statement_Multiple(
+                  Statement_Multiple(
+                    Statement_Multiple(
+                      Statement_Multiple(
+                        Statement_Multiple(
+                          Statement_Multiple(
+                            Statement_Multiple(
+                              Statement_Multiple(
+                                Statement_Multiple(
+                                  Statement_Multiple(
+                                    Statement_Multiple(
+                                      Statement_Multiple(
+                                        Statement_Multiple(
+                                          Statement_Multiple(
+                                            Statement_None(
+                                            ) [Statement_None]
+                                            IfStatement(
+                                              Condition_Single(
+                                                CondTerm_Single(
+                                                  CondFact_ExprRelopExpr(
+                                                    Expr_Term(
+                                                      Term_Factor(
+                                                        Factor_NumConst(
+                                                         1
+                                                        ) [Factor_NumConst]
+                                                      ) [Term_Factor]
+                                                    ) [Expr_Term]
+                                                    NotEqual(
+                                                    ) [NotEqual]
+                                                    Expr_Term(
+                                                      Term_Factor(
+                                                        Factor_NumConst(
+                                                         1
+                                                        ) [Factor_NumConst]
+                                                      ) [Term_Factor]
+                                                    ) [Expr_Term]
+                                                  ) [CondFact_ExprRelopExpr]
+                                                ) [CondTerm_Single]
+                                              ) [Condition_Single]
+                                              PrintStatement(
+                                                Expr_MinusTerm(
+                                                  Term_Factor(
+                                                    Factor_NumConst(
+                                                     6
+                                                    ) [Factor_NumConst]
+                                                  ) [Term_Factor]
+                                                ) [Expr_MinusTerm]
+                                                NumConstList_None(
+                                                ) [NumConstList_None]
+                                              ) [PrintStatement]
+                                              ElseStatement_(
+                                                PrintStatement(
+                                                  Expr_Term(
+                                                    Term_Factor(
+                                                      Factor_NumConst(
+                                                       0
+                                                      ) [Factor_NumConst]
+                                                    ) [Term_Factor]
+                                                  ) [Expr_Term]
+                                                  NumConstList_None(
+                                                  ) [NumConstList_None]
+                                                ) [PrintStatement]
+                                              ) [ElseStatement_]
+                                            ) [IfStatement]
+                                          ) [Statement_Multiple]
+                                          DesignatorStatement_(
+                                            DesignatorStatement_Assign(
+                                              Designator_Single(
+                                               ibool
+                                              ) [Designator_Single]
+                                              Assign(
+                                              ) [Assign]
+                                              Expr_Term(
+                                                Term_Factor(
+                                                  Factor_BoolConst(
+                                                   false
+                                                  ) [Factor_BoolConst]
+                                                ) [Term_Factor]
+                                              ) [Expr_Term]
+                                            ) [DesignatorStatement_Assign]
+                                          ) [DesignatorStatement_]
+                                        ) [Statement_Multiple]
+                                        DesignatorStatement_(
+                                          DesignatorStatement_Assign(
+                                            Designator_Single(
+                                             i
+                                            ) [Designator_Single]
+                                            Assign(
+                                            ) [Assign]
+                                            Expr_Term(
+                                              Term_Factor(
+                                                Factor_NumConst(
+                                                 0
+                                                ) [Factor_NumConst]
+                                              ) [Term_Factor]
+                                            ) [Expr_Term]
+                                          ) [DesignatorStatement_Assign]
+                                        ) [DesignatorStatement_]
+                                      ) [Statement_Multiple]
+                                      DesignatorStatement_(
+                                        DesignatorStatement_Error(
+                                        ) [DesignatorStatement_Error]
+                                      ) [DesignatorStatement_]
+                                    ) [Statement_Multiple]
+                                    DesignatorStatement_(
+                                      DesignatorStatement_Increment(
+                                        Designator_Single(
+                                         i
+                                        ) [Designator_Single]
+                                      ) [DesignatorStatement_Increment]
+                                    ) [DesignatorStatement_]
+                                  ) [Statement_Multiple]
+                                  DesignatorStatement_(
+                                    DesignatorStatement_Error(
+                                    ) [DesignatorStatement_Error]
+                                  ) [DesignatorStatement_]
+                                ) [Statement_Multiple]
+                                IfStatement(
+                                  Condition_Single(
+                                    CondTerm_Single(
+                                      CondFact_Expr(
+                                        Expr_Term(
+                                          Term_Factor(
+                                            Factor_Designator(
+                                              Designator_Single(
+                                               ibool
+                                              ) [Designator_Single]
+                                            ) [Factor_Designator]
+                                          ) [Term_Factor]
+                                        ) [Expr_Term]
+                                      ) [CondFact_Expr]
+                                    ) [CondTerm_Single]
+                                  ) [Condition_Single]
+                                  IfStatement(
+                                    Condition_Single(
+                                      CondTerm_Single(
+                                        CondFact_ExprRelopExpr(
+                                          Expr_Term(
+                                            Term_Factor(
+                                              Factor_Designator(
+                                                Designator_Single(
+                                                 i
+                                                ) [Designator_Single]
+                                              ) [Factor_Designator]
+                                            ) [Term_Factor]
+                                          ) [Expr_Term]
+                                          Equals(
+                                          ) [Equals]
+                                          Expr_Term(
+                                            Term_Factor(
+                                              Factor_NumConst(
+                                               5
+                                              ) [Factor_NumConst]
+                                            ) [Term_Factor]
+                                          ) [Expr_Term]
+                                        ) [CondFact_ExprRelopExpr]
+                                      ) [CondTerm_Single]
+                                    ) [Condition_Single]
+                                    PrintStatement(
+                                      Expr_Term(
+                                        Term_Factor(
+                                          Factor_NumConst(
+                                           1
+                                          ) [Factor_NumConst]
+                                        ) [Term_Factor]
+                                      ) [Expr_Term]
+                                      NumConstList_None(
+                                      ) [NumConstList_None]
+                                    ) [PrintStatement]
+                                    ElseStatement_(
+                                      PrintStatement(
+                                        Expr_MinusTerm(
+                                          Term_Factor(
+                                            Factor_NumConst(
+                                             1
+                                            ) [Factor_NumConst]
+                                          ) [Term_Factor]
+                                        ) [Expr_MinusTerm]
+                                        NumConstList_None(
+                                        ) [NumConstList_None]
+                                      ) [PrintStatement]
+                                    ) [ElseStatement_]
+                                  ) [IfStatement]
+                                  ElseStatement_None(
+                                  ) [ElseStatement_None]
+                                ) [IfStatement]
+                              ) [Statement_Multiple]
+                              IfStatement(
+                                Condition_Single(
+                                  CondTerm_Single(
+                                    CondFact_Expr(
+                                      Expr_Term(
+                                        Term_Factor(
+                                          Factor_DesignatorFuncCall(
+                                            Designator_Single(
+                                             verify
+                                            ) [Designator_Single]
+                                            OptionalActPars_None(
+                                            ) [OptionalActPars_None]
+                                          ) [Factor_DesignatorFuncCall]
+                                        ) [Term_Factor]
+                                      ) [Expr_Term]
+                                    ) [CondFact_Expr]
+                                  ) [CondTerm_Single]
+                                ) [Condition_Single]
+                                PrintStatement(
+                                  Expr_Term(
+                                    Term_Factor(
+                                      Factor_DesignatorFuncCall(
+                                        Designator_Single(
+                                         ord
+                                        ) [Designator_Single]
+                                        OptionalActPars_OneOrMany(
+                                          OptionalActParsOneOrMany_Single(
+                                            Expr_Term(
+                                              Term_Factor(
+                                                Factor_CharConst(
+                                                 'A'
+                                                ) [Factor_CharConst]
+                                              ) [Term_Factor]
+                                            ) [Expr_Term]
+                                          ) [OptionalActParsOneOrMany_Single]
+                                        ) [OptionalActPars_OneOrMany]
+                                      ) [Factor_DesignatorFuncCall]
+                                    ) [Term_Factor]
+                                  ) [Expr_Term]
+                                  NumConstList_None(
+                                  ) [NumConstList_None]
+                                ) [PrintStatement]
+                                ElseStatement_(
+                                  PrintStatement(
+                                    Expr_Term(
+                                      Term_Factor(
+                                        Factor_DesignatorFuncCall(
+                                          Designator_Single(
+                                           ord
+                                          ) [Designator_Single]
+                                          OptionalActPars_OneOrMany(
+                                            OptionalActParsOneOrMany_Single(
+                                              Expr_Term(
+                                                Term_Factor(
+                                                  Factor_CharConst(
+                                                   'a'
+                                                  ) [Factor_CharConst]
+                                                ) [Term_Factor]
+                                              ) [Expr_Term]
+                                            ) [OptionalActParsOneOrMany_Single]
+                                          ) [OptionalActPars_OneOrMany]
+                                        ) [Factor_DesignatorFuncCall]
+                                      ) [Term_Factor]
+                                    ) [Expr_Term]
+                                    NumConstList_None(
+                                    ) [NumConstList_None]
+                                  ) [PrintStatement]
+                                ) [ElseStatement_]
+                              ) [IfStatement]
+                            ) [Statement_Multiple]
+                            PrintStatement(
+                              Expr_Term(
+                                Term_Factor(
+                                  Factor_Designator(
+                                    Designator_Single(
+                                     eol
+                                    ) [Designator_Single]
+                                  ) [Factor_Designator]
+                                ) [Term_Factor]
+                              ) [Expr_Term]
+                              NumConstList_None(
+                              ) [NumConstList_None]
+                            ) [PrintStatement]
+                          ) [Statement_Multiple]
+                          IfStatement(
+                            Condition_Single(
+                              CondTerm_OneOrMany(
+                                CondTerm_Single(
+                                  CondFact_ExprRelopExpr(
+                                    Expr_Term(
+                                      Term_Factor(
+                                        Factor_Designator(
+                                          Designator_Single(
+                                           i
+                                          ) [Designator_Single]
+                                        ) [Factor_Designator]
+                                      ) [Term_Factor]
+                                    ) [Expr_Term]
+                                    Equals(
+                                    ) [Equals]
+                                    Expr_Term(
+                                      Term_Factor(
+                                        Factor_NumConst(
+                                         3
+                                        ) [Factor_NumConst]
+                                      ) [Term_Factor]
+                                    ) [Expr_Term]
+                                  ) [CondFact_ExprRelopExpr]
+                                ) [CondTerm_Single]
+                                CondFact_Expr(
+                                  Expr_Term(
+                                    Term_Factor(
+                                      Factor_DesignatorFuncCall(
+                                        Designator_Single(
+                                         verify
+                                        ) [Designator_Single]
+                                        OptionalActPars_None(
+                                        ) [OptionalActPars_None]
+                                      ) [Factor_DesignatorFuncCall]
+                                    ) [Term_Factor]
+                                  ) [Expr_Term]
+                                ) [CondFact_Expr]
+                              ) [CondTerm_OneOrMany]
+                            ) [Condition_Single]
+                            PrintStatement(
+                              Expr_MinusTerm(
+                                Term_Factor(
+                                  Factor_NumConst(
+                                   4
+                                  ) [Factor_NumConst]
+                                ) [Term_Factor]
+                              ) [Expr_MinusTerm]
+                              NumConstList_None(
+                              ) [NumConstList_None]
+                            ) [PrintStatement]
+                            ElseStatement_(
+                              PrintStatement(
+                                Expr_Term(
+                                  Term_Factor(
+                                    Factor_NumConst(
+                                     4
+                                    ) [Factor_NumConst]
+                                  ) [Term_Factor]
+                                ) [Expr_Term]
+                                NumConstList_None(
+                                ) [NumConstList_None]
+                              ) [PrintStatement]
+                            ) [ElseStatement_]
+                          ) [IfStatement]
+                        ) [Statement_Multiple]
+                        PrintStatement(
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_Designator(
+                                Designator_Single(
+                                 eol
+                                ) [Designator_Single]
+                              ) [Factor_Designator]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                          NumConstList_None(
+                          ) [NumConstList_None]
+                        ) [PrintStatement]
+                      ) [Statement_Multiple]
+                      DesignatorStatement_(
+                        DesignatorStatement_Error(
+                        ) [DesignatorStatement_Error]
+                      ) [DesignatorStatement_]
+                    ) [Statement_Multiple]
+                    PrintStatement(
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_Designator(
+                            Designator_Single(
+                             eol
+                            ) [Designator_Single]
+                          ) [Factor_Designator]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                      NumConstList_None(
+                      ) [NumConstList_None]
+                    ) [PrintStatement]
+                  ) [Statement_Multiple]
+                  DesignatorStatement_(
+                    DesignatorStatement_Error(
+                    ) [DesignatorStatement_Error]
+                  ) [DesignatorStatement_]
+                ) [Statement_Multiple]
+                PrintStatement(
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_Designator(
+                        Designator_Single(
+                         eol
+                        ) [Designator_Single]
+                      ) [Factor_Designator]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                  NumConstList_None(
+                  ) [NumConstList_None]
+                ) [PrintStatement]
+              ) [Statement_Multiple]
+              DesignatorStatement_(
+                DesignatorStatement_Assign(
+                  Designator_Single(
+                   i
+                  ) [Designator_Single]
+                  Assign(
+                  ) [Assign]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       0
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [DesignatorStatement_Assign]
+              ) [DesignatorStatement_]
+            ) [Statement_Multiple]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Single(
+                 niz2
+                ) [Designator_Single]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     0
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          PrintStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_Designator(
+                  Designator_Single(
+                   niz2
+                  ) [Designator_Single]
+                ) [Factor_Designator]
+              ) [Term_Factor]
+            ) [Expr_Term]
+            NumConstList_None(
+            ) [NumConstList_None]
+          ) [PrintStatement]
+        ) [Statement_Multiple]
+        PrintStatement(
+          Expr_Term(
+            Term_Factor(
+              Factor_Designator(
+                Designator_Single(
+                 eol
+                ) [Designator_Single]
+              ) [Factor_Designator]
+            ) [Term_Factor]
+          ) [Expr_Term]
+          NumConstList_None(
+          ) [NumConstList_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  11:15:48,598 - ===================================

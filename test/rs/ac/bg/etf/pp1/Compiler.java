@@ -3,6 +3,7 @@ package rs.ac.bg.etf.pp1;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -16,6 +17,7 @@ import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
 import rs.etf.pp1.symboltable.*;
 import rs.etf.pp1.symboltable.concepts.*;
+import rs.etf.pp1.mj.runtime.*;
 
 public class Compiler {
 
@@ -51,12 +53,21 @@ public class Compiler {
 
 			sa.dumpState();	
  
-			// ispis prepoznatih programskih konstrukcija
 	      
 			log.info("===================================");
-			// log.info(" Print count calls = " + v.printCallCount);
-
-			// log.info(" Deklarisanih promenljivih ima = " + v.varDeclCount);
+			if (sa.errorDetected){
+				log.error("Error occured on semantic analysis. Code is not generated.");
+				return;
+			}
+			// Code generation...
+			File fileobj = new File("test/program.obj");
+			if (fileobj.exists()) fileobj.delete();
+			CodeGenerator codeGenerator = new CodeGenerator();
+			prog.traverseBottomUp(codeGenerator);
+			Code.dataSize = 0;
+			Code.mainPc = codeGenerator.getMainPc();
+			Code.write(new FileOutputStream(fileobj));
+			log.info("Kod uspesno generisan");
 			
 		} 
 		finally {

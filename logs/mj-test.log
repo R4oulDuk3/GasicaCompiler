@@ -1,0 +1,72 @@
+INFO  14:04:55,137 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  14:04:55,163 - #2 program
+INFO  14:04:55,163 - #49 test302
+INFO  14:04:55,163 - #49 int
+INFO  14:04:55,164 - #49 i
+INFO  14:04:55,165 - #5 ;
+INFO  14:04:55,166 - #3 {
+INFO  14:04:55,166 - #13 void
+INFO  14:04:55,166 - #49 main
+INFO  14:04:55,167 - #6 (
+INFO  14:04:55,167 - #7 )
+INFO  14:04:55,168 - #3 {
+INFO  14:04:55,168 - #9 print
+INFO  14:04:55,169 - #6 (
+INFO  14:04:55,169 - #48 1
+INFO  14:04:55,169 - #7 )
+INFO  14:04:55,170 - #5 ;
+INFO  14:04:55,170 - #4 }
+INFO  14:04:55,170 - #4 }
+INFO  14:04:55,173 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConstVarDecl_Multiple(
+    EmptyConstVarDeclList_None(
+    ) [EmptyConstVarDeclList_None]
+    VarDecl_Single(
+      VarDecl_OneOrMany(
+        Type(
+         int
+        ) [Type]
+        Var_Single(
+         i
+        ) [Var_Single]
+        Var_None(
+        ) [Var_None]
+      ) [VarDecl_OneOrMany]
+    ) [VarDecl_Single]
+  ) [ConstVarDecl_Multiple]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_None(
+      ) [VarDeclList_None]
+      Statement_Multiple(
+        Statement_None(
+        ) [Statement_None]
+        PrintStatement(
+          Expr_Term(
+            Term_Factor(
+              Factor_NumConst(
+               1
+              ) [Factor_NumConst]
+            ) [Term_Factor]
+          ) [Expr_Term]
+          NumConstList_None(
+          ) [NumConstList_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  14:04:55,196 - ===================================
+INFO  14:04:55,198 - Kod uspesno generisan

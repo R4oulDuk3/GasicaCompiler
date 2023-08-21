@@ -245,6 +245,7 @@ DesignatorStatement ::= (DesignatorStatement_Assign) Designator:D1 Assignop:A2 E
                       | (DesignatorStatement_ActPars) Designator:D1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new DesignatorStatement_ActPars(D1, O2); RESULT.setLine(D1left); :}
                       | (DesignatorStatement_Increment) Designator:D1 INCREMENT {: RESULT=new DesignatorStatement_Increment(D1); RESULT.setLine(D1left); :}
                       | (DesignatorStatement_Decrement) Designator:D1 DECREMENT {: RESULT=new DesignatorStatement_Decrement(D1); RESULT.setLine(D1left); :};
+
 /*
     ActPars = Expr {"," Expr}.
 */
