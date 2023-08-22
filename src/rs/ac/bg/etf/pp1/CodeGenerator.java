@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
+import java.util.function.Consumer;
 
 import rs.ac.bg.etf.pp1.ast.*;
 
@@ -34,34 +35,27 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	{
-		initChrOrd();
+		globalMethodInit((Void) -> {
+			Code.put(Code.load_n);
+			Code.put(Code.arraylength);
+		}, "len");
 
-		initLenMeth();
+		globalMethodInit((Void) -> {
+		Code.put(Code.load_n);
+		}, "ord", "chr");
 	}
 
-	private void initLenMeth() {
-		Obj lenMeth = Tab.find("len");
-		lenMeth.setAdr(Code.pc);
-		Code.put(Code.enter);
-		Code.put(1);
-		Code.put(1);
-		Code.put(Code.load_n);
-		Code.put(Code.arraylength);
-		Code.put(Code.exit);
-		Code.put(Code.return_);
-	}
-
-	private void initChrOrd() {
-		Obj ordMeth = Tab.find("ord");
-		Obj chrMeth = Tab.find("chr");
-		ordMeth.setAdr(Code.pc);
-		chrMeth.setAdr(Code.pc);
-		Code.put(Code.enter);
-		Code.put(1);
-		Code.put(1);
-		Code.put(Code.load_n);
-		Code.put(Code.exit);
-		Code.put(Code.return_);
+	private void globalMethodInit(Consumer<Void> methodOps, String... methodNames){
+		for (String methodName : methodNames) {
+			Obj methodObj = Tab.find(methodName);
+			methodObj.setAdr(Code.pc);
+			Code.put(Code.enter);
+			Code.put(1);
+			Code.put(1);
+			methodOps.accept(null);
+			Code.put(Code.exit);
+			Code.put(Code.return_);
+		}
 	}
 
 	/* Method stuff */
