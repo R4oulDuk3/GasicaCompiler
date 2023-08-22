@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class Condition_Single extends Condition {
 
-    private CondTerm CondTerm;
+    private CondTermWrapper CondTermWrapper;
 
-    public Condition_Single (CondTerm CondTerm) {
-        this.CondTerm=CondTerm;
-        if(CondTerm!=null) CondTerm.setParent(this);
+    public Condition_Single (CondTermWrapper CondTermWrapper) {
+        this.CondTermWrapper=CondTermWrapper;
+        if(CondTermWrapper!=null) CondTermWrapper.setParent(this);
     }
 
-    public CondTerm getCondTerm() {
-        return CondTerm;
+    public CondTermWrapper getCondTermWrapper() {
+        return CondTermWrapper;
     }
 
-    public void setCondTerm(CondTerm CondTerm) {
-        this.CondTerm=CondTerm;
+    public void setCondTermWrapper(CondTermWrapper CondTermWrapper) {
+        this.CondTermWrapper=CondTermWrapper;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class Condition_Single extends Condition {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(CondTerm!=null) CondTerm.accept(visitor);
+        if(CondTermWrapper!=null) CondTermWrapper.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(CondTerm!=null) CondTerm.traverseTopDown(visitor);
+        if(CondTermWrapper!=null) CondTermWrapper.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(CondTerm!=null) CondTerm.traverseBottomUp(visitor);
+        if(CondTermWrapper!=null) CondTermWrapper.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class Condition_Single extends Condition {
         buffer.append(tab);
         buffer.append("Condition_Single(\n");
 
-        if(CondTerm!=null)
-            buffer.append(CondTerm.toString("  "+tab));
+        if(CondTermWrapper!=null)
+            buffer.append(CondTermWrapper.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

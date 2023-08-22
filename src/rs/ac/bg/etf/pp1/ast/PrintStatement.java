@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class PrintStatement extends Statement {
 
     private Expr Expr;
-    private NumConstList NumConstList;
+    private PrintNumConst PrintNumConst;
 
-    public PrintStatement (Expr Expr, NumConstList NumConstList) {
+    public PrintStatement (Expr Expr, PrintNumConst PrintNumConst) {
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
-        this.NumConstList=NumConstList;
-        if(NumConstList!=null) NumConstList.setParent(this);
+        this.PrintNumConst=PrintNumConst;
+        if(PrintNumConst!=null) PrintNumConst.setParent(this);
     }
 
     public Expr getExpr() {
@@ -25,12 +25,12 @@ public class PrintStatement extends Statement {
         this.Expr=Expr;
     }
 
-    public NumConstList getNumConstList() {
-        return NumConstList;
+    public PrintNumConst getPrintNumConst() {
+        return PrintNumConst;
     }
 
-    public void setNumConstList(NumConstList NumConstList) {
-        this.NumConstList=NumConstList;
+    public void setPrintNumConst(PrintNumConst PrintNumConst) {
+        this.PrintNumConst=PrintNumConst;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class PrintStatement extends Statement {
 
     public void childrenAccept(Visitor visitor) {
         if(Expr!=null) Expr.accept(visitor);
-        if(NumConstList!=null) NumConstList.accept(visitor);
+        if(PrintNumConst!=null) PrintNumConst.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
-        if(NumConstList!=null) NumConstList.traverseTopDown(visitor);
+        if(PrintNumConst!=null) PrintNumConst.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Expr!=null) Expr.traverseBottomUp(visitor);
-        if(NumConstList!=null) NumConstList.traverseBottomUp(visitor);
+        if(PrintNumConst!=null) PrintNumConst.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class PrintStatement extends Statement {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(NumConstList!=null)
-            buffer.append(NumConstList.toString("  "+tab));
+        if(PrintNumConst!=null)
+            buffer.append(PrintNumConst.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

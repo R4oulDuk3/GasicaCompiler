@@ -1,0 +1,111 @@
+INFO  15:46:13,470 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  15:46:13,493 - #2 program
+INFO  15:46:13,493 - #49 test302
+INFO  15:46:13,493 - #49 int
+INFO  15:46:13,493 - #49 i
+INFO  15:46:13,494 - #5 ;
+INFO  15:46:13,494 - #3 {
+INFO  15:46:13,494 - #13 void
+INFO  15:46:13,495 - #49 main
+INFO  15:46:13,495 - #6 (
+INFO  15:46:13,495 - #7 )
+INFO  15:46:13,496 - #49 int
+INFO  15:46:13,496 - #49 a
+INFO  15:46:13,496 - #5 ;
+INFO  15:46:13,496 - #49 int
+INFO  15:46:13,497 - #49 b
+INFO  15:46:13,497 - #5 ;
+INFO  15:46:13,497 - #3 {
+INFO  15:46:13,497 - #9 print
+INFO  15:46:13,497 - #6 (
+INFO  15:46:13,497 - #48 4
+INFO  15:46:13,498 - #27 /
+INFO  15:46:13,498 - #48 2
+INFO  15:46:13,498 - #7 )
+INFO  15:46:13,499 - #5 ;
+INFO  15:46:13,499 - #4 }
+INFO  15:46:13,499 - #4 }
+INFO  15:46:13,500 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConstVarDecl_Multiple(
+    EmptyConstVarDeclList_None(
+    ) [EmptyConstVarDeclList_None]
+    VarDecl_Single(
+      VarDecl_OneOrMany(
+        Type(
+         int
+        ) [Type]
+        Var_Single(
+         i
+        ) [Var_Single]
+        Var_None(
+        ) [Var_None]
+      ) [VarDecl_OneOrMany]
+    ) [VarDecl_Single]
+  ) [ConstVarDecl_Multiple]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_Multiple(
+          VarDeclList_None(
+          ) [VarDeclList_None]
+          VarDecl_OneOrMany(
+            Type(
+             int
+            ) [Type]
+            Var_Single(
+             a
+            ) [Var_Single]
+            Var_None(
+            ) [Var_None]
+          ) [VarDecl_OneOrMany]
+        ) [VarDeclList_Multiple]
+        VarDecl_OneOrMany(
+          Type(
+           int
+          ) [Type]
+          Var_Single(
+           b
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_None(
+        ) [Statement_None]
+        PrintStatement(
+          Expr_Term(
+            Term_MulopFactor(
+              Factor_NumConst(
+               4
+              ) [Factor_NumConst]
+              Division(
+              ) [Division]
+              Term_Factor(
+                Factor_NumConst(
+                 2
+                ) [Factor_NumConst]
+              ) [Term_Factor]
+            ) [Term_MulopFactor]
+          ) [Expr_Term]
+          NumConstList_None(
+          ) [NumConstList_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  15:46:13,517 - ===================================
+INFO  15:46:13,519 - Kod uspesno generisan

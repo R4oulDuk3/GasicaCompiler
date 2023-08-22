@@ -95,18 +95,25 @@ nonterminal UnmatchedStatement UnmatchedStatement;
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal Condition Condition;
 nonterminal NumConstList NumConstList;
+nonterminal FindAndReplaceStart FindAndReplaceStart;
+nonterminal FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished;
 nonterminal OptionalActPars OptionalActPars;
 nonterminal OptionalActParsOneOrMany OptionalActParsOneOrMany;
+nonterminal ElseStart ElseStart;
+nonterminal CondTermWrapper CondTermWrapper;
 nonterminal OptionalMinus OptionalMinus;
 nonterminal ElseStatement ElseStatement;
-nonterminal ForEachInterator ForEachInterator;
-nonterminal MethodName MethodName;
+nonterminal PrintNumConst PrintNumConst;
+nonterminal ConditionWrapper ConditionWrapper;
+nonterminal FindAnyStart FindAnyStart;
 nonterminal ReturnType ReturnType;
 nonterminal WhileStart WhileStart;
 nonterminal ForeachStart ForeachStart;
 nonterminal ForEachDesignator ForEachDesignator;
+nonterminal DesignatorArrayName DesignatorArrayName;
+nonterminal WhileStatementStart WhileStatementStart;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr, CondTerm, CondFact;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, MethodName, ForEachInterator, FindAndReplaceIterator;
 precedence left ELSE;
 
 /*
@@ -202,18 +209,28 @@ StatementList ::= (Statement_Multiple) StatementList:S1 Statement:S2 {: RESULT=n
                 | (Statement_None) {: RESULT=new Statement_None(); :} /* epsilon */;
 
 Statement ::= (DesignatorStatement_) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStatement_(D1); RESULT.setLine(D1left); :} |
-    (DesignatorFindAnyStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FINDANY LPAREN Expr:E4 RPAREN SEMI {: RESULT=new DesignatorFindAnyStatement(D1, A2, D3, E4); RESULT.setLine(D1left); :} |
-    (DesignatorFindAndReplaceStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FINDANDREPLACE LPAREN Expr:E4 COMMA IDENT:I5 ARROW Expr:E6 RPAREN SEMI {: RESULT=new DesignatorFindAndReplaceStatement(D1, A2, D3, E4, I5, E6); RESULT.setLine(D1left); :} |
-    (WhileStatement) WhileStart:W1 WHILE LPAREN Condition:C2 RPAREN Statement:S3 {: RESULT=new WhileStatement(W1, C2, S3); RESULT.setLine(W1left); :} |
+    (DesignatorFindAnyStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FindAnyStart:F4 FINDANY LPAREN Expr:E5 RPAREN SEMI {: RESULT=new DesignatorFindAnyStatement(D1, A2, D3, F4, E5); RESULT.setLine(D1left); :} |
+    (DesignatorFindAndReplaceStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FindAndReplaceStart:F4 FINDANDREPLACE LPAREN Expr:E5 FindAndReplaceCondExprFinished:F6 COMMA FindAndReplaceIterator:F7 ARROW Expr:E8 RPAREN SEMI {: RESULT=new DesignatorFindAndReplaceStatement(D1, A2, D3, F4, E5, F6, F7, E8); RESULT.setLine(D1left); :} |
+    (WhileStatement) WhileStart:W1 WHILE LPAREN ConditionWrapper:C2 RPAREN WhileStatementStart:W3 Statement:S4 {: RESULT=new WhileStatement(W1, C2, W3, S4); RESULT.setLine(W1left); :} |
     (BreakStatement) BREAK SEMI {: RESULT=new BreakStatement(); :} |
     (ContinueStatement) CONTINUE SEMI {: RESULT=new ContinueStatement(); :} |
     (ReturnVoidStatement) RETURN SEMI {: RESULT=new ReturnVoidStatement(); :} |
     (ReturnStatement) RETURN Expr:E1 SEMI {: RESULT=new ReturnStatement(E1); RESULT.setLine(E1left); :} |
     (ReadStatement) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new ReadStatement(D1); RESULT.setLine(D1left); :} |
-    (PrintStatement) PRINT LPAREN Expr:E1 NumConstList:N2 RPAREN SEMI {: RESULT=new PrintStatement(E1, N2); RESULT.setLine(E1left); :} |
+    (PrintStatement) PRINT LPAREN Expr:E1 PrintNumConst:P2 RPAREN SEMI {: RESULT=new PrintStatement(E1, P2); RESULT.setLine(E1left); :} |
     (ForeachStatement) ForEachDesignator:F1 ForeachStart:F2 DOT FOREACH LPAREN ForEachInterator:F3 ARROW Statement:S4 RPAREN SEMI {: RESULT=new ForeachStatement(F1, F2, F3, S4); RESULT.setLine(F1left); :} |
     (BlockStatement) LBRACE StatementList:S1 RBRACE {: RESULT=new BlockStatement(S1); RESULT.setLine(S1left); :} |
-    (IfStatement) IF LPAREN Condition:C1 RPAREN Statement:S2 ElseStatement:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :};
+    (IfStatement) IF LPAREN ConditionWrapper:C1 RPAREN Statement:S2 ElseStatement:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :};
+
+FindAndReplaceCondExprFinished ::= (FindAndReplaceCondExprFinished) {: RESULT=new FindAndReplaceCondExprFinished(); :} /* epsilon */;
+
+FindAndReplaceIterator ::= (FindAndReplaceIterator) IDENT:I1 {: RESULT=new FindAndReplaceIterator(I1); RESULT.setLine(I1left); :};
+
+FindAnyStart ::= (FindAnyStart) {: RESULT=new FindAnyStart(); :} /* epsilon */;
+
+FindAndReplaceStart ::= (FindAndReplaceStart) {: RESULT=new FindAndReplaceStart(); :} /* epsilon */;
+
+WhileStatementStart ::= (WhileStatementStart) {: RESULT=new WhileStatementStart(); :} /* epsilon */;
 
 ForEachInterator ::= (ForEachInterator) IDENT:I1 {: RESULT=new ForEachInterator(I1); RESULT.setLine(I1left); :};
 
@@ -223,18 +240,20 @@ ForeachStart ::= (ForeachStart) {: RESULT=new ForeachStart(); :} /* epsilon */;
 
 WhileStart ::= (WhileStart) {: RESULT=new WhileStart(); :} /* epsilon */;
 
-ElseStatement ::= (ElseStatement_) ELSE Statement:S1 {: RESULT=new ElseStatement_(S1); RESULT.setLine(S1left); :}
+ElseStatement ::= (ElseStatement_) ELSE ElseStart:E1 Statement:S2 {: RESULT=new ElseStatement_(E1, S2); RESULT.setLine(E1left); :}
                 | (ElseStatement_None) {: RESULT=new ElseStatement_None(); :} /* epsilon */;
 
-NumConstList ::= (NumConstList_Multiple) NumConstList:N1 COMMA NUMBER:N2 {: RESULT=new NumConstList_Multiple(N1, N2); RESULT.setLine(N1left); :}
-               | (NumConstList_None) {: RESULT=new NumConstList_None(); :} /* epsilon */;
+ElseStart ::= (ElseStart) {: RESULT=new ElseStart(); :} /* epsilon */;
+
+PrintNumConst ::= (PrintNumConst_Single) COMMA NUMBER:N1 {: RESULT=new PrintNumConst_Single(N1); RESULT.setLine(N1left); :}
+               | (PrintNumConst_None) {: RESULT=new PrintNumConst_None(); :} /* epsilon */;
 
 /*UnmatchedStatement ::= 
     (UnmatchedIf) IF LPAREN Condition RPAREN Statement |
     (UnmatchedIfElse) IF LPAREN Condition RPAREN MatchedStatement ELSE UnmatchedStatement;
 */
 /*
-    DesignatorStatement = Designator (Assignop Expr | "(" [ActPars] ")" | "++" | "‚Ä?‚Ä?")
+    DesignatorStatement = Designator (Assignop Expr | "(" [ActPars] ")" | "++" | "‚Äê‚Äê")
 */
 
 DesignatorStatement ::= (DesignatorStatement_Assign) Designator:D1 Assignop:A2 Expr:E3 {: RESULT=new DesignatorStatement_Assign(D1, A2, E3); RESULT.setLine(D1left); :}
@@ -260,8 +279,12 @@ OptionalActParsOneOrMany ::= (OptionalActParsOneOrMany_Multiple) OptionalActPars
     Condition = CondTerm {"||" CondTerm}.
 */
 
-Condition ::= (Condition_OneOrMany) Condition:C1 OR CondTerm:C2 {: RESULT=new Condition_OneOrMany(C1, C2); RESULT.setLine(C1left); :}
-            | (Condition_Single) CondTerm:C1 {: RESULT=new Condition_Single(C1); RESULT.setLine(C1left); :};
+ConditionWrapper ::= (ConditionWrapper) Condition:C1 {: RESULT=new ConditionWrapper(C1); RESULT.setLine(C1left); :};
+
+Condition ::= (Condition_OneOrMany) Condition:C1 OR CondTermWrapper:C2 {: RESULT=new Condition_OneOrMany(C1, C2); RESULT.setLine(C1left); :}
+            | (Condition_Single) CondTermWrapper:C1 {: RESULT=new Condition_Single(C1); RESULT.setLine(C1left); :};
+
+CondTermWrapper ::= (CondTermWrapper) CondTerm:C1 {: RESULT=new CondTermWrapper(C1); RESULT.setLine(C1left); :};
 
 /*
     CondTerm = CondFact {"&&" CondFact}.
@@ -278,7 +301,7 @@ CondFact ::= (CondFact_Expr) Expr:E1 {: RESULT=new CondFact_Expr(E1); RESULT.set
            | (CondFact_ExprRelopExpr) Expr:E1 Relop:R2 Expr:E3 {: RESULT=new CondFact_ExprRelopExpr(E1, R2, E3); RESULT.setLine(E1left); :};
 
 /*
-    Expr = ["‚Ä?"] Term {Addop Term}.
+    Expr = ["‚Äê"] Term {Addop Term}.
 */
 
 Expr ::= (Expr_Term) Term:T1 {: RESULT=new Expr_Term(T1); RESULT.setLine(T1left); :}
@@ -319,7 +342,10 @@ Factor ::= (Factor_Designator) Designator:D1 {: RESULT=new Factor_Designator(D1)
 
 Designator ::= (Designator_Single) IDENT:I1 {: RESULT=new Designator_Single(I1); RESULT.setLine(I1left); :}
             // | (Designator_Dot) Designator DOT IDENT // No class methods for B
-             | (Designator_Array) Designator:D1 LBRACKET Expr:E2 RBRACKET {: RESULT=new Designator_Array(D1, E2); RESULT.setLine(D1left); :};
+             | (Designator_Array) DesignatorArrayName:D1 LBRACKET Expr:E2 RBRACKET {: RESULT=new Designator_Array(D1, E2); RESULT.setLine(D1left); :};
+
+
+DesignatorArrayName ::= (DesignatorArrayName) Designator:D1 {: RESULT=new DesignatorArrayName(D1); RESULT.setLine(D1left); :}; 
 
 /*
     Label = ident. 
@@ -344,7 +370,7 @@ Relop ::= (Equals) EQEQ {: RESULT=new Equals(); :}
        | (LessThan) LT {: RESULT=new LessThan(); :}
        | (LessThanOrEqual) LTEQ {: RESULT=new LessThanOrEqual(); :};
 /*
-    Addop = "+" | "‚Ä?".
+    Addop = "+" | "‚Äê".
 */
 Addop ::= (Addition) PLUS {: RESULT=new Addition(); :}
       | (Subtraction) MINUS {: RESULT=new Subtraction(); :};

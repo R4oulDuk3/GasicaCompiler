@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,14 +8,17 @@ package rs.ac.bg.etf.pp1.ast;
 public class WhileStatement extends Statement {
 
     private WhileStart WhileStart;
-    private Condition Condition;
+    private ConditionWrapper ConditionWrapper;
+    private WhileStatementStart WhileStatementStart;
     private Statement Statement;
 
-    public WhileStatement (WhileStart WhileStart, Condition Condition, Statement Statement) {
+    public WhileStatement (WhileStart WhileStart, ConditionWrapper ConditionWrapper, WhileStatementStart WhileStatementStart, Statement Statement) {
         this.WhileStart=WhileStart;
         if(WhileStart!=null) WhileStart.setParent(this);
-        this.Condition=Condition;
-        if(Condition!=null) Condition.setParent(this);
+        this.ConditionWrapper=ConditionWrapper;
+        if(ConditionWrapper!=null) ConditionWrapper.setParent(this);
+        this.WhileStatementStart=WhileStatementStart;
+        if(WhileStatementStart!=null) WhileStatementStart.setParent(this);
         this.Statement=Statement;
         if(Statement!=null) Statement.setParent(this);
     }
@@ -28,12 +31,20 @@ public class WhileStatement extends Statement {
         this.WhileStart=WhileStart;
     }
 
-    public Condition getCondition() {
-        return Condition;
+    public ConditionWrapper getConditionWrapper() {
+        return ConditionWrapper;
     }
 
-    public void setCondition(Condition Condition) {
-        this.Condition=Condition;
+    public void setConditionWrapper(ConditionWrapper ConditionWrapper) {
+        this.ConditionWrapper=ConditionWrapper;
+    }
+
+    public WhileStatementStart getWhileStatementStart() {
+        return WhileStatementStart;
+    }
+
+    public void setWhileStatementStart(WhileStatementStart WhileStatementStart) {
+        this.WhileStatementStart=WhileStatementStart;
     }
 
     public Statement getStatement() {
@@ -50,20 +61,23 @@ public class WhileStatement extends Statement {
 
     public void childrenAccept(Visitor visitor) {
         if(WhileStart!=null) WhileStart.accept(visitor);
-        if(Condition!=null) Condition.accept(visitor);
+        if(ConditionWrapper!=null) ConditionWrapper.accept(visitor);
+        if(WhileStatementStart!=null) WhileStatementStart.accept(visitor);
         if(Statement!=null) Statement.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(WhileStart!=null) WhileStart.traverseTopDown(visitor);
-        if(Condition!=null) Condition.traverseTopDown(visitor);
+        if(ConditionWrapper!=null) ConditionWrapper.traverseTopDown(visitor);
+        if(WhileStatementStart!=null) WhileStatementStart.traverseTopDown(visitor);
         if(Statement!=null) Statement.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(WhileStart!=null) WhileStart.traverseBottomUp(visitor);
-        if(Condition!=null) Condition.traverseBottomUp(visitor);
+        if(ConditionWrapper!=null) ConditionWrapper.traverseBottomUp(visitor);
+        if(WhileStatementStart!=null) WhileStatementStart.traverseBottomUp(visitor);
         if(Statement!=null) Statement.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -79,8 +93,14 @@ public class WhileStatement extends Statement {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Condition!=null)
-            buffer.append(Condition.toString("  "+tab));
+        if(ConditionWrapper!=null)
+            buffer.append(ConditionWrapper.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(WhileStatementStart!=null)
+            buffer.append(WhileStatementStart.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

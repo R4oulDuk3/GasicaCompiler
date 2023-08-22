@@ -64,7 +64,7 @@ public class Compiler {
 			if (fileobj.exists()) fileobj.delete();
 			CodeGenerator codeGenerator = new CodeGenerator();
 			prog.traverseBottomUp(codeGenerator);
-			Code.dataSize = 0;
+			Code.dataSize = sa.getVarNum();
 			Code.mainPc = codeGenerator.getMainPc();
 			Code.write(new FileOutputStream(fileobj));
 			log.info("Kod uspesno generisan");

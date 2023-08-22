@@ -1,0 +1,25 @@
+INFO  15:45:27,560 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  15:45:27,582 - #2 program
+INFO  15:45:27,582 - #49 test302
+INFO  15:45:27,582 - #49 int
+INFO  15:45:27,583 - #49 i
+INFO  15:45:27,583 - #5 ;
+INFO  15:45:27,583 - #3 {
+INFO  15:45:27,583 - #13 void
+INFO  15:45:27,584 - #49 main
+INFO  15:45:27,584 - #6 (
+INFO  15:45:27,584 - #7 )
+INFO  15:45:27,585 - #49 int
+INFO  15:45:27,585 - #49 a
+INFO  15:45:27,585 - #5 ;
+INFO  15:45:27,585 - #49 int
+INFO  15:45:27,585 - #49 b
+INFO  15:45:27,585 - #5 ;
+INFO  15:45:27,585 - #49 int
+INFO  15:45:27,585 - #49 n
+INFO  15:45:27,585 - #41 [
+INFO  15:45:27,585 - #42 ]
+INFO  15:45:27,585 - #3 {
+ERROR 15:45:27,585 - 
+Sintaksna greska na liniji 7
+ERROR 15:45:27,586 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 7

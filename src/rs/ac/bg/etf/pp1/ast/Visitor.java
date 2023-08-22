@@ -1,12 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public interface Visitor { 
 
+    public void visit(PrintNumConst PrintNumConst);
     public void visit(ReturnType ReturnType);
     public void visit(Parameter Parameter);
     public void visit(Mulop Mulop);
@@ -55,6 +56,7 @@ public interface Visitor {
     public void visit(Equals Equals);
     public void visit(Assign Assign);
     public void visit(LabelIdent LabelIdent);
+    public void visit(DesignatorArrayName DesignatorArrayName);
     public void visit(Designator_Array Designator_Array);
     public void visit(Designator_Single Designator_Single);
     public void visit(Factor_Expr Factor_Expr);
@@ -76,8 +78,10 @@ public interface Visitor {
     public void visit(CondFact_Expr CondFact_Expr);
     public void visit(CondTerm_Single CondTerm_Single);
     public void visit(CondTerm_OneOrMany CondTerm_OneOrMany);
+    public void visit(CondTermWrapper CondTermWrapper);
     public void visit(Condition_Single Condition_Single);
     public void visit(Condition_OneOrMany Condition_OneOrMany);
+    public void visit(ConditionWrapper ConditionWrapper);
     public void visit(OptionalActParsOneOrMany_Single OptionalActParsOneOrMany_Single);
     public void visit(OptionalActParsOneOrMany_Multiple OptionalActParsOneOrMany_Multiple);
     public void visit(OptionalActPars_None OptionalActPars_None);
@@ -87,14 +91,20 @@ public interface Visitor {
     public void visit(DesignatorStatement_ActPars DesignatorStatement_ActPars);
     public void visit(DesignatorStatement_Error DesignatorStatement_Error);
     public void visit(DesignatorStatement_Assign DesignatorStatement_Assign);
-    public void visit(NumConstList_None NumConstList_None);
-    public void visit(NumConstList_Multiple NumConstList_Multiple);
+    public void visit(PrintNumConst_None PrintNumConst_None);
+    public void visit(PrintNumConst_Single PrintNumConst_Single);
+    public void visit(ElseStart ElseStart);
     public void visit(ElseStatement_None ElseStatement_None);
     public void visit(ElseStatement_ ElseStatement_);
     public void visit(WhileStart WhileStart);
     public void visit(ForeachStart ForeachStart);
     public void visit(ForEachDesignator ForEachDesignator);
     public void visit(ForEachInterator ForEachInterator);
+    public void visit(WhileStatementStart WhileStatementStart);
+    public void visit(FindAndReplaceStart FindAndReplaceStart);
+    public void visit(FindAnyStart FindAnyStart);
+    public void visit(FindAndReplaceIterator FindAndReplaceIterator);
+    public void visit(FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished);
     public void visit(IfStatement IfStatement);
     public void visit(BlockStatement BlockStatement);
     public void visit(ForeachStatement ForeachStatement);

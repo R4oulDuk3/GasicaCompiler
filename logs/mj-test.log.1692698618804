@@ -1,0 +1,183 @@
+INFO  12:03:10,506 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  12:03:10,531 - #2 program
+INFO  12:03:10,531 - #49 test301
+INFO  12:03:10,531 - #3 {
+INFO  12:03:10,531 - #13 void
+INFO  12:03:10,532 - #49 main
+INFO  12:03:10,532 - #6 (
+INFO  12:03:10,532 - #7 )
+INFO  12:03:10,533 - #49 int
+INFO  12:03:10,533 - #49 i
+INFO  12:03:10,533 - #5 ;
+INFO  12:03:10,534 - #3 {
+INFO  12:03:10,534 - #49 i
+INFO  12:03:10,534 - #12 =
+INFO  12:03:10,534 - #48 2
+INFO  12:03:10,535 - #5 ;
+INFO  12:03:10,535 - #14 if
+INFO  12:03:10,535 - #6 (
+INFO  12:03:10,535 - #49 i
+INFO  12:03:10,535 - #30 !=
+INFO  12:03:10,535 - #48 2
+INFO  12:03:10,536 - #7 )
+INFO  12:03:10,537 - #3 {
+INFO  12:03:10,537 - #9 print
+INFO  12:03:10,537 - #6 (
+INFO  12:03:10,537 - #48 1
+INFO  12:03:10,537 - #7 )
+INFO  12:03:10,537 - #5 ;
+INFO  12:03:10,537 - #4 }
+INFO  12:03:10,538 - #15 else
+INFO  12:03:10,538 - #3 {
+INFO  12:03:10,538 - #9 print
+INFO  12:03:10,538 - #6 (
+INFO  12:03:10,538 - #48 2
+INFO  12:03:10,538 - #7 )
+INFO  12:03:10,538 - #5 ;
+INFO  12:03:10,538 - #4 }
+INFO  12:03:10,538 - #9 print
+INFO  12:03:10,538 - #6 (
+INFO  12:03:10,538 - #48 3
+INFO  12:03:10,538 - #7 )
+INFO  12:03:10,539 - #5 ;
+INFO  12:03:10,539 - #4 }
+INFO  12:03:10,539 - #4 }
+INFO  12:03:10,540 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        VarDecl_OneOrMany(
+          Type(
+           int
+          ) [Type]
+          Var_Single(
+           i
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_None(
+            ) [Statement_None]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Single(
+                 i
+                ) [Designator_Single]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     2
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          IfStatement(
+            ConditionWrapper(
+              Condition_Single(
+                CondTermWrapper(
+                  CondTerm_Single(
+                    CondFact_ExprRelopExpr(
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_Designator(
+                            Designator_Single(
+                             i
+                            ) [Designator_Single]
+                          ) [Factor_Designator]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                      NotEqual(
+                      ) [NotEqual]
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_NumConst(
+                           2
+                          ) [Factor_NumConst]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                    ) [CondFact_ExprRelopExpr]
+                  ) [CondTerm_Single]
+                ) [CondTermWrapper]
+              ) [Condition_Single]
+            ) [ConditionWrapper]
+            BlockStatement(
+              Statement_Multiple(
+                Statement_None(
+                ) [Statement_None]
+                PrintStatement(
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       1
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                  PrintNumConst_None(
+                  ) [PrintNumConst_None]
+                ) [PrintStatement]
+              ) [Statement_Multiple]
+            ) [BlockStatement]
+            ElseStatement_(
+              ElseStart(
+              ) [ElseStart]
+              BlockStatement(
+                Statement_Multiple(
+                  Statement_None(
+                  ) [Statement_None]
+                  PrintStatement(
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         2
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                    PrintNumConst_None(
+                    ) [PrintNumConst_None]
+                  ) [PrintStatement]
+                ) [Statement_Multiple]
+              ) [BlockStatement]
+            ) [ElseStatement_]
+          ) [IfStatement]
+        ) [Statement_Multiple]
+        PrintStatement(
+          Expr_Term(
+            Term_Factor(
+              Factor_NumConst(
+               3
+              ) [Factor_NumConst]
+            ) [Term_Factor]
+          ) [Expr_Term]
+          PrintNumConst_None(
+          ) [PrintNumConst_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  12:03:10,558 - ===================================
+INFO  12:03:10,560 - Kod uspesno generisan

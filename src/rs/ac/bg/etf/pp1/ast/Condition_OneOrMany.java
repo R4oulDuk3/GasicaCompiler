@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class Condition_OneOrMany extends Condition {
 
     private Condition Condition;
-    private CondTerm CondTerm;
+    private CondTermWrapper CondTermWrapper;
 
-    public Condition_OneOrMany (Condition Condition, CondTerm CondTerm) {
+    public Condition_OneOrMany (Condition Condition, CondTermWrapper CondTermWrapper) {
         this.Condition=Condition;
         if(Condition!=null) Condition.setParent(this);
-        this.CondTerm=CondTerm;
-        if(CondTerm!=null) CondTerm.setParent(this);
+        this.CondTermWrapper=CondTermWrapper;
+        if(CondTermWrapper!=null) CondTermWrapper.setParent(this);
     }
 
     public Condition getCondition() {
@@ -25,12 +25,12 @@ public class Condition_OneOrMany extends Condition {
         this.Condition=Condition;
     }
 
-    public CondTerm getCondTerm() {
-        return CondTerm;
+    public CondTermWrapper getCondTermWrapper() {
+        return CondTermWrapper;
     }
 
-    public void setCondTerm(CondTerm CondTerm) {
-        this.CondTerm=CondTerm;
+    public void setCondTermWrapper(CondTermWrapper CondTermWrapper) {
+        this.CondTermWrapper=CondTermWrapper;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class Condition_OneOrMany extends Condition {
 
     public void childrenAccept(Visitor visitor) {
         if(Condition!=null) Condition.accept(visitor);
-        if(CondTerm!=null) CondTerm.accept(visitor);
+        if(CondTermWrapper!=null) CondTermWrapper.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Condition!=null) Condition.traverseTopDown(visitor);
-        if(CondTerm!=null) CondTerm.traverseTopDown(visitor);
+        if(CondTermWrapper!=null) CondTermWrapper.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Condition!=null) Condition.traverseBottomUp(visitor);
-        if(CondTerm!=null) CondTerm.traverseBottomUp(visitor);
+        if(CondTermWrapper!=null) CondTermWrapper.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class Condition_OneOrMany extends Condition {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(CondTerm!=null)
-            buffer.append(CondTerm.toString("  "+tab));
+        if(CondTermWrapper!=null)
+            buffer.append(CondTermWrapper.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

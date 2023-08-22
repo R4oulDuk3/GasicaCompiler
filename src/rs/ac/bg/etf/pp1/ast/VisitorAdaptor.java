@@ -1,12 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public abstract class VisitorAdaptor implements Visitor { 
 
+    public void visit(PrintNumConst PrintNumConst) { }
     public void visit(ReturnType ReturnType) { }
     public void visit(Parameter Parameter) { }
     public void visit(Mulop Mulop) { }
@@ -55,6 +56,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Equals Equals) { visit(); }
     public void visit(Assign Assign) { visit(); }
     public void visit(LabelIdent LabelIdent) { visit(); }
+    public void visit(DesignatorArrayName DesignatorArrayName) { visit(); }
     public void visit(Designator_Array Designator_Array) { visit(); }
     public void visit(Designator_Single Designator_Single) { visit(); }
     public void visit(Factor_Expr Factor_Expr) { visit(); }
@@ -76,8 +78,10 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondFact_Expr CondFact_Expr) { visit(); }
     public void visit(CondTerm_Single CondTerm_Single) { visit(); }
     public void visit(CondTerm_OneOrMany CondTerm_OneOrMany) { visit(); }
+    public void visit(CondTermWrapper CondTermWrapper) { visit(); }
     public void visit(Condition_Single Condition_Single) { visit(); }
     public void visit(Condition_OneOrMany Condition_OneOrMany) { visit(); }
+    public void visit(ConditionWrapper ConditionWrapper) { visit(); }
     public void visit(OptionalActParsOneOrMany_Single OptionalActParsOneOrMany_Single) { visit(); }
     public void visit(OptionalActParsOneOrMany_Multiple OptionalActParsOneOrMany_Multiple) { visit(); }
     public void visit(OptionalActPars_None OptionalActPars_None) { visit(); }
@@ -87,14 +91,20 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorStatement_ActPars DesignatorStatement_ActPars) { visit(); }
     public void visit(DesignatorStatement_Error DesignatorStatement_Error) { visit(); }
     public void visit(DesignatorStatement_Assign DesignatorStatement_Assign) { visit(); }
-    public void visit(NumConstList_None NumConstList_None) { visit(); }
-    public void visit(NumConstList_Multiple NumConstList_Multiple) { visit(); }
+    public void visit(PrintNumConst_None PrintNumConst_None) { visit(); }
+    public void visit(PrintNumConst_Single PrintNumConst_Single) { visit(); }
+    public void visit(ElseStart ElseStart) { visit(); }
     public void visit(ElseStatement_None ElseStatement_None) { visit(); }
     public void visit(ElseStatement_ ElseStatement_) { visit(); }
     public void visit(WhileStart WhileStart) { visit(); }
     public void visit(ForeachStart ForeachStart) { visit(); }
     public void visit(ForEachDesignator ForEachDesignator) { visit(); }
     public void visit(ForEachInterator ForEachInterator) { visit(); }
+    public void visit(WhileStatementStart WhileStatementStart) { visit(); }
+    public void visit(FindAndReplaceStart FindAndReplaceStart) { visit(); }
+    public void visit(FindAnyStart FindAnyStart) { visit(); }
+    public void visit(FindAndReplaceIterator FindAndReplaceIterator) { visit(); }
+    public void visit(FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished) { visit(); }
     public void visit(IfStatement IfStatement) { visit(); }
     public void visit(BlockStatement BlockStatement) { visit(); }
     public void visit(ForeachStatement ForeachStatement) { visit(); }

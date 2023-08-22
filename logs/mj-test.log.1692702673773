@@ -1,0 +1,321 @@
+INFO  13:03:41,731 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  13:03:41,753 - #2 program
+INFO  13:03:41,753 - #49 test301
+INFO  13:03:41,753 - #3 {
+INFO  13:03:41,754 - #13 void
+INFO  13:03:41,754 - #49 main
+INFO  13:03:41,754 - #6 (
+INFO  13:03:41,754 - #7 )
+INFO  13:03:41,755 - #49 int
+INFO  13:03:41,755 - #49 i
+INFO  13:03:41,755 - #8 ,
+INFO  13:03:41,756 - #49 k
+INFO  13:03:41,756 - #5 ;
+INFO  13:03:41,756 - #3 {
+INFO  13:03:41,756 - #49 i
+INFO  13:03:41,756 - #12 =
+INFO  13:03:41,756 - #48 5
+INFO  13:03:41,758 - #5 ;
+INFO  13:03:41,758 - #16 while
+INFO  13:03:41,758 - #6 (
+INFO  13:03:41,758 - #49 i
+INFO  13:03:41,758 - #31 >
+INFO  13:03:41,758 - #48 0
+INFO  13:03:41,758 - #7 )
+INFO  13:03:41,759 - #3 {
+INFO  13:03:41,759 - #49 i
+INFO  13:03:41,759 - #38 --
+INFO  13:03:41,759 - #5 ;
+INFO  13:03:41,760 - #9 print
+INFO  13:03:41,760 - #6 (
+INFO  13:03:41,760 - #49 i
+INFO  13:03:41,760 - #7 )
+INFO  13:03:41,760 - #5 ;
+INFO  13:03:41,760 - #49 k
+INFO  13:03:41,760 - #12 =
+INFO  13:03:41,760 - #48 7
+INFO  13:03:41,760 - #5 ;
+INFO  13:03:41,760 - #16 while
+INFO  13:03:41,760 - #6 (
+INFO  13:03:41,760 - #49 k
+INFO  13:03:41,761 - #33 <
+INFO  13:03:41,761 - #48 10
+INFO  13:03:41,761 - #7 )
+INFO  13:03:41,761 - #3 {
+INFO  13:03:41,761 - #49 k
+INFO  13:03:41,761 - #37 ++
+INFO  13:03:41,761 - #5 ;
+INFO  13:03:41,761 - #9 print
+INFO  13:03:41,761 - #6 (
+INFO  13:03:41,761 - #49 k
+INFO  13:03:41,761 - #7 )
+INFO  13:03:41,761 - #5 ;
+INFO  13:03:41,761 - #14 if
+INFO  13:03:41,761 - #6 (
+INFO  13:03:41,762 - #49 k
+INFO  13:03:41,762 - #29 ==
+INFO  13:03:41,762 - #48 9
+INFO  13:03:41,762 - #7 )
+INFO  13:03:41,762 - #3 {
+INFO  13:03:41,762 - #49 k
+INFO  13:03:41,762 - #37 ++
+INFO  13:03:41,762 - #5 ;
+INFO  13:03:41,762 - #4 }
+INFO  13:03:41,762 - #4 }
+INFO  13:03:41,762 - #4 }
+INFO  13:03:41,763 - #4 }
+INFO  13:03:41,763 - #4 }
+INFO  13:03:41,764 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        VarDecl_OneOrMany(
+          Type(
+           int
+          ) [Type]
+          Var_Single(
+           i
+          ) [Var_Single]
+          Var_Multiple(
+            Var_None(
+            ) [Var_None]
+            Var_Single(
+             k
+            ) [Var_Single]
+          ) [Var_Multiple]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_None(
+          ) [Statement_None]
+          DesignatorStatement_(
+            DesignatorStatement_Assign(
+              Designator_Single(
+               i
+              ) [Designator_Single]
+              Assign(
+              ) [Assign]
+              Expr_Term(
+                Term_Factor(
+                  Factor_NumConst(
+                   5
+                  ) [Factor_NumConst]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [DesignatorStatement_Assign]
+          ) [DesignatorStatement_]
+        ) [Statement_Multiple]
+        WhileStatement(
+          WhileStart(
+          ) [WhileStart]
+          ConditionWrapper(
+            Condition_Single(
+              CondTermWrapper(
+                CondTerm_Single(
+                  CondFact_ExprRelopExpr(
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_Designator(
+                          Designator_Single(
+                           i
+                          ) [Designator_Single]
+                        ) [Factor_Designator]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                    GreaterThan(
+                    ) [GreaterThan]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         0
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [CondFact_ExprRelopExpr]
+                ) [CondTerm_Single]
+              ) [CondTermWrapper]
+            ) [Condition_Single]
+          ) [ConditionWrapper]
+          WhileStatementStart(
+          ) [WhileStatementStart]
+          BlockStatement(
+            Statement_Multiple(
+              Statement_Multiple(
+                Statement_Multiple(
+                  Statement_Multiple(
+                    Statement_None(
+                    ) [Statement_None]
+                    DesignatorStatement_(
+                      DesignatorStatement_Decrement(
+                        Designator_Single(
+                         i
+                        ) [Designator_Single]
+                      ) [DesignatorStatement_Decrement]
+                    ) [DesignatorStatement_]
+                  ) [Statement_Multiple]
+                  PrintStatement(
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_Designator(
+                          Designator_Single(
+                           i
+                          ) [Designator_Single]
+                        ) [Factor_Designator]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                    PrintNumConst_None(
+                    ) [PrintNumConst_None]
+                  ) [PrintStatement]
+                ) [Statement_Multiple]
+                DesignatorStatement_(
+                  DesignatorStatement_Assign(
+                    Designator_Single(
+                     k
+                    ) [Designator_Single]
+                    Assign(
+                    ) [Assign]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         7
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [DesignatorStatement_Assign]
+                ) [DesignatorStatement_]
+              ) [Statement_Multiple]
+              WhileStatement(
+                WhileStart(
+                ) [WhileStart]
+                ConditionWrapper(
+                  Condition_Single(
+                    CondTermWrapper(
+                      CondTerm_Single(
+                        CondFact_ExprRelopExpr(
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_Designator(
+                                Designator_Single(
+                                 k
+                                ) [Designator_Single]
+                              ) [Factor_Designator]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                          LessThan(
+                          ) [LessThan]
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_NumConst(
+                               10
+                              ) [Factor_NumConst]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                        ) [CondFact_ExprRelopExpr]
+                      ) [CondTerm_Single]
+                    ) [CondTermWrapper]
+                  ) [Condition_Single]
+                ) [ConditionWrapper]
+                WhileStatementStart(
+                ) [WhileStatementStart]
+                BlockStatement(
+                  Statement_Multiple(
+                    Statement_Multiple(
+                      Statement_Multiple(
+                        Statement_None(
+                        ) [Statement_None]
+                        DesignatorStatement_(
+                          DesignatorStatement_Increment(
+                            Designator_Single(
+                             k
+                            ) [Designator_Single]
+                          ) [DesignatorStatement_Increment]
+                        ) [DesignatorStatement_]
+                      ) [Statement_Multiple]
+                      PrintStatement(
+                        Expr_Term(
+                          Term_Factor(
+                            Factor_Designator(
+                              Designator_Single(
+                               k
+                              ) [Designator_Single]
+                            ) [Factor_Designator]
+                          ) [Term_Factor]
+                        ) [Expr_Term]
+                        PrintNumConst_None(
+                        ) [PrintNumConst_None]
+                      ) [PrintStatement]
+                    ) [Statement_Multiple]
+                    IfStatement(
+                      ConditionWrapper(
+                        Condition_Single(
+                          CondTermWrapper(
+                            CondTerm_Single(
+                              CondFact_ExprRelopExpr(
+                                Expr_Term(
+                                  Term_Factor(
+                                    Factor_Designator(
+                                      Designator_Single(
+                                       k
+                                      ) [Designator_Single]
+                                    ) [Factor_Designator]
+                                  ) [Term_Factor]
+                                ) [Expr_Term]
+                                Equals(
+                                ) [Equals]
+                                Expr_Term(
+                                  Term_Factor(
+                                    Factor_NumConst(
+                                     9
+                                    ) [Factor_NumConst]
+                                  ) [Term_Factor]
+                                ) [Expr_Term]
+                              ) [CondFact_ExprRelopExpr]
+                            ) [CondTerm_Single]
+                          ) [CondTermWrapper]
+                        ) [Condition_Single]
+                      ) [ConditionWrapper]
+                      BlockStatement(
+                        Statement_Multiple(
+                          Statement_None(
+                          ) [Statement_None]
+                          DesignatorStatement_(
+                            DesignatorStatement_Increment(
+                              Designator_Single(
+                               k
+                              ) [Designator_Single]
+                            ) [DesignatorStatement_Increment]
+                          ) [DesignatorStatement_]
+                        ) [Statement_Multiple]
+                      ) [BlockStatement]
+                      ElseStatement_None(
+                      ) [ElseStatement_None]
+                    ) [IfStatement]
+                  ) [Statement_Multiple]
+                ) [BlockStatement]
+              ) [WhileStatement]
+            ) [Statement_Multiple]
+          ) [BlockStatement]
+        ) [WhileStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  13:03:41,780 - ===================================
+INFO  13:03:41,782 - Kod uspesno generisan

@@ -1,0 +1,160 @@
+INFO  23:22:10,259 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  23:22:10,282 - #2 program
+INFO  23:22:10,282 - #49 test301
+INFO  23:22:10,282 - #3 {
+INFO  23:22:10,283 - #49 int
+INFO  23:22:10,284 - #49 getA
+INFO  23:22:10,284 - #6 (
+INFO  23:22:10,285 - #49 int
+INFO  23:22:10,285 - #49 a
+INFO  23:22:10,285 - #7 )
+INFO  23:22:10,287 - #3 {
+INFO  23:22:10,287 - #10 return
+INFO  23:22:10,287 - #49 a
+INFO  23:22:10,287 - #5 ;
+INFO  23:22:10,288 - #4 }
+INFO  23:22:10,288 - #13 void
+INFO  23:22:10,289 - #49 main
+INFO  23:22:10,289 - #6 (
+INFO  23:22:10,289 - #7 )
+INFO  23:22:10,290 - #49 int
+INFO  23:22:10,290 - #49 i
+INFO  23:22:10,290 - #5 ;
+INFO  23:22:10,290 - #3 {
+INFO  23:22:10,291 - #49 i
+INFO  23:22:10,291 - #12 =
+INFO  23:22:10,291 - #49 getA
+INFO  23:22:10,292 - #6 (
+INFO  23:22:10,292 - #48 5
+INFO  23:22:10,292 - #7 )
+INFO  23:22:10,292 - #5 ;
+INFO  23:22:10,292 - #9 print
+INFO  23:22:10,293 - #6 (
+INFO  23:22:10,293 - #49 i
+INFO  23:22:10,293 - #7 )
+INFO  23:22:10,293 - #5 ;
+INFO  23:22:10,293 - #4 }
+INFO  23:22:10,293 - #4 }
+INFO  23:22:10,294 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_Multiple(
+      MethodDecl_None(
+      ) [MethodDecl_None]
+      MethodDecl(
+        ReturnType_Type(
+          Type(
+           int
+          ) [Type]
+        ) [ReturnType_Type]
+        MethodName(
+         getA
+        ) [MethodName]
+        OptionalParams_OneOrMany(
+          Param_Single(
+            Type(
+             int
+            ) [Type]
+           a
+          ) [Param_Single]
+          MoreParamsDerived2(
+          ) [MoreParamsDerived2]
+        ) [OptionalParams_OneOrMany]
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        Statement_Multiple(
+          Statement_None(
+          ) [Statement_None]
+          ReturnStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_Designator(
+                  Designator_Single(
+                   a
+                  ) [Designator_Single]
+                ) [Factor_Designator]
+              ) [Term_Factor]
+            ) [Expr_Term]
+          ) [ReturnStatement]
+        ) [Statement_Multiple]
+      ) [MethodDecl]
+    ) [MethodDecl_Multiple]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        VarDecl_OneOrMany(
+          Type(
+           int
+          ) [Type]
+          Var_Single(
+           i
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_None(
+          ) [Statement_None]
+          DesignatorStatement_(
+            DesignatorStatement_Assign(
+              Designator_Single(
+               i
+              ) [Designator_Single]
+              Assign(
+              ) [Assign]
+              Expr_Term(
+                Term_Factor(
+                  Factor_DesignatorFuncCall(
+                    Designator_Single(
+                     getA
+                    ) [Designator_Single]
+                    OptionalActPars_OneOrMany(
+                      OptionalActParsOneOrMany_Single(
+                        Expr_Term(
+                          Term_Factor(
+                            Factor_NumConst(
+                             5
+                            ) [Factor_NumConst]
+                          ) [Term_Factor]
+                        ) [Expr_Term]
+                      ) [OptionalActParsOneOrMany_Single]
+                    ) [OptionalActPars_OneOrMany]
+                  ) [Factor_DesignatorFuncCall]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [DesignatorStatement_Assign]
+          ) [DesignatorStatement_]
+        ) [Statement_Multiple]
+        PrintStatement(
+          Expr_Term(
+            Term_Factor(
+              Factor_Designator(
+                Designator_Single(
+                 i
+                ) [Designator_Single]
+              ) [Factor_Designator]
+            ) [Term_Factor]
+          ) [Expr_Term]
+          PrintNumConst_None(
+          ) [PrintNumConst_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  23:22:10,319 - ===================================
+INFO  23:22:10,321 - Kod uspesno generisan

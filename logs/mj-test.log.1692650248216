@@ -1,0 +1,147 @@
+INFO  22:36:59,272 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  22:36:59,295 - #2 program
+INFO  22:36:59,296 - #49 test301
+INFO  22:36:59,296 - #3 {
+INFO  22:36:59,297 - #13 void
+INFO  22:36:59,297 - #49 ispis
+INFO  22:36:59,297 - #6 (
+INFO  22:36:59,298 - #7 )
+INFO  22:36:59,298 - #3 {
+INFO  22:36:59,299 - #49 int
+INFO  22:36:59,299 - #49 a
+ERROR 22:36:59,299 - 
+Sintaksna greska na liniji 10
+INFO  22:36:59,300 - #5 ;
+INFO  22:36:59,300 - #49 a
+INFO  22:36:59,300 - #12 =
+INFO  22:36:59,301 - #48 5
+ERROR 22:36:59,301 - DesignatorStatement_Error. Line 1
+INFO  22:36:59,303 - #5 ;
+INFO  22:36:59,303 - #9 print
+INFO  22:36:59,304 - #6 (
+INFO  22:36:59,304 - #49 ispis
+INFO  22:36:59,305 - #7 )
+INFO  22:36:59,305 - #5 ;
+INFO  22:36:59,305 - #9 print
+INFO  22:36:59,306 - #6 (
+INFO  22:36:59,306 - #49 a
+INFO  22:36:59,306 - #7 )
+INFO  22:36:59,306 - #5 ;
+INFO  22:36:59,306 - #4 }
+INFO  22:36:59,307 - #13 void
+INFO  22:36:59,307 - #49 main
+INFO  22:36:59,308 - #6 (
+INFO  22:36:59,308 - #7 )
+INFO  22:36:59,308 - #3 {
+INFO  22:36:59,308 - #49 ispis
+INFO  22:36:59,308 - #6 (
+INFO  22:36:59,309 - #7 )
+INFO  22:36:59,309 - #5 ;
+INFO  22:36:59,309 - #4 }
+INFO  22:36:59,309 - #4 }
+INFO  22:36:59,310 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_Multiple(
+      MethodDecl_None(
+      ) [MethodDecl_None]
+      MethodDecl(
+        ReturnType_Void(
+        ) [ReturnType_Void]
+        MethodName(
+         ispis
+        ) [MethodName]
+        OptionalParams_None(
+        ) [OptionalParams_None]
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_Multiple(
+                Statement_None(
+                ) [Statement_None]
+                DesignatorStatement_(
+                  DesignatorStatement_Error(
+                  ) [DesignatorStatement_Error]
+                ) [DesignatorStatement_]
+              ) [Statement_Multiple]
+              DesignatorStatement_(
+                DesignatorStatement_Assign(
+                  Designator_Single(
+                   a
+                  ) [Designator_Single]
+                  Assign(
+                  ) [Assign]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       5
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [DesignatorStatement_Assign]
+              ) [DesignatorStatement_]
+            ) [Statement_Multiple]
+            PrintStatement(
+              Expr_Term(
+                Term_Factor(
+                  Factor_Designator(
+                    Designator_Single(
+                     ispis
+                    ) [Designator_Single]
+                  ) [Factor_Designator]
+                ) [Term_Factor]
+              ) [Expr_Term]
+              PrintNumConst_None(
+              ) [PrintNumConst_None]
+            ) [PrintStatement]
+          ) [Statement_Multiple]
+          PrintStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_Designator(
+                  Designator_Single(
+                   a
+                  ) [Designator_Single]
+                ) [Factor_Designator]
+              ) [Term_Factor]
+            ) [Expr_Term]
+            PrintNumConst_None(
+            ) [PrintNumConst_None]
+          ) [PrintStatement]
+        ) [Statement_Multiple]
+      ) [MethodDecl]
+    ) [MethodDecl_Multiple]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_None(
+      ) [VarDeclList_None]
+      Statement_Multiple(
+        Statement_None(
+        ) [Statement_None]
+        DesignatorStatement_(
+          DesignatorStatement_ActPars(
+            Designator_Single(
+             ispis
+            ) [Designator_Single]
+            OptionalActPars_None(
+            ) [OptionalActPars_None]
+          ) [DesignatorStatement_ActPars]
+        ) [DesignatorStatement_]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  22:36:59,368 - ===================================
+ERROR 22:36:59,368 - Error occured on semantic analysis. Code is not generated.

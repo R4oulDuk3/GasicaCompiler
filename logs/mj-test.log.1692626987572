@@ -1,0 +1,174 @@
+INFO  16:09:21,279 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  16:09:21,303 - #2 program
+INFO  16:09:21,303 - #49 test302
+INFO  16:09:21,303 - #49 int
+INFO  16:09:21,304 - #49 i
+INFO  16:09:21,304 - #5 ;
+INFO  16:09:21,304 - #3 {
+INFO  16:09:21,305 - #13 void
+INFO  16:09:21,305 - #49 main
+INFO  16:09:21,305 - #6 (
+INFO  16:09:21,305 - #7 )
+INFO  16:09:21,306 - #49 int
+INFO  16:09:21,306 - #49 a
+INFO  16:09:21,306 - #5 ;
+INFO  16:09:21,306 - #49 int
+INFO  16:09:21,306 - #49 b
+INFO  16:09:21,306 - #5 ;
+INFO  16:09:21,306 - #49 char
+INFO  16:09:21,306 - #49 c
+INFO  16:09:21,306 - #41 [
+INFO  16:09:21,307 - #42 ]
+INFO  16:09:21,307 - #5 ;
+INFO  16:09:21,307 - #3 {
+INFO  16:09:21,307 - #49 a
+INFO  16:09:21,307 - #12 =
+INFO  16:09:21,307 - #25 -
+INFO  16:09:21,308 - #48 5
+INFO  16:09:21,308 - #5 ;
+INFO  16:09:21,308 - #49 c
+INFO  16:09:21,308 - #12 =
+INFO  16:09:21,308 - #17 new
+INFO  16:09:21,308 - #49 char
+INFO  16:09:21,308 - #41 [
+INFO  16:09:21,308 - #48 5
+INFO  16:09:21,308 - #42 ]
+INFO  16:09:21,308 - #5 ;
+INFO  16:09:21,308 - #9 print
+INFO  16:09:21,308 - #6 (
+INFO  16:09:21,308 - #12 =
+ERROR 16:09:21,308 - 
+Sintaksna greska na liniji 12
+INFO  16:09:21,309 - #49 a
+INFO  16:09:21,309 - #7 )
+INFO  16:09:21,309 - #5 ;
+INFO  16:09:21,309 - #4 }
+INFO  16:09:21,309 - #4 }
+ERROR 16:09:21,310 - DesignatorStatement_Error. Line 37
+INFO  16:09:21,311 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  ConstVarDecl_Multiple(
+    EmptyConstVarDeclList_None(
+    ) [EmptyConstVarDeclList_None]
+    VarDecl_Single(
+      VarDecl_OneOrMany(
+        Type(
+         int
+        ) [Type]
+        Var_Single(
+         i
+        ) [Var_Single]
+        Var_None(
+        ) [Var_None]
+      ) [VarDecl_OneOrMany]
+    ) [VarDecl_Single]
+  ) [ConstVarDecl_Multiple]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_Multiple(
+          VarDeclList_Multiple(
+            VarDeclList_None(
+            ) [VarDeclList_None]
+            VarDecl_OneOrMany(
+              Type(
+               int
+              ) [Type]
+              Var_Single(
+               a
+              ) [Var_Single]
+              Var_None(
+              ) [Var_None]
+            ) [VarDecl_OneOrMany]
+          ) [VarDeclList_Multiple]
+          VarDecl_OneOrMany(
+            Type(
+             int
+            ) [Type]
+            Var_Single(
+             b
+            ) [Var_Single]
+            Var_None(
+            ) [Var_None]
+          ) [VarDecl_OneOrMany]
+        ) [VarDeclList_Multiple]
+        VarDecl_OneOrMany(
+          Type(
+           char
+          ) [Type]
+          Var_Array(
+           c
+          ) [Var_Array]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_None(
+            ) [Statement_None]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Single(
+                 a
+                ) [Designator_Single]
+                Assign(
+                ) [Assign]
+                Expr_MinusTerm(
+                  Term_Factor(
+                    Factor_NumConst(
+                     5
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_MinusTerm]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          DesignatorStatement_(
+            DesignatorStatement_Assign(
+              Designator_Single(
+               c
+              ) [Designator_Single]
+              Assign(
+              ) [Assign]
+              Expr_Term(
+                Term_Factor(
+                  Factor_NewArray(
+                    Type(
+                     char
+                    ) [Type]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         5
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [Factor_NewArray]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [DesignatorStatement_Assign]
+          ) [DesignatorStatement_]
+        ) [Statement_Multiple]
+        DesignatorStatement_(
+          DesignatorStatement_Error(
+          ) [DesignatorStatement_Error]
+        ) [DesignatorStatement_]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  16:09:21,329 - ===================================
+INFO  16:09:21,330 - Kod uspesno generisan

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/7/2023 13:42:17
+// 22/7/2023 22:46:12
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,20 +10,27 @@ public class DesignatorFindAndReplaceStatement extends Statement {
     private Designator Designator;
     private Assignop Assignop;
     private Designator Designator1;
+    private FindAndReplaceStart FindAndReplaceStart;
     private Expr Expr;
-    private String I5;
+    private FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished;
+    private FindAndReplaceIterator FindAndReplaceIterator;
     private Expr Expr2;
 
-    public DesignatorFindAndReplaceStatement (Designator Designator, Assignop Assignop, Designator Designator1, Expr Expr, String I5, Expr Expr2) {
+    public DesignatorFindAndReplaceStatement (Designator Designator, Assignop Assignop, Designator Designator1, FindAndReplaceStart FindAndReplaceStart, Expr Expr, FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished, FindAndReplaceIterator FindAndReplaceIterator, Expr Expr2) {
         this.Designator=Designator;
         if(Designator!=null) Designator.setParent(this);
         this.Assignop=Assignop;
         if(Assignop!=null) Assignop.setParent(this);
         this.Designator1=Designator1;
         if(Designator1!=null) Designator1.setParent(this);
+        this.FindAndReplaceStart=FindAndReplaceStart;
+        if(FindAndReplaceStart!=null) FindAndReplaceStart.setParent(this);
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
-        this.I5=I5;
+        this.FindAndReplaceCondExprFinished=FindAndReplaceCondExprFinished;
+        if(FindAndReplaceCondExprFinished!=null) FindAndReplaceCondExprFinished.setParent(this);
+        this.FindAndReplaceIterator=FindAndReplaceIterator;
+        if(FindAndReplaceIterator!=null) FindAndReplaceIterator.setParent(this);
         this.Expr2=Expr2;
         if(Expr2!=null) Expr2.setParent(this);
     }
@@ -52,6 +59,14 @@ public class DesignatorFindAndReplaceStatement extends Statement {
         this.Designator1=Designator1;
     }
 
+    public FindAndReplaceStart getFindAndReplaceStart() {
+        return FindAndReplaceStart;
+    }
+
+    public void setFindAndReplaceStart(FindAndReplaceStart FindAndReplaceStart) {
+        this.FindAndReplaceStart=FindAndReplaceStart;
+    }
+
     public Expr getExpr() {
         return Expr;
     }
@@ -60,12 +75,20 @@ public class DesignatorFindAndReplaceStatement extends Statement {
         this.Expr=Expr;
     }
 
-    public String getI5() {
-        return I5;
+    public FindAndReplaceCondExprFinished getFindAndReplaceCondExprFinished() {
+        return FindAndReplaceCondExprFinished;
     }
 
-    public void setI5(String I5) {
-        this.I5=I5;
+    public void setFindAndReplaceCondExprFinished(FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished) {
+        this.FindAndReplaceCondExprFinished=FindAndReplaceCondExprFinished;
+    }
+
+    public FindAndReplaceIterator getFindAndReplaceIterator() {
+        return FindAndReplaceIterator;
+    }
+
+    public void setFindAndReplaceIterator(FindAndReplaceIterator FindAndReplaceIterator) {
+        this.FindAndReplaceIterator=FindAndReplaceIterator;
     }
 
     public Expr getExpr2() {
@@ -84,7 +107,10 @@ public class DesignatorFindAndReplaceStatement extends Statement {
         if(Designator!=null) Designator.accept(visitor);
         if(Assignop!=null) Assignop.accept(visitor);
         if(Designator1!=null) Designator1.accept(visitor);
+        if(FindAndReplaceStart!=null) FindAndReplaceStart.accept(visitor);
         if(Expr!=null) Expr.accept(visitor);
+        if(FindAndReplaceCondExprFinished!=null) FindAndReplaceCondExprFinished.accept(visitor);
+        if(FindAndReplaceIterator!=null) FindAndReplaceIterator.accept(visitor);
         if(Expr2!=null) Expr2.accept(visitor);
     }
 
@@ -93,7 +119,10 @@ public class DesignatorFindAndReplaceStatement extends Statement {
         if(Designator!=null) Designator.traverseTopDown(visitor);
         if(Assignop!=null) Assignop.traverseTopDown(visitor);
         if(Designator1!=null) Designator1.traverseTopDown(visitor);
+        if(FindAndReplaceStart!=null) FindAndReplaceStart.traverseTopDown(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
+        if(FindAndReplaceCondExprFinished!=null) FindAndReplaceCondExprFinished.traverseTopDown(visitor);
+        if(FindAndReplaceIterator!=null) FindAndReplaceIterator.traverseTopDown(visitor);
         if(Expr2!=null) Expr2.traverseTopDown(visitor);
     }
 
@@ -101,7 +130,10 @@ public class DesignatorFindAndReplaceStatement extends Statement {
         if(Designator!=null) Designator.traverseBottomUp(visitor);
         if(Assignop!=null) Assignop.traverseBottomUp(visitor);
         if(Designator1!=null) Designator1.traverseBottomUp(visitor);
+        if(FindAndReplaceStart!=null) FindAndReplaceStart.traverseBottomUp(visitor);
         if(Expr!=null) Expr.traverseBottomUp(visitor);
+        if(FindAndReplaceCondExprFinished!=null) FindAndReplaceCondExprFinished.traverseBottomUp(visitor);
+        if(FindAndReplaceIterator!=null) FindAndReplaceIterator.traverseBottomUp(visitor);
         if(Expr2!=null) Expr2.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -129,13 +161,28 @@ public class DesignatorFindAndReplaceStatement extends Statement {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
+        if(FindAndReplaceStart!=null)
+            buffer.append(FindAndReplaceStart.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+I5);
+        if(FindAndReplaceCondExprFinished!=null)
+            buffer.append(FindAndReplaceCondExprFinished.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(FindAndReplaceIterator!=null)
+            buffer.append(FindAndReplaceIterator.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(Expr2!=null)

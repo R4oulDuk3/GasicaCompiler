@@ -72,12 +72,12 @@ nonterminal ConstVarDecl, ConstDecl, VarDecl, VarDeclList;
 nonterminal Type, OneOfNumCharBoolConst, ZeroOrManyNumCharBoolConst;
 nonterminal OneOfVarDecl, ZeroOrManyVarDecl;
 nonterminal MethodDecl, OptionalParams, MoreParams, Parameter, StatementList, Statement, MatchedStatement, UnmatchedStatement, DesignatorStatement;
-nonterminal Condition, NumConstList;
-nonterminal OptionalActPars, OptionalActParsOneOrMany;
-nonterminal OptionalMinus, ElseStatement, ForEachInterator;
-nonterminal MethodName, ReturnType, WhileStart, ForeachStart, ForEachDesignator;
+nonterminal Condition, NumConstList, FindAndReplaceStart, FindAndReplaceCondExprFinished;
+nonterminal OptionalActPars, OptionalActParsOneOrMany, ElseStart, CondTermWrapper;
+nonterminal OptionalMinus, ElseStatement, PrintNumConst, ConditionWrapper, FindAnyStart;
+nonterminal ReturnType, WhileStart, ForeachStart, ForEachDesignator, DesignatorArrayName, WhileStatementStart;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr, CondTerm, CondFact;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, MethodName, ForEachInterator, FindAndReplaceIterator;
 precedence left ELSE;
 
 /*
@@ -173,18 +173,28 @@ StatementList ::= (Statement_Multiple) StatementList Statement
                 | (Statement_None) /* epsilon */;
 
 Statement ::= (DesignatorStatement_) DesignatorStatement SEMI |
-    (DesignatorFindAnyStatement) Designator Assignop Designator DOT FINDANY LPAREN Expr RPAREN SEMI |
-    (DesignatorFindAndReplaceStatement) Designator Assignop Designator DOT FINDANDREPLACE LPAREN Expr COMMA IDENT ARROW Expr RPAREN SEMI |
-    (WhileStatement) WhileStart WHILE LPAREN Condition RPAREN Statement |
+    (DesignatorFindAnyStatement) Designator Assignop Designator DOT FindAnyStart FINDANY LPAREN Expr RPAREN SEMI |
+    (DesignatorFindAndReplaceStatement) Designator Assignop Designator DOT FindAndReplaceStart FINDANDREPLACE LPAREN Expr FindAndReplaceCondExprFinished COMMA FindAndReplaceIterator ARROW Expr RPAREN SEMI |
+    (WhileStatement) WhileStart WHILE LPAREN ConditionWrapper RPAREN WhileStatementStart Statement |
     (BreakStatement) BREAK SEMI |
     (ContinueStatement) CONTINUE SEMI |
     (ReturnVoidStatement) RETURN SEMI |
     (ReturnStatement) RETURN Expr SEMI |
     (ReadStatement) READ LPAREN Designator RPAREN SEMI |
-    (PrintStatement) PRINT LPAREN Expr NumConstList RPAREN SEMI |
+    (PrintStatement) PRINT LPAREN Expr PrintNumConst RPAREN SEMI |
     (ForeachStatement) ForEachDesignator ForeachStart DOT FOREACH LPAREN ForEachInterator ARROW Statement RPAREN SEMI |
     (BlockStatement) LBRACE StatementList RBRACE |
-    (IfStatement) IF LPAREN Condition RPAREN Statement ElseStatement;
+    (IfStatement) IF LPAREN ConditionWrapper RPAREN Statement ElseStatement;
+
+FindAndReplaceCondExprFinished ::= (FindAndReplaceCondExprFinished) /* epsilon */;
+
+FindAndReplaceIterator ::= (FindAndReplaceIterator) IDENT;
+
+FindAnyStart ::= (FindAnyStart) /* epsilon */;
+
+FindAndReplaceStart ::= (FindAndReplaceStart) /* epsilon */;
+
+WhileStatementStart ::= (WhileStatementStart) /* epsilon */;
 
 ForEachInterator ::= (ForEachInterator) IDENT;
 
@@ -194,11 +204,13 @@ ForeachStart ::= (ForeachStart) /* epsilon */;
 
 WhileStart ::= (WhileStart) /* epsilon */;
 
-ElseStatement ::= (ElseStatement_) ELSE Statement
+ElseStatement ::= (ElseStatement_) ELSE ElseStart Statement
                 | (ElseStatement_None) /* epsilon */;
 
-NumConstList ::= (NumConstList_Multiple) NumConstList COMMA NUMBER
-               | (NumConstList_None) /* epsilon */;
+ElseStart ::= (ElseStart) /* epsilon */;
+
+PrintNumConst ::= (PrintNumConst_Single) COMMA NUMBER
+               | (PrintNumConst_None) /* epsilon */;
 
 /*UnmatchedStatement ::= 
     (UnmatchedIf) IF LPAREN Condition RPAREN Statement |
@@ -231,8 +243,12 @@ OptionalActParsOneOrMany ::= (OptionalActParsOneOrMany_Multiple) OptionalActPars
     Condition = CondTerm {"||" CondTerm}.
 */
 
-Condition ::= (Condition_OneOrMany) Condition OR CondTerm
-            | (Condition_Single) CondTerm;
+ConditionWrapper ::= (ConditionWrapper) Condition;
+
+Condition ::= (Condition_OneOrMany) Condition OR CondTermWrapper
+            | (Condition_Single) CondTermWrapper;
+
+CondTermWrapper ::= (CondTermWrapper) CondTerm;
 
 /*
     CondTerm = CondFact {"&&" CondFact}.
@@ -290,7 +306,10 @@ Factor ::= (Factor_Designator) Designator
 
 Designator ::= (Designator_Single) IDENT
             // | (Designator_Dot) Designator DOT IDENT // No class methods for B
-             | (Designator_Array) Designator LBRACKET Expr RBRACKET;
+             | (Designator_Array) DesignatorArrayName LBRACKET Expr RBRACKET;
+
+
+DesignatorArrayName ::= (DesignatorArrayName) Designator; 
 
 /*
     Label = ident. 

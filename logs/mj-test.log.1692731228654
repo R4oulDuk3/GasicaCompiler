@@ -1,0 +1,230 @@
+INFO  21:06:48,708 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  21:06:48,733 - #2 program
+INFO  21:06:48,733 - #49 test301
+INFO  21:06:48,733 - #3 {
+INFO  21:06:48,734 - #13 void
+INFO  21:06:48,734 - #49 main
+INFO  21:06:48,734 - #6 (
+INFO  21:06:48,735 - #7 )
+INFO  21:06:48,735 - #49 int
+INFO  21:06:48,735 - #49 n
+INFO  21:06:48,736 - #41 [
+INFO  21:06:48,736 - #42 ]
+INFO  21:06:48,736 - #5 ;
+INFO  21:06:48,736 - #49 bool
+INFO  21:06:48,736 - #49 b
+INFO  21:06:48,736 - #5 ;
+INFO  21:06:48,736 - #3 {
+INFO  21:06:48,736 - #49 n
+INFO  21:06:48,737 - #12 =
+INFO  21:06:48,737 - #17 new
+INFO  21:06:48,737 - #49 int
+INFO  21:06:48,737 - #41 [
+INFO  21:06:48,738 - #48 3
+INFO  21:06:48,738 - #42 ]
+INFO  21:06:48,738 - #5 ;
+INFO  21:06:48,738 - #49 n
+INFO  21:06:48,738 - #41 [
+INFO  21:06:48,739 - #48 0
+INFO  21:06:48,739 - #42 ]
+INFO  21:06:48,739 - #12 =
+INFO  21:06:48,739 - #48 0
+INFO  21:06:48,739 - #5 ;
+INFO  21:06:48,739 - #49 n
+INFO  21:06:48,739 - #41 [
+INFO  21:06:48,739 - #48 1
+INFO  21:06:48,739 - #42 ]
+INFO  21:06:48,739 - #12 =
+INFO  21:06:48,739 - #48 1
+INFO  21:06:48,739 - #5 ;
+INFO  21:06:48,739 - #49 n
+INFO  21:06:48,739 - #41 [
+INFO  21:06:48,739 - #48 2
+INFO  21:06:48,739 - #42 ]
+INFO  21:06:48,739 - #12 =
+INFO  21:06:48,740 - #48 2
+INFO  21:06:48,740 - #5 ;
+INFO  21:06:48,740 - #49 b
+INFO  21:06:48,740 - #12 =
+INFO  21:06:48,740 - #49 n
+INFO  21:06:48,740 - #40 .
+INFO  21:06:48,740 - #49 findany
+ERROR 21:06:48,740 - 
+Sintaksna greska na liniji 15
+INFO  21:06:48,740 - #6 (
+INFO  21:06:48,740 - #48 1
+INFO  21:06:48,740 - #7 )
+INFO  21:06:48,740 - #5 ;
+INFO  21:06:48,741 - #4 }
+INFO  21:06:48,741 - #4 }
+ERROR 21:06:48,743 - DesignatorStatement_Error. Line 1
+INFO  21:06:48,746 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_Multiple(
+          VarDeclList_None(
+          ) [VarDeclList_None]
+          VarDecl_OneOrMany(
+            Type(
+             int
+            ) [Type]
+            Var_Array(
+             n
+            ) [Var_Array]
+            Var_None(
+            ) [Var_None]
+          ) [VarDecl_OneOrMany]
+        ) [VarDeclList_Multiple]
+        VarDecl_OneOrMany(
+          Type(
+           bool
+          ) [Type]
+          Var_Single(
+           b
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_Multiple(
+                Statement_None(
+                ) [Statement_None]
+                DesignatorStatement_(
+                  DesignatorStatement_Assign(
+                    Designator_Single(
+                     n
+                    ) [Designator_Single]
+                    Assign(
+                    ) [Assign]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NewArray(
+                          Type(
+                           int
+                          ) [Type]
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_NumConst(
+                               3
+                              ) [Factor_NumConst]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                        ) [Factor_NewArray]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [DesignatorStatement_Assign]
+                ) [DesignatorStatement_]
+              ) [Statement_Multiple]
+              DesignatorStatement_(
+                DesignatorStatement_Assign(
+                  Designator_Array(
+                    DesignatorArrayName(
+                      Designator_Single(
+                       n
+                      ) [Designator_Single]
+                    ) [DesignatorArrayName]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         0
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [Designator_Array]
+                  Assign(
+                  ) [Assign]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       0
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [DesignatorStatement_Assign]
+              ) [DesignatorStatement_]
+            ) [Statement_Multiple]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Array(
+                  DesignatorArrayName(
+                    Designator_Single(
+                     n
+                    ) [Designator_Single]
+                  ) [DesignatorArrayName]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       1
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [Designator_Array]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     1
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          DesignatorStatement_(
+            DesignatorStatement_Assign(
+              Designator_Array(
+                DesignatorArrayName(
+                  Designator_Single(
+                   n
+                  ) [Designator_Single]
+                ) [DesignatorArrayName]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     2
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [Designator_Array]
+              Assign(
+              ) [Assign]
+              Expr_Term(
+                Term_Factor(
+                  Factor_NumConst(
+                   2
+                  ) [Factor_NumConst]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [DesignatorStatement_Assign]
+          ) [DesignatorStatement_]
+        ) [Statement_Multiple]
+        DesignatorStatement_(
+          DesignatorStatement_Error(
+          ) [DesignatorStatement_Error]
+        ) [DesignatorStatement_]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  21:06:48,767 - ===================================
+INFO  21:06:48,769 - Kod uspesno generisan

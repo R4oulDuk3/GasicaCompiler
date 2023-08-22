@@ -1,0 +1,207 @@
+INFO  00:26:53,387 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  00:26:53,412 - #2 program
+INFO  00:26:53,412 - #49 test301
+INFO  00:26:53,412 - #3 {
+INFO  00:26:53,413 - #49 int
+INFO  00:26:53,414 - #49 getA
+INFO  00:26:53,414 - #6 (
+INFO  00:26:53,415 - #49 int
+INFO  00:26:53,415 - #49 a
+INFO  00:26:53,415 - #7 )
+INFO  00:26:53,416 - #3 {
+INFO  00:26:53,416 - #10 return
+INFO  00:26:53,417 - #49 a
+INFO  00:26:53,417 - #5 ;
+INFO  00:26:53,417 - #4 }
+INFO  00:26:53,418 - #13 void
+INFO  00:26:53,418 - #49 main
+INFO  00:26:53,419 - #6 (
+INFO  00:26:53,419 - #7 )
+INFO  00:26:53,419 - #49 int
+INFO  00:26:53,420 - #49 i
+INFO  00:26:53,420 - #5 ;
+INFO  00:26:53,420 - #3 {
+INFO  00:26:53,421 - #49 i
+INFO  00:26:53,421 - #12 =
+INFO  00:26:53,421 - #49 getA
+INFO  00:26:53,422 - #6 (
+INFO  00:26:53,422 - #48 5
+INFO  00:26:53,422 - #7 )
+INFO  00:26:53,423 - #5 ;
+INFO  00:26:53,423 - #9 print
+INFO  00:26:53,423 - #6 (
+INFO  00:26:53,423 - #49 i
+INFO  00:26:53,423 - #7 )
+INFO  00:26:53,424 - #5 ;
+INFO  00:26:53,424 - #14 if
+INFO  00:26:53,424 - #6 (
+INFO  00:26:53,425 - #48 1
+INFO  00:26:53,425 - #7 )
+INFO  00:26:53,425 - #3 {
+INFO  00:26:53,425 - #9 print
+INFO  00:26:53,426 - #6 (
+INFO  00:26:53,426 - #48 1
+INFO  00:26:53,426 - #7 )
+INFO  00:26:53,427 - #5 ;
+INFO  00:26:53,427 - #4 }
+INFO  00:26:53,427 - #4 }
+INFO  00:26:53,428 - #4 }
+INFO  00:26:53,429 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  MethodDecl_Multiple(
+    MethodDecl_Multiple(
+      MethodDecl_None(
+      ) [MethodDecl_None]
+      MethodDecl(
+        ReturnType_Type(
+          Type(
+           int
+          ) [Type]
+        ) [ReturnType_Type]
+        MethodName(
+         getA
+        ) [MethodName]
+        OptionalParams_OneOrMany(
+          Param_Single(
+            Type(
+             int
+            ) [Type]
+           a
+          ) [Param_Single]
+          MoreParamsDerived2(
+          ) [MoreParamsDerived2]
+        ) [OptionalParams_OneOrMany]
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        Statement_Multiple(
+          Statement_None(
+          ) [Statement_None]
+          ReturnStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_Designator(
+                  Designator_Single(
+                   a
+                  ) [Designator_Single]
+                ) [Factor_Designator]
+              ) [Term_Factor]
+            ) [Expr_Term]
+          ) [ReturnStatement]
+        ) [Statement_Multiple]
+      ) [MethodDecl]
+    ) [MethodDecl_Multiple]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        VarDecl_OneOrMany(
+          Type(
+           int
+          ) [Type]
+          Var_Single(
+           i
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_None(
+            ) [Statement_None]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Single(
+                 i
+                ) [Designator_Single]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_DesignatorFuncCall(
+                      Designator_Single(
+                       getA
+                      ) [Designator_Single]
+                      OptionalActPars_OneOrMany(
+                        OptionalActParsOneOrMany_Single(
+                          Expr_Term(
+                            Term_Factor(
+                              Factor_NumConst(
+                               5
+                              ) [Factor_NumConst]
+                            ) [Term_Factor]
+                          ) [Expr_Term]
+                        ) [OptionalActParsOneOrMany_Single]
+                      ) [OptionalActPars_OneOrMany]
+                    ) [Factor_DesignatorFuncCall]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          PrintStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_Designator(
+                  Designator_Single(
+                   i
+                  ) [Designator_Single]
+                ) [Factor_Designator]
+              ) [Term_Factor]
+            ) [Expr_Term]
+            PrintNumConst_None(
+            ) [PrintNumConst_None]
+          ) [PrintStatement]
+        ) [Statement_Multiple]
+        IfStatement(
+          Condition_Single(
+            CondTerm_Single(
+              CondFact_Expr(
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     1
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [CondFact_Expr]
+            ) [CondTerm_Single]
+          ) [Condition_Single]
+          BlockStatement(
+            Statement_Multiple(
+              Statement_None(
+              ) [Statement_None]
+              PrintStatement(
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     1
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+                PrintNumConst_None(
+                ) [PrintNumConst_None]
+              ) [PrintStatement]
+            ) [Statement_Multiple]
+          ) [BlockStatement]
+          ElseStatement_None(
+          ) [ElseStatement_None]
+        ) [IfStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  00:26:53,470 - ===================================
+ERROR 00:26:53,471 - Error occured on semantic analysis. Code is not generated.
