@@ -414,18 +414,16 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.load(foreachStatement.getForEachDesignator().getDesignator().obj); // load array
 		Code.loadConst(-1); // load initial index
 		patchingStacks.pushOnStartingPositionStack(PatchingStacks.START_FOREACH); // Save starting position of foreach
-		
 
 		Code.loadConst(1); // load incement
 		Code.put(Code.add); // increment index
-		Code.put(Code.dup2); // duplicate array and index -> array, index, array, index
-		Code.put(Code.pop); // remove index -> array, index, array
-
-		Code.put(Code.arraylength); // get array length -> array, index, length
-		Code.put(Code.dup2); // duplicate array and index -> array, index, length, index, lenght
+		Code.put(Code.dup); // duplicate index -> array, index, index
+		Code.load(foreachStatement.getForEachDesignator().getDesignator().obj); // load array -> array, index, index, array
+		
+		Code.put(Code.arraylength); // get array length -> array, index, index, length
 		Code.putFalseJump(Code.lt, 0); // if index < length -> array, index
 		patchingStacks.pushAfterJumpCall(PatchingStacks.END_FOREACH); // Memorize that we need to patch this jump to the end of for each
-		Code.put(Code.pop); // remove len -> array, index
+		
 		Code.put(Code.dup2); // duplicate array and index -> array, index, array, index
 		if (foreachStatement.getForEachDesignator().getDesignator().obj.getType().getElemType().getKind() != Struct.Char){
 			Code.put(Code.aload); // get element from array -> array, index, element
@@ -443,7 +441,6 @@ public class CodeGenerator extends VisitorAdaptor {
 		patchingStacks.patchAndPopFromEndStack(PatchingStacks.END_FOREACH);
 		patchingStacksOfSets.popAndPatchSet(PatchingStacksOfSets.BREAK);
 
-		Code.put(Code.pop); // remove len
 		Code.put(Code.pop); // remove index
 		Code.put(Code.pop); // remove array
 	}
@@ -462,14 +459,13 @@ public class CodeGenerator extends VisitorAdaptor {
 		patchingStacks.pushOnStartingPositionStack(PatchingStacks.START_FINDANY); // Save starting position of foreach
 		
 		Code.loadConst(1); // load incement
-		Code.put(Code.add); // increment index
-		Code.put(Code.dup2); // duplicate array and index -> array, index, array, index
-		Code.put(Code.pop); // remove index -> array, index, array
-		Code.put(Code.arraylength); // get array length -> array, index, length
-		Code.put(Code.dup2); // duplicate array and index -> array, index, length, index, lenght
+		Code.put(Code.add); // increment index -> array, index (incremented)
+		Code.put(Code.dup); // duplicate index -> array, index, index
+		Code.load(arrayObj); // load array -> array, index, index, array
+		Code.put(Code.arraylength); // get array length -> array, index, index, length
+
 		Code.putFalseJump(Code.lt, 0); // if index < length -> array, index
 		patchingStacks.pushAfterJumpCall(PatchingStacks.END_FINDANY); // Memorize that we need to patch this jump to the end of findany
-		Code.put(Code.pop); // remove len -> array, index
 		Code.put(Code.dup2); // duplicate array and index -> array, index, array, index
 		// System.out.println("Array obj type: " + arrayObj.getType().getKind());
 		if (arrayObj.getType().getElemType().getKind() != Struct.Char){
@@ -492,7 +488,6 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.putJump(0); // Jumping to the end of findany
 		int patchAddress = Code.pc - 2;
 		patchingStacks.patchAndPopFromEndStack(PatchingStacks.END_FINDANY); // Patching jump to the end of findany
-		Code.put(Code.pop); // removing lenght
 		Code.put(Code.pop); // removing index
 		Code.put(Code.pop); // removing array
 		Code.loadConst(0); // Elements are not equal, loading boolean false
@@ -512,7 +507,6 @@ public class CodeGenerator extends VisitorAdaptor {
 	public void visit(FindAndReplaceStart findAndReplaceStart){
 		DesignatorFindAndReplaceStatement designatorFindAndReplaceStatement = (DesignatorFindAndReplaceStatement) findAndReplaceStart.getParent();
 		Obj originalArrObj = designatorFindAndReplaceStatement.getDesignator1().obj;
-//		Obj newArrayObj = designatorFindAndReplaceStatement.getDesignator().obj;
 		Code.load(originalArrObj); // load array
 		Code.put(Code.arraylength); // put lenght -> len
 		Code.put(Code.newarray);
@@ -520,20 +514,17 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(0);
 		else
 			Code.put(1); 
-		// new arr created -> arr2
-//		Code.store(newArrayObj); // store new arr in designator0
+
 		Code.load(originalArrObj);
 		Code.loadConst(-1); // load initial index -> arr2, arr, index
 		patchingStacks.pushOnStartingPositionStack(PatchingStacks.START_FINDANDREPLACE); // Save starting position of foreach
 		Code.loadConst(1); // load 1 -> arr2, arr, index, 1
 		Code.put(Code.add); // increment index -> arr2, arr, index (incremented)
-		Code.put(Code.dup2); // duplicate array and index -> arr2, arr, index, arr, index
-		Code.put(Code.pop); // remove index -> arr2, arr, index, arr
-		Code.put(Code.arraylength); // get array length -> arr2, arr, index, len
-		Code.put(Code.dup2); // duplicate array and index -> arr2, arr, index, len, index, len
+		Code.put(Code.dup); // duplicate index -> arr2, arr, index, index
+		Code.load(originalArrObj); // load original array -> arr2, arr, index, index, arr
+		Code.put(Code.arraylength); // get array length -> arr2, arr, index, index, len
 		Code.putFalseJump(Code.lt, 0); // if index < length -> arr2, arr, index
 		patchingStacks.pushAfterJumpCall(PatchingStacks.END_FINDANDREPLACE); // Memorize that we need to patch this jump to the end of findany
-		Code.put(Code.pop); // remove len -> arr2, arr, index
 		Code.put(Code.dup2); // duplicate array and index -> arr2, arr, index, arr, index
 		
 		if (originalArrObj.getType().getElemType().getKind() != Struct.Char){
@@ -626,7 +617,6 @@ public class CodeGenerator extends VisitorAdaptor {
 		patchingStacks.patchAndPopFromEndStack(PatchingStacks.END_FINDANDREPLACE); // Patching jump to the end of findandreplce
 		patchingStacks.popFromStartingStack(PatchingStacks.START_FINDANDREPLACE); // Poping starting position of findandreplce, we no longer need it
 		// At the end, stack looks like this: arr2, arr, index, len,
-		Code.put(Code.pop); // remove len
 		Code.put(Code.pop); // remove index
 		Code.put(Code.pop); // remove arr
 		Code.store(designatorFindAndReplaceStatement.getDesignator().obj); // store arr2 in designator
