@@ -533,6 +533,7 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.baload); // get char from array -> arr2, arr, index, char
 		}
 		Code.store(designatorFindAndReplaceStatement.getFindAndReplaceIterator().obj); // store element in iterator -> arr2, arr, index
+		// Mrzim sebe sto sam ovo ikad kucao, i sto razumem sta se dogadja ispod
 		// Now our stack looks like this -> arr2, arr, index
 		// Step 1: dup_x2 -> index, arr2, arr, index
 		// Step 2: pop -> index, arr2, arr
@@ -613,7 +614,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.put(Code.dup_x1); // dupx1 -> arr2, arr, index, arr
 		Code.put(Code.pop); // pop -> arr2, arr, index
 		Code.putJump(patchingStacks.peekOnStartingStack()); // Jumping to the starting position of foreach
-		// HERE IS THE AND OF FIND AND REPLACE
+		// HERE IS THE END OF FIND AND REPLACE
 		patchingStacks.patchAndPopFromEndStack(PatchingStacks.END_FINDANDREPLACE); // Patching jump to the end of findandreplce
 		patchingStacks.popFromStartingStack(PatchingStacks.START_FINDANDREPLACE); // Poping starting position of findandreplce, we no longer need it
 		// At the end, stack looks like this: arr2, arr, index, len,
