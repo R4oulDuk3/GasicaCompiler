@@ -689,7 +689,7 @@ private void executeReturn() {
 				Code.put(Code.mul);
 				break;
 			default:
-				throw new RuntimeErrorException(null, "Unknown mulop operation");
+				throw new RuntimeException("Unknown mulop operation");
 		}
 	}
 
