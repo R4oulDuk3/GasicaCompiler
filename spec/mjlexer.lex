@@ -56,6 +56,7 @@ import java_cup.runtime.Symbol;
 "max"		    { return new_symbol(sym.MAX, yytext()); }
 "final"			{ return new_symbol(sym.FINAL, yytext()); }
 "skip"          { return new_symbol(sym.SKIP, yytext()); }
+"#"				{ return new_symbol(sym.HASH, yytext()); }
  
 "+"             { return new_symbol(sym.PLUS, yytext()); }
 "-"             { return new_symbol(sym.MINUS, yytext()); }

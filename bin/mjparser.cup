@@ -60,7 +60,7 @@ terminal MINUS, MULT, DIV, MOD, EQEQ, NOTEQ, GT, GTEQ, LT, LTEQ, AND, OR, INCREM
 terminal COLON, DOT, LBRACKET, RBRACKET, ARROW;
 
 terminal FINDANY, FINDANDREPLACE;
-terminal MAX, FINAL, SKIP;
+terminal MAX, FINAL, SKIP, HASH;
 terminal Boolean BOOLCONST;
 terminal String CHARCONST;
 terminal Integer NUMBER ;
@@ -312,7 +312,8 @@ Factor ::= (Factor_Designator) Designator
          | (Factor_BoolConst) BOOLCONST
          | (Factor_NewArray) NEW Type LBRACKET Expr RBRACKET
          | (Factor_NewObject) NEW Type LPAREN OptionalActPars RPAREN
-         | (Factor_Expr) LPAREN Expr RPAREN;
+         | (Factor_Expr) LPAREN Expr RPAREN
+         | (Factor_ArrAccessCount) HASH DesignatorArrayName LBRACKET Expr RBRACKET;
 
 
 FuncCallDesignator ::= (FuncCallDesignator) Designator;

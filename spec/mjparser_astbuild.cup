@@ -60,7 +60,7 @@ terminal MINUS, MULT, DIV, MOD, EQEQ, NOTEQ, GT, GTEQ, LT, LTEQ, AND, OR, INCREM
 terminal COLON, DOT, LBRACKET, RBRACKET, ARROW;
 
 terminal FINDANY, FINDANDREPLACE;
-terminal MAX, FINAL, SKIP;
+terminal MAX, FINAL, SKIP, HASH;
 terminal Boolean BOOLCONST;
 terminal String CHARCONST;
 terminal Integer NUMBER ;
@@ -352,7 +352,8 @@ Factor ::= (Factor_Designator) Designator:D1 {: RESULT=new Factor_Designator(D1)
          | (Factor_BoolConst) BOOLCONST:B1 {: RESULT=new Factor_BoolConst(B1); RESULT.setLine(B1left); :}
          | (Factor_NewArray) NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new Factor_NewArray(T1, E2); RESULT.setLine(T1left); :}
          | (Factor_NewObject) NEW Type:T1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new Factor_NewObject(T1, O2); RESULT.setLine(T1left); :}
-         | (Factor_Expr) LPAREN Expr:E1 RPAREN {: RESULT=new Factor_Expr(E1); RESULT.setLine(E1left); :};
+         | (Factor_Expr) LPAREN Expr:E1 RPAREN {: RESULT=new Factor_Expr(E1); RESULT.setLine(E1left); :}
+         | (Factor_ArrAccessCount) HASH DesignatorArrayName:D1 LBRACKET Expr:E2 RBRACKET {: RESULT=new Factor_ArrAccessCount(D1, E2); RESULT.setLine(D1left); :};
 
 
 FuncCallDesignator ::= (FuncCallDesignator) Designator:D1 {: RESULT=new FuncCallDesignator(D1); RESULT.setLine(D1left); :};
