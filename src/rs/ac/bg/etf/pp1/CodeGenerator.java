@@ -1,5 +1,9 @@
 package rs.ac.bg.etf.pp1;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.mj.runtime.Run;
 import rs.etf.pp1.symboltable.Tab;
@@ -7,12 +11,11 @@ import rs.etf.pp1.symboltable.concepts.Obj;
 import rs.etf.pp1.symboltable.concepts.Struct;
 
 import java.security.PublicKey;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
 import java.util.Stack;
 import java.util.function.Consumer;
+
+import javax.management.RuntimeErrorException;
 
 import rs.ac.bg.etf.pp1.ast.*;
 
@@ -60,15 +63,19 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	/* Method stuff */
 
+	private void putMethodOperations(MethodName methodName) {
+		Code.put(Code.enter);
+		Code.put(methodName.obj.getLevel());
+		Code.put(methodName.obj.getLocalSymbols().size());
+	}
+
 	@Override
 	public void visit(MethodName methodName){
 		methodName.obj.setAdr(Code.pc);
 		if(methodName.obj.getName().equals("main")){
 			mainPc = Code.pc;
 		}
-		Code.put(Code.enter);
-		Code.put(methodName.obj.getLevel());
-		Code.put(methodName.obj.getLocalSymbols().size());
+		putMethodOperations(methodName);
 	}
 
 	@Override
@@ -91,12 +98,14 @@ public class CodeGenerator extends VisitorAdaptor {
     | "{" {Statement} "}".
 */
 
+	private void putCorrectReadOperation(ReadStatement readStatement) {
+		if(readStatement.getDesignator().obj.getType() != Tab.charType) Code.put(Code.read);
+		else Code.put(Code.bread);
+	}
+
 	@Override
 	public void visit(ReadStatement readStatement){
-		if(readStatement.getDesignator().obj.getType() == Tab.charType)
-			Code.put(Code.bread);
-		else
-			Code.put(Code.read);
+		putCorrectReadOperation(readStatement);
 		Code.store(readStatement.getDesignator().obj);
 	}
 
@@ -120,6 +129,12 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.print);
 	}
 
+private void executeReturn() {
+		Code.put(Code.exit);
+		Code.put(Code.return_);
+	}
+
+
 	@Override
 	public void visit(ReturnVoidStatement returnVoidStatement){
 		State.setReturnVoidCalled();
@@ -131,10 +146,6 @@ public class CodeGenerator extends VisitorAdaptor {
 		executeReturn();
 	}
 
-	private void executeReturn() {
-		Code.put(Code.exit);
-		Code.put(Code.return_);
-	}
 
 	/*
 	 * DesignatorStatement = Designator (Assignop Expr | "(" [ActPars] ")" | "++" | "‐‐")
@@ -149,8 +160,8 @@ public class CodeGenerator extends VisitorAdaptor {
 		if (designatorStatementInc.getDesignator().obj.getKind() == Obj.Elem){
 			Code.put(Code.dup2);
 		}
-		Code.load(designatorStatementInc.getDesignator().obj);
 		Code.loadConst(1);
+		Code.load(designatorStatementInc.getDesignator().obj);
 		Code.put(Code.add);
 		Code.store(designatorStatementInc.getDesignator().obj);
 	}
@@ -160,9 +171,9 @@ public class CodeGenerator extends VisitorAdaptor {
 		if (designatorStatementDec.getDesignator().obj.getKind() == Obj.Elem){
 			Code.put(Code.dup2);
 		}
+		Code.loadConst(-1);
 		Code.load(designatorStatementDec.getDesignator().obj);
-		Code.loadConst(1);
-		Code.put(Code.sub);
+		Code.put(Code.add);
 		Code.store(designatorStatementDec.getDesignator().obj);
 	}
 
@@ -640,6 +651,16 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	/* Factor shizz */
 
+		@Override
+	public void visit(Factor_Designator designator){
+		Code.load(designator.getDesignator().obj);
+	}
+
+	@Override
+	public void visit(DesignatorArrayName designatorArrayName){
+		Code.load(designatorArrayName.getDesignator().obj);
+	}
+
 	@Override
 	public void visit(Factor_NumConst factorNumConst){
 		Code.loadConst(factorNumConst.getN1());
@@ -655,38 +676,30 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.loadConst(factorBoolConst.getB1() ? 1 : 0);
 	}
 
-
-
 	@Override
-	public void visit(Term_MulopFactor termMulopFactor){
-		if (termMulopFactor.getMulop() instanceof Multiplication){
-			Code.put(Code.mul);
-		} else if (termMulopFactor.getMulop() instanceof Division){
-			Code.put(Code.div);
-		} else if (termMulopFactor.getMulop() instanceof Modulo){
-			Code.put(Code.rem);
+	public void visit(Term_MulopFactor termMulopFactor) {
+		switch (termMulopFactor.getMulop().getClass().getSimpleName()) {
+			case "Division":
+				Code.put(Code.div);
+				break;
+			case "Modulo":
+				Code.put(Code.rem);
+				break;
+			case "Multiplication":
+				Code.put(Code.mul);
+				break;
+			default:
+				throw new RuntimeErrorException(null, "Unknown mulop operation");
 		}
 	}
 
 	@Override
-	public void visit(Factor_Designator designator){
-		Code.load(designator.getDesignator().obj);
-	}
-
-	@Override
-	public void visit(DesignatorArrayName designatorArrayName){
-		Code.load(designatorArrayName.getDesignator().obj);
-	}
-
-
-
-	@Override
 	public void visit(Factor_NewArray factor_NewArray){
 		Code.put(Code.newarray);
-		if(factor_NewArray.struct.getElemType().getKind() == Tab.charType.getKind())
-			Code.put(0);
-		else
+		if(factor_NewArray.struct.getElemType().getKind() != Tab.charType.getKind())
 			Code.put(1);
+		else
+			Code.put(0);
 	}
 
 
