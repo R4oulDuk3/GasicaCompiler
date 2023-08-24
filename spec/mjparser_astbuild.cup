@@ -60,6 +60,7 @@ terminal MINUS, MULT, DIV, MOD, EQEQ, NOTEQ, GT, GTEQ, LT, LTEQ, AND, OR, INCREM
 terminal COLON, DOT, LBRACKET, RBRACKET, ARROW;
 
 terminal FINDANY, FINDANDREPLACE;
+terminal MAX, FINAL, SKIP;
 terminal Boolean BOOLCONST;
 terminal String CHARCONST;
 terminal Integer NUMBER ;
@@ -114,13 +115,21 @@ nonterminal DesignatorArrayName DesignatorArrayName;
 nonterminal WhileStatementStart WhileStatementStart;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr, CondTerm, CondFact;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, MethodName, ForEachInterator, FindAndReplaceIterator;
+nonterminal Start Start;
+nonterminal Final Final;
+nonterminal StatementWrapper StatementWrapper;
+nonterminal FuncCallDesignator FuncCallDesignator;
+nonterminal DesignatorFuncCallStart DesignatorFuncCallStart;
 precedence left ELSE;
+
 
 /*
     Program = "program" ident {ConstDecl | VarDecl | ClassDecl } "{" {MethodDecl} "}".
 */
 
-Program ::= (Program) PROG ProgramName:P1 ConstVarDeclList:C2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, C2, M3); RESULT.setLine(P1left); :};
+Program ::= (Program) PROG ProgramName:P1 ConstVarDeclList:C2 LBRACE Start:S3 MethodDeclList:M4 RBRACE {: RESULT=new Program(P1, C2, S3, M4); RESULT.setLine(P1left); :};
+
+Start ::= (Start) {: RESULT=new Start(); :} /* epsilon */;
 
 ProgramName ::= (ProgramName) IDENT:I1 {: RESULT=new ProgramName(I1); RESULT.setLine(I1left); :};
 
@@ -150,7 +159,10 @@ ZeroOrManyNumCharBoolConst ::= (NumCharBoolConst_Multiple) ZeroOrManyNumCharBool
     VarDecl = Type ident ["[" "]"] {"," ident ["[" "]"]} ";"
 */
 
-VarDecl ::= (VarDecl_OneOrMany) Type:T1 OneOfVarDecl:O2 ZeroOrManyVarDecl:Z3 SEMI {: RESULT=new VarDecl_OneOrMany(T1, O2, Z3); RESULT.setLine(T1left); :};
+VarDecl ::= (VarDecl_OneOrMany) Type:T1 OneOfVarDecl:O2 ZeroOrManyVarDecl:Z3 SEMI {: RESULT=new VarDecl_OneOrMany(T1, O2, Z3); RESULT.setLine(T1left); :} |
+            (VarDecl_FinalOneOrMany) Final:F1 Type:T2 OneOfVarDecl:O3 ZeroOrManyVarDecl:Z4 SEMI {: RESULT=new VarDecl_FinalOneOrMany(F1, T2, O3, Z4); RESULT.setLine(F1left); :};
+
+Final ::= (Final) FINAL {: RESULT=new Final(); :};
 
 VarDeclList ::= (VarDeclList_Multiple) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDeclList_Multiple(V1, V2); RESULT.setLine(V1left); :}
               | (VarDeclList_None) {: RESULT=new VarDeclList_None(); :} /* epsilon */;
@@ -205,8 +217,10 @@ Parameter ::= (Param_Single) Type:T1 IDENT:I2 {: RESULT=new Param_Single(T1, I2)
     | Designator "." "foreach" "(" ident "=>" Statement ")" ";" * za B i C nivo
 */
 
-StatementList ::= (Statement_Multiple) StatementList:S1 Statement:S2 {: RESULT=new Statement_Multiple(S1, S2); RESULT.setLine(S1left); :}
+StatementList ::= (Statement_Multiple) StatementList:S1 StatementWrapper:S2 {: RESULT=new Statement_Multiple(S1, S2); RESULT.setLine(S1left); :}
                 | (Statement_None) {: RESULT=new Statement_None(); :} /* epsilon */;
+
+StatementWrapper ::= (StatementWrapper) Statement:S1 {: RESULT=new StatementWrapper(S1); RESULT.setLine(S1left); :};
 
 Statement ::= (DesignatorStatement_) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStatement_(D1); RESULT.setLine(D1left); :} |
     (DesignatorFindAnyStatement) Designator:D1 Assignop:A2 Designator:D3 DOT FindAnyStart:F4 FINDANY LPAREN Expr:E5 RPAREN SEMI {: RESULT=new DesignatorFindAnyStatement(D1, A2, D3, F4, E5); RESULT.setLine(D1left); :} |
@@ -220,7 +234,9 @@ Statement ::= (DesignatorStatement_) DesignatorStatement:D1 SEMI {: RESULT=new D
     (PrintStatement) PRINT LPAREN Expr:E1 PrintNumConst:P2 RPAREN SEMI {: RESULT=new PrintStatement(E1, P2); RESULT.setLine(E1left); :} |
     (ForeachStatement) ForEachDesignator:F1 ForeachStart:F2 DOT FOREACH LPAREN ForEachInterator:F3 ARROW Statement:S4 RPAREN SEMI {: RESULT=new ForeachStatement(F1, F2, F3, S4); RESULT.setLine(F1left); :} |
     (BlockStatement) LBRACE StatementList:S1 RBRACE {: RESULT=new BlockStatement(S1); RESULT.setLine(S1left); :} |
-    (IfStatement) IF LPAREN ConditionWrapper:C1 RPAREN Statement:S2 ElseStatement:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :};
+    (IfStatement) IF LPAREN ConditionWrapper:C1 RPAREN Statement:S2 ElseStatement:E3 {: RESULT=new IfStatement(C1, S2, E3); RESULT.setLine(C1left); :} |
+    (MaxStatement) Designator:D1 Assignop:A2 MAX LPAREN Designator:D3 RPAREN SEMI {: RESULT=new MaxStatement(D1, A2, D3); RESULT.setLine(D1left); :} |
+    (SkipStatement) SKIP NUMBER:N1 SEMI {: RESULT=new SkipStatement(N1); RESULT.setLine(N1left); :};
 
 FindAndReplaceCondExprFinished ::= (FindAndReplaceCondExprFinished) {: RESULT=new FindAndReplaceCondExprFinished(); :} /* epsilon */;
 
@@ -261,9 +277,11 @@ DesignatorStatement ::= (DesignatorStatement_Assign) Designator:D1 Assignop:A2 E
                         {: 
                             parser.report_error("DesignatorStatement_Error. Line " + eleft, null);
                         :} {: RESULT=new DesignatorStatement_Error(); :} 
-                      | (DesignatorStatement_ActPars) Designator:D1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new DesignatorStatement_ActPars(D1, O2); RESULT.setLine(D1left); :}
+                      | (DesignatorStatement_ActPars) Designator:D1 DesignatorFuncCallStart:D2 LPAREN OptionalActPars:O3 RPAREN {: RESULT=new DesignatorStatement_ActPars(D1, D2, O3); RESULT.setLine(D1left); :}
                       | (DesignatorStatement_Increment) Designator:D1 INCREMENT {: RESULT=new DesignatorStatement_Increment(D1); RESULT.setLine(D1left); :}
                       | (DesignatorStatement_Decrement) Designator:D1 DECREMENT {: RESULT=new DesignatorStatement_Decrement(D1); RESULT.setLine(D1left); :};
+
+DesignatorFuncCallStart ::= (DesignatorFuncCallStart) {: RESULT=new DesignatorFuncCallStart(); :} /* epsilon */;
 
 /*
     ActPars = Expr {"," Expr}.
@@ -328,13 +346,16 @@ Term ::= (Term_Factor) Factor:F1 {: RESULT=new Term_Factor(F1); RESULT.setLine(F
 */
 
 Factor ::= (Factor_Designator) Designator:D1 {: RESULT=new Factor_Designator(D1); RESULT.setLine(D1left); :}
-         | (Factor_DesignatorFuncCall) Designator:D1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new Factor_DesignatorFuncCall(D1, O2); RESULT.setLine(D1left); :} // No class methods for B
+         | (Factor_DesignatorFuncCall) FuncCallDesignator:F1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new Factor_DesignatorFuncCall(F1, O2); RESULT.setLine(F1left); :} // No class methods for B
          | (Factor_NumConst) NUMBER:N1 {: RESULT=new Factor_NumConst(N1); RESULT.setLine(N1left); :}
          | (Factor_CharConst) CHARCONST:C1 {: RESULT=new Factor_CharConst(C1); RESULT.setLine(C1left); :}
          | (Factor_BoolConst) BOOLCONST:B1 {: RESULT=new Factor_BoolConst(B1); RESULT.setLine(B1left); :}
          | (Factor_NewArray) NEW Type:T1 LBRACKET Expr:E2 RBRACKET {: RESULT=new Factor_NewArray(T1, E2); RESULT.setLine(T1left); :}
          | (Factor_NewObject) NEW Type:T1 LPAREN OptionalActPars:O2 RPAREN {: RESULT=new Factor_NewObject(T1, O2); RESULT.setLine(T1left); :}
          | (Factor_Expr) LPAREN Expr:E1 RPAREN {: RESULT=new Factor_Expr(E1); RESULT.setLine(E1left); :};
+
+
+FuncCallDesignator ::= (FuncCallDesignator) Designator:D1 {: RESULT=new FuncCallDesignator(D1); RESULT.setLine(D1left); :};
 
 /*
     Designator = ident {"." ident | "[" Expr "]"}.

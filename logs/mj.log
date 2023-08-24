@@ -1,355 +1,158 @@
-INFO  18:47:41,987 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
-INFO  18:47:42,012 - #2 program
-INFO  18:47:42,012 - #49 test301
-INFO  18:47:42,012 - #21 const
-INFO  18:47:42,012 - #49 int
-INFO  18:47:42,013 - #49 nula
-INFO  18:47:42,013 - #12 =
-INFO  18:47:42,013 - #48 0
-INFO  18:47:42,014 - #5 ;
-INFO  18:47:42,014 - #21 const
-INFO  18:47:42,014 - #49 int
-INFO  18:47:42,014 - #49 jedan
-INFO  18:47:42,014 - #12 =
-INFO  18:47:42,015 - #48 1
-INFO  18:47:42,015 - #5 ;
-INFO  18:47:42,015 - #21 const
-INFO  18:47:42,015 - #49 int
-INFO  18:47:42,015 - #49 pet
-INFO  18:47:42,015 - #12 =
-INFO  18:47:42,015 - #48 5
-INFO  18:47:42,015 - #5 ;
-INFO  18:47:42,015 - #49 int
-INFO  18:47:42,015 - #49 niz
-INFO  18:47:42,015 - #41 [
-INFO  18:47:42,015 - #42 ]
-INFO  18:47:42,015 - #8 ,
-INFO  18:47:42,016 - #49 niz2
-INFO  18:47:42,016 - #41 [
-INFO  18:47:42,016 - #42 ]
-INFO  18:47:42,016 - #8 ,
-INFO  18:47:42,016 - #49 a
-INFO  18:47:42,016 - #8 ,
-INFO  18:47:42,016 - #49 b
-INFO  18:47:42,016 - #5 ;
-INFO  18:47:42,016 - #49 char
-INFO  18:47:42,016 - #49 nizch
-INFO  18:47:42,016 - #41 [
-INFO  18:47:42,016 - #42 ]
-INFO  18:47:42,016 - #5 ;
-INFO  18:47:42,016 - #3 {
-INFO  18:47:42,017 - #13 void
-INFO  18:47:42,017 - #49 main
-INFO  18:47:42,017 - #6 (
-INFO  18:47:42,017 - #7 )
-INFO  18:47:42,018 - #49 int
-INFO  18:47:42,018 - #49 bodovi
-INFO  18:47:42,018 - #5 ;
-INFO  18:47:42,018 - #49 bool
-INFO  18:47:42,018 - #49 br
-INFO  18:47:42,018 - #5 ;
-INFO  18:47:42,018 - #3 {
-INFO  18:47:42,018 - #49 bodovi
-INFO  18:47:42,019 - #12 =
-INFO  18:47:42,019 - #48 0
-INFO  18:47:42,019 - #5 ;
-INFO  18:47:42,019 - #49 bodovi
-INFO  18:47:42,019 - #37 ++
-INFO  18:47:42,019 - #5 ;
-INFO  18:47:42,019 - #49 bodovi
-INFO  18:47:42,019 - #12 =
-INFO  18:47:42,019 - #49 bodovi
-INFO  18:47:42,019 - #11 +
-INFO  18:47:42,019 - #49 jedan
-INFO  18:47:42,020 - #5 ;
-INFO  18:47:42,020 - #49 bodovi
-INFO  18:47:42,020 - #12 =
-INFO  18:47:42,020 - #49 bodovi
-INFO  18:47:42,020 - #26 *
-INFO  18:47:42,020 - #49 pet
-INFO  18:47:42,021 - #5 ;
-INFO  18:47:42,021 - #49 bodovi
-INFO  18:47:42,021 - #38 --
-INFO  18:47:42,021 - #5 ;
-INFO  18:47:42,021 - #9 print
-INFO  18:47:42,021 - #6 (
-INFO  18:47:42,021 - #49 bodovi
-INFO  18:47:42,021 - #7 )
-INFO  18:47:42,021 - #5 ;
-INFO  18:47:42,021 - #49 niz
-INFO  18:47:42,021 - #12 =
-INFO  18:47:42,021 - #17 new
-INFO  18:47:42,021 - #49 int
-INFO  18:47:42,021 - #41 [
-INFO  18:47:42,021 - #48 3
-INFO  18:47:42,022 - #42 ]
-INFO  18:47:42,022 - #5 ;
-INFO  18:47:42,022 - #49 niz
-INFO  18:47:42,022 - #41 [
-INFO  18:47:42,022 - #49 nula
-INFO  18:47:42,022 - #42 ]
-INFO  18:47:42,022 - #12 =
-INFO  18:47:42,022 - #49 jedan
-INFO  18:47:42,022 - #5 ;
-INFO  18:47:42,022 - #49 niz
-INFO  18:47:42,022 - #41 [
-INFO  18:47:42,023 - #48 1
-INFO  18:47:42,023 - #42 ]
-INFO  18:47:42,023 - #12 =
-INFO  18:47:42,023 - #48 2
-INFO  18:47:42,023 - #5 ;
-INFO  18:47:42,023 - #49 niz
-INFO  18:47:42,023 - #41 [
-INFO  18:47:42,023 - #49 niz
-INFO  18:47:42,023 - #41 [
-INFO  18:47:42,023 - #49 jedan
-INFO  18:47:42,023 - #42 ]
-INFO  18:47:42,023 - #42 ]
-INFO  18:47:42,023 - #12 =
-INFO  18:47:42,023 - #49 niz
-INFO  18:47:42,023 - #41 [
-INFO  18:47:42,023 - #49 niz
-INFO  18:47:42,024 - #41 [
-INFO  18:47:42,024 - #48 0
-INFO  18:47:42,024 - #42 ]
-INFO  18:47:42,024 - #42 ]
-INFO  18:47:42,024 - #26 *
-INFO  18:47:42,024 - #48 3
-INFO  18:47:42,024 - #5 ;
-INFO  18:47:42,024 - #49 bodovi
-INFO  18:47:42,024 - #12 =
-INFO  18:47:42,024 - #49 niz
-INFO  18:47:42,024 - #41 [
-INFO  18:47:42,024 - #48 2
-INFO  18:47:42,024 - #42 ]
-INFO  18:47:42,024 - #27 /
-INFO  18:47:42,024 - #49 niz
-INFO  18:47:42,025 - #41 [
-INFO  18:47:42,025 - #48 0
-INFO  18:47:42,025 - #42 ]
-INFO  18:47:42,025 - #5 ;
-INFO  18:47:42,025 - #9 print
-INFO  18:47:42,025 - #6 (
-INFO  18:47:42,025 - #49 bodovi
-INFO  18:47:42,025 - #7 )
-INFO  18:47:42,025 - #5 ;
-INFO  18:47:42,025 - #9 print
-INFO  18:47:42,025 - #6 (
-INFO  18:47:42,025 - #49 niz
-INFO  18:47:42,025 - #41 [
-INFO  18:47:42,025 - #48 2
-INFO  18:47:42,025 - #42 ]
-INFO  18:47:42,025 - #7 )
-INFO  18:47:42,025 - #5 ;
-INFO  18:47:42,025 - #49 br
-INFO  18:47:42,025 - #12 =
-INFO  18:47:42,025 - #49 niz
-INFO  18:47:42,025 - #40 .
-INFO  18:47:42,025 - #44 findAny
-INFO  18:47:42,026 - #6 (
-INFO  18:47:42,026 - #48 25
-INFO  18:47:42,026 - #11 +
-INFO  18:47:42,026 - #49 pet
-INFO  18:47:42,026 - #7 )
-INFO  18:47:42,026 - #5 ;
-INFO  18:47:42,026 - #9 print
-INFO  18:47:42,026 - #6 (
-INFO  18:47:42,026 - #49 br
-INFO  18:47:42,026 - #7 )
-INFO  18:47:42,026 - #5 ;
-INFO  18:47:42,026 - #49 nizch
-INFO  18:47:42,026 - #12 =
-INFO  18:47:42,026 - #17 new
-INFO  18:47:42,026 - #49 char
-INFO  18:47:42,026 - #41 [
-INFO  18:47:42,026 - #48 3
-INFO  18:47:42,026 - #42 ]
-INFO  18:47:42,026 - #5 ;
-INFO  18:47:42,026 - #49 nizch
-INFO  18:47:42,026 - #41 [
-INFO  18:47:42,026 - #48 0
-INFO  18:47:42,026 - #42 ]
-INFO  18:47:42,027 - #12 =
-INFO  18:47:42,027 - #47 'a'
-INFO  18:47:42,027 - #5 ;
-INFO  18:47:42,027 - #49 nizch
-INFO  18:47:42,027 - #41 [
-INFO  18:47:42,027 - #49 jedan
-INFO  18:47:42,027 - #42 ]
-INFO  18:47:42,027 - #12 =
-INFO  18:47:42,027 - #47 'b'
-INFO  18:47:42,027 - #5 ;
-INFO  18:47:42,027 - #49 nizch
-INFO  18:47:42,027 - #41 [
-INFO  18:47:42,027 - #49 pet
-INFO  18:47:42,027 - #25 -
-INFO  18:47:42,027 - #48 3
-INFO  18:47:42,027 - #42 ]
-INFO  18:47:42,027 - #12 =
-INFO  18:47:42,027 - #47 'c'
-INFO  18:47:42,027 - #5 ;
-INFO  18:47:42,027 - #9 print
-INFO  18:47:42,027 - #6 (
-INFO  18:47:42,027 - #49 nizch
-INFO  18:47:42,027 - #41 [
-INFO  18:47:42,028 - #48 1
-INFO  18:47:42,028 - #42 ]
-INFO  18:47:42,028 - #7 )
-INFO  18:47:42,028 - #5 ;
-INFO  18:47:42,028 - #9 print
-INFO  18:47:42,028 - #6 (
-INFO  18:47:42,028 - #49 nizch
-INFO  18:47:42,028 - #41 [
-INFO  18:47:42,028 - #49 jedan
-INFO  18:47:42,028 - #26 *
-INFO  18:47:42,028 - #48 2
-INFO  18:47:42,028 - #42 ]
-INFO  18:47:42,028 - #7 )
-INFO  18:47:42,028 - #5 ;
-INFO  18:47:42,028 - #18 read
-INFO  18:47:42,028 - #6 (
-INFO  18:47:42,028 - #49 bodovi
-INFO  18:47:42,028 - #7 )
-INFO  18:47:42,028 - #5 ;
-INFO  18:47:42,028 - #49 bodovi
-INFO  18:47:42,028 - #12 =
-INFO  18:47:42,028 - #25 -
-INFO  18:47:42,028 - #49 bodovi
-INFO  18:47:42,028 - #11 +
-INFO  18:47:42,028 - #6 (
-INFO  18:47:42,028 - #49 pet
-INFO  18:47:42,028 - #26 *
-INFO  18:47:42,028 - #49 a
-INFO  18:47:42,028 - #27 /
-INFO  18:47:42,029 - #48 2
-INFO  18:47:42,029 - #25 -
-INFO  18:47:42,029 - #49 jedan
-INFO  18:47:42,029 - #7 )
-INFO  18:47:42,029 - #26 *
-INFO  18:47:42,029 - #49 bodovi
-INFO  18:47:42,029 - #25 -
-INFO  18:47:42,029 - #6 (
-INFO  18:47:42,029 - #48 3
-INFO  18:47:42,029 - #28 %
-INFO  18:47:42,029 - #48 2
-INFO  18:47:42,029 - #11 +
-INFO  18:47:42,029 - #48 3
-INFO  18:47:42,029 - #26 *
-INFO  18:47:42,029 - #48 2
-INFO  18:47:42,029 - #25 -
-INFO  18:47:42,029 - #48 3
-INFO  18:47:42,029 - #7 )
-INFO  18:47:42,029 - #5 ;
-INFO  18:47:42,030 - #9 print
-INFO  18:47:42,030 - #6 (
-INFO  18:47:42,030 - #49 bodovi
-INFO  18:47:42,030 - #7 )
-INFO  18:47:42,030 - #5 ;
-INFO  18:47:42,030 - #4 }
-INFO  18:47:42,030 - #4 }
-INFO  18:47:42,032 - Program(
+INFO  23:50:03,081 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  23:50:03,104 - #2 program
+INFO  23:50:03,104 - #52 test301
+INFO  23:50:03,104 - #3 {
+INFO  23:50:03,104 - #13 void
+INFO  23:50:03,105 - #52 f
+INFO  23:50:03,105 - #6 (
+INFO  23:50:03,105 - #7 )
+INFO  23:50:03,106 - #3 {
+INFO  23:50:03,106 - #9 print
+INFO  23:50:03,106 - #6 (
+INFO  23:50:03,106 - #51 5
+INFO  23:50:03,106 - #7 )
+INFO  23:50:03,107 - #5 ;
+INFO  23:50:03,107 - #9 print
+INFO  23:50:03,107 - #6 (
+INFO  23:50:03,107 - #51 6
+INFO  23:50:03,107 - #7 )
+INFO  23:50:03,107 - #5 ;
+INFO  23:50:03,107 - #9 print
+INFO  23:50:03,107 - #6 (
+INFO  23:50:03,108 - #51 7
+INFO  23:50:03,108 - #7 )
+INFO  23:50:03,108 - #5 ;
+INFO  23:50:03,108 - #4 }
+INFO  23:50:03,108 - #13 void
+INFO  23:50:03,109 - #52 main
+INFO  23:50:03,109 - #6 (
+INFO  23:50:03,109 - #7 )
+INFO  23:50:03,109 - #52 int
+INFO  23:50:03,109 - #52 i
+INFO  23:50:03,109 - #41 [
+INFO  23:50:03,109 - #42 ]
+INFO  23:50:03,109 - #5 ;
+INFO  23:50:03,109 - #52 int
+INFO  23:50:03,110 - #52 k
+INFO  23:50:03,110 - #5 ;
+INFO  23:50:03,110 - #3 {
+INFO  23:50:03,110 - #52 i
+INFO  23:50:03,110 - #12 =
+INFO  23:50:03,110 - #17 new
+INFO  23:50:03,110 - #52 int
+INFO  23:50:03,110 - #41 [
+INFO  23:50:03,110 - #51 3
+INFO  23:50:03,111 - #42 ]
+INFO  23:50:03,111 - #5 ;
+INFO  23:50:03,111 - #48 skip
+INFO  23:50:03,111 - #51 4
+INFO  23:50:03,111 - #5 ;
+INFO  23:50:03,111 - #52 f
+INFO  23:50:03,111 - #6 (
+INFO  23:50:03,111 - #7 )
+INFO  23:50:03,112 - #5 ;
+INFO  23:50:03,112 - #52 i
+INFO  23:50:03,112 - #41 [
+INFO  23:50:03,112 - #51 0
+INFO  23:50:03,112 - #42 ]
+INFO  23:50:03,112 - #12 =
+INFO  23:50:03,112 - #51 2
+INFO  23:50:03,112 - #5 ;
+INFO  23:50:03,112 - #52 i
+INFO  23:50:03,113 - #41 [
+INFO  23:50:03,113 - #51 1
+INFO  23:50:03,113 - #42 ]
+INFO  23:50:03,113 - #12 =
+INFO  23:50:03,113 - #51 3
+INFO  23:50:03,113 - #5 ;
+INFO  23:50:03,113 - #52 i
+INFO  23:50:03,113 - #41 [
+INFO  23:50:03,113 - #51 2
+INFO  23:50:03,113 - #42 ]
+INFO  23:50:03,113 - #12 =
+INFO  23:50:03,113 - #51 1
+INFO  23:50:03,113 - #5 ;
+INFO  23:50:03,113 - #9 print
+INFO  23:50:03,113 - #6 (
+INFO  23:50:03,113 - #52 i
+INFO  23:50:03,113 - #41 [
+INFO  23:50:03,113 - #51 2
+INFO  23:50:03,113 - #42 ]
+INFO  23:50:03,114 - #7 )
+INFO  23:50:03,114 - #5 ;
+INFO  23:50:03,114 - #4 }
+INFO  23:50:03,114 - #4 }
+INFO  23:50:03,115 - Program(
   ProgramName(
    test301
   ) [ProgramName]
-  ConstVarDecl_Multiple(
-    ConstVarDecl_Multiple(
-      ConstVarDecl_Multiple(
-        ConstVarDecl_Multiple(
-          ConstVarDecl_Multiple(
-            EmptyConstVarDeclList_None(
-            ) [EmptyConstVarDeclList_None]
-            ConstDecl_Single(
-              ConstDecl(
-                Type(
-                 int
-                ) [Type]
-                NumConst_Single(
-                 nula
-                  Assign(
-                  ) [Assign]
-                 0
-                ) [NumConst_Single]
-                NumCharBoolConst_None(
-                ) [NumCharBoolConst_None]
-              ) [ConstDecl]
-            ) [ConstDecl_Single]
-          ) [ConstVarDecl_Multiple]
-          ConstDecl_Single(
-            ConstDecl(
-              Type(
-               int
-              ) [Type]
-              NumConst_Single(
-               jedan
-                Assign(
-                ) [Assign]
-               1
-              ) [NumConst_Single]
-              NumCharBoolConst_None(
-              ) [NumCharBoolConst_None]
-            ) [ConstDecl]
-          ) [ConstDecl_Single]
-        ) [ConstVarDecl_Multiple]
-        ConstDecl_Single(
-          ConstDecl(
-            Type(
-             int
-            ) [Type]
-            NumConst_Single(
-             pet
-              Assign(
-              ) [Assign]
-             5
-            ) [NumConst_Single]
-            NumCharBoolConst_None(
-            ) [NumCharBoolConst_None]
-          ) [ConstDecl]
-        ) [ConstDecl_Single]
-      ) [ConstVarDecl_Multiple]
-      VarDecl_Single(
-        VarDecl_OneOrMany(
-          Type(
-           int
-          ) [Type]
-          Var_Array(
-           niz
-          ) [Var_Array]
-          Var_Multiple(
-            Var_Multiple(
-              Var_Multiple(
-                Var_None(
-                ) [Var_None]
-                Var_Array(
-                 niz2
-                ) [Var_Array]
-              ) [Var_Multiple]
-              Var_Single(
-               a
-              ) [Var_Single]
-            ) [Var_Multiple]
-            Var_Single(
-             b
-            ) [Var_Single]
-          ) [Var_Multiple]
-        ) [VarDecl_OneOrMany]
-      ) [VarDecl_Single]
-    ) [ConstVarDecl_Multiple]
-    VarDecl_Single(
-      VarDecl_OneOrMany(
-        Type(
-         char
-        ) [Type]
-        Var_Array(
-         nizch
-        ) [Var_Array]
-        Var_None(
-        ) [Var_None]
-      ) [VarDecl_OneOrMany]
-    ) [VarDecl_Single]
-  ) [ConstVarDecl_Multiple]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  Start(
+  ) [Start]
   MethodDecl_Multiple(
-    MethodDecl_None(
-    ) [MethodDecl_None]
+    MethodDecl_Multiple(
+      MethodDecl_None(
+      ) [MethodDecl_None]
+      MethodDecl(
+        ReturnType_Void(
+        ) [ReturnType_Void]
+        MethodName(
+         f
+        ) [MethodName]
+        OptionalParams_None(
+        ) [OptionalParams_None]
+        VarDeclList_None(
+        ) [VarDeclList_None]
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_None(
+              ) [Statement_None]
+              StatementWrapper(
+                PrintStatement(
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       5
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                  PrintNumConst_None(
+                  ) [PrintNumConst_None]
+                ) [PrintStatement]
+              ) [StatementWrapper]
+            ) [Statement_Multiple]
+            StatementWrapper(
+              PrintStatement(
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     6
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+                PrintNumConst_None(
+                ) [PrintNumConst_None]
+              ) [PrintStatement]
+            ) [StatementWrapper]
+          ) [Statement_Multiple]
+          StatementWrapper(
+            PrintStatement(
+              Expr_Term(
+                Term_Factor(
+                  Factor_NumConst(
+                   7
+                  ) [Factor_NumConst]
+                ) [Term_Factor]
+              ) [Expr_Term]
+              PrintNumConst_None(
+              ) [PrintNumConst_None]
+            ) [PrintStatement]
+          ) [StatementWrapper]
+        ) [Statement_Multiple]
+      ) [MethodDecl]
+    ) [MethodDecl_Multiple]
     MethodDecl(
       ReturnType_Void(
       ) [ReturnType_Void]
@@ -366,19 +169,19 @@ INFO  18:47:42,032 - Program(
             Type(
              int
             ) [Type]
-            Var_Single(
-             bodovi
-            ) [Var_Single]
+            Var_Array(
+             i
+            ) [Var_Array]
             Var_None(
             ) [Var_None]
           ) [VarDecl_OneOrMany]
         ) [VarDeclList_Multiple]
         VarDecl_OneOrMany(
           Type(
-           bool
+           int
           ) [Type]
           Var_Single(
-           br
+           k
           ) [Var_Single]
           Var_None(
           ) [Var_None]
@@ -391,750 +194,178 @@ INFO  18:47:42,032 - Program(
               Statement_Multiple(
                 Statement_Multiple(
                   Statement_Multiple(
-                    Statement_Multiple(
-                      Statement_Multiple(
-                        Statement_Multiple(
-                          Statement_Multiple(
-                            Statement_Multiple(
-                              Statement_Multiple(
-                                Statement_Multiple(
-                                  Statement_Multiple(
-                                    Statement_Multiple(
-                                      Statement_Multiple(
-                                        Statement_Multiple(
-                                          Statement_Multiple(
-                                            Statement_Multiple(
-                                              Statement_Multiple(
-                                                Statement_Multiple(
-                                                  Statement_Multiple(
-                                                    Statement_Multiple(
-                                                      Statement_None(
-                                                      ) [Statement_None]
-                                                      DesignatorStatement_(
-                                                        DesignatorStatement_Assign(
-                                                          Designator_Single(
-                                                           bodovi
-                                                          ) [Designator_Single]
-                                                          Assign(
-                                                          ) [Assign]
-                                                          Expr_Term(
-                                                            Term_Factor(
-                                                              Factor_NumConst(
-                                                               0
-                                                              ) [Factor_NumConst]
-                                                            ) [Term_Factor]
-                                                          ) [Expr_Term]
-                                                        ) [DesignatorStatement_Assign]
-                                                      ) [DesignatorStatement_]
-                                                    ) [Statement_Multiple]
-                                                    DesignatorStatement_(
-                                                      DesignatorStatement_Increment(
-                                                        Designator_Single(
-                                                         bodovi
-                                                        ) [Designator_Single]
-                                                      ) [DesignatorStatement_Increment]
-                                                    ) [DesignatorStatement_]
-                                                  ) [Statement_Multiple]
-                                                  DesignatorStatement_(
-                                                    DesignatorStatement_Assign(
-                                                      Designator_Single(
-                                                       bodovi
-                                                      ) [Designator_Single]
-                                                      Assign(
-                                                      ) [Assign]
-                                                      Expr_AddopTerm(
-                                                        Expr_Term(
-                                                          Term_Factor(
-                                                            Factor_Designator(
-                                                              Designator_Single(
-                                                               bodovi
-                                                              ) [Designator_Single]
-                                                            ) [Factor_Designator]
-                                                          ) [Term_Factor]
-                                                        ) [Expr_Term]
-                                                        Addition(
-                                                        ) [Addition]
-                                                        Term_Factor(
-                                                          Factor_Designator(
-                                                            Designator_Single(
-                                                             jedan
-                                                            ) [Designator_Single]
-                                                          ) [Factor_Designator]
-                                                        ) [Term_Factor]
-                                                      ) [Expr_AddopTerm]
-                                                    ) [DesignatorStatement_Assign]
-                                                  ) [DesignatorStatement_]
-                                                ) [Statement_Multiple]
-                                                DesignatorStatement_(
-                                                  DesignatorStatement_Assign(
-                                                    Designator_Single(
-                                                     bodovi
-                                                    ) [Designator_Single]
-                                                    Assign(
-                                                    ) [Assign]
-                                                    Expr_Term(
-                                                      Term_MulopFactor(
-                                                        Factor_Designator(
-                                                          Designator_Single(
-                                                           bodovi
-                                                          ) [Designator_Single]
-                                                        ) [Factor_Designator]
-                                                        Multiplication(
-                                                        ) [Multiplication]
-                                                        Term_Factor(
-                                                          Factor_Designator(
-                                                            Designator_Single(
-                                                             pet
-                                                            ) [Designator_Single]
-                                                          ) [Factor_Designator]
-                                                        ) [Term_Factor]
-                                                      ) [Term_MulopFactor]
-                                                    ) [Expr_Term]
-                                                  ) [DesignatorStatement_Assign]
-                                                ) [DesignatorStatement_]
-                                              ) [Statement_Multiple]
-                                              DesignatorStatement_(
-                                                DesignatorStatement_Decrement(
-                                                  Designator_Single(
-                                                   bodovi
-                                                  ) [Designator_Single]
-                                                ) [DesignatorStatement_Decrement]
-                                              ) [DesignatorStatement_]
-                                            ) [Statement_Multiple]
-                                            PrintStatement(
-                                              Expr_Term(
-                                                Term_Factor(
-                                                  Factor_Designator(
-                                                    Designator_Single(
-                                                     bodovi
-                                                    ) [Designator_Single]
-                                                  ) [Factor_Designator]
-                                                ) [Term_Factor]
-                                              ) [Expr_Term]
-                                              PrintNumConst_None(
-                                              ) [PrintNumConst_None]
-                                            ) [PrintStatement]
-                                          ) [Statement_Multiple]
-                                          DesignatorStatement_(
-                                            DesignatorStatement_Assign(
-                                              Designator_Single(
-                                               niz
-                                              ) [Designator_Single]
-                                              Assign(
-                                              ) [Assign]
-                                              Expr_Term(
-                                                Term_Factor(
-                                                  Factor_NewArray(
-                                                    Type(
-                                                     int
-                                                    ) [Type]
-                                                    Expr_Term(
-                                                      Term_Factor(
-                                                        Factor_NumConst(
-                                                         3
-                                                        ) [Factor_NumConst]
-                                                      ) [Term_Factor]
-                                                    ) [Expr_Term]
-                                                  ) [Factor_NewArray]
-                                                ) [Term_Factor]
-                                              ) [Expr_Term]
-                                            ) [DesignatorStatement_Assign]
-                                          ) [DesignatorStatement_]
-                                        ) [Statement_Multiple]
-                                        DesignatorStatement_(
-                                          DesignatorStatement_Assign(
-                                            Designator_Array(
-                                              DesignatorArrayName(
-                                                Designator_Single(
-                                                 niz
-                                                ) [Designator_Single]
-                                              ) [DesignatorArrayName]
-                                              Expr_Term(
-                                                Term_Factor(
-                                                  Factor_Designator(
-                                                    Designator_Single(
-                                                     nula
-                                                    ) [Designator_Single]
-                                                  ) [Factor_Designator]
-                                                ) [Term_Factor]
-                                              ) [Expr_Term]
-                                            ) [Designator_Array]
-                                            Assign(
-                                            ) [Assign]
-                                            Expr_Term(
-                                              Term_Factor(
-                                                Factor_Designator(
-                                                  Designator_Single(
-                                                   jedan
-                                                  ) [Designator_Single]
-                                                ) [Factor_Designator]
-                                              ) [Term_Factor]
-                                            ) [Expr_Term]
-                                          ) [DesignatorStatement_Assign]
-                                        ) [DesignatorStatement_]
-                                      ) [Statement_Multiple]
-                                      DesignatorStatement_(
-                                        DesignatorStatement_Assign(
-                                          Designator_Array(
-                                            DesignatorArrayName(
-                                              Designator_Single(
-                                               niz
-                                              ) [Designator_Single]
-                                            ) [DesignatorArrayName]
-                                            Expr_Term(
-                                              Term_Factor(
-                                                Factor_NumConst(
-                                                 1
-                                                ) [Factor_NumConst]
-                                              ) [Term_Factor]
-                                            ) [Expr_Term]
-                                          ) [Designator_Array]
-                                          Assign(
-                                          ) [Assign]
-                                          Expr_Term(
-                                            Term_Factor(
-                                              Factor_NumConst(
-                                               2
-                                              ) [Factor_NumConst]
-                                            ) [Term_Factor]
-                                          ) [Expr_Term]
-                                        ) [DesignatorStatement_Assign]
-                                      ) [DesignatorStatement_]
-                                    ) [Statement_Multiple]
-                                    DesignatorStatement_(
-                                      DesignatorStatement_Assign(
-                                        Designator_Array(
-                                          DesignatorArrayName(
-                                            Designator_Single(
-                                             niz
-                                            ) [Designator_Single]
-                                          ) [DesignatorArrayName]
-                                          Expr_Term(
-                                            Term_Factor(
-                                              Factor_Designator(
-                                                Designator_Array(
-                                                  DesignatorArrayName(
-                                                    Designator_Single(
-                                                     niz
-                                                    ) [Designator_Single]
-                                                  ) [DesignatorArrayName]
-                                                  Expr_Term(
-                                                    Term_Factor(
-                                                      Factor_Designator(
-                                                        Designator_Single(
-                                                         jedan
-                                                        ) [Designator_Single]
-                                                      ) [Factor_Designator]
-                                                    ) [Term_Factor]
-                                                  ) [Expr_Term]
-                                                ) [Designator_Array]
-                                              ) [Factor_Designator]
-                                            ) [Term_Factor]
-                                          ) [Expr_Term]
-                                        ) [Designator_Array]
-                                        Assign(
-                                        ) [Assign]
-                                        Expr_Term(
-                                          Term_MulopFactor(
-                                            Factor_Designator(
-                                              Designator_Array(
-                                                DesignatorArrayName(
-                                                  Designator_Single(
-                                                   niz
-                                                  ) [Designator_Single]
-                                                ) [DesignatorArrayName]
-                                                Expr_Term(
-                                                  Term_Factor(
-                                                    Factor_Designator(
-                                                      Designator_Array(
-                                                        DesignatorArrayName(
-                                                          Designator_Single(
-                                                           niz
-                                                          ) [Designator_Single]
-                                                        ) [DesignatorArrayName]
-                                                        Expr_Term(
-                                                          Term_Factor(
-                                                            Factor_NumConst(
-                                                             0
-                                                            ) [Factor_NumConst]
-                                                          ) [Term_Factor]
-                                                        ) [Expr_Term]
-                                                      ) [Designator_Array]
-                                                    ) [Factor_Designator]
-                                                  ) [Term_Factor]
-                                                ) [Expr_Term]
-                                              ) [Designator_Array]
-                                            ) [Factor_Designator]
-                                            Multiplication(
-                                            ) [Multiplication]
-                                            Term_Factor(
-                                              Factor_NumConst(
-                                               3
-                                              ) [Factor_NumConst]
-                                            ) [Term_Factor]
-                                          ) [Term_MulopFactor]
-                                        ) [Expr_Term]
-                                      ) [DesignatorStatement_Assign]
-                                    ) [DesignatorStatement_]
-                                  ) [Statement_Multiple]
-                                  DesignatorStatement_(
-                                    DesignatorStatement_Assign(
-                                      Designator_Single(
-                                       bodovi
-                                      ) [Designator_Single]
-                                      Assign(
-                                      ) [Assign]
-                                      Expr_Term(
-                                        Term_MulopFactor(
-                                          Factor_Designator(
-                                            Designator_Array(
-                                              DesignatorArrayName(
-                                                Designator_Single(
-                                                 niz
-                                                ) [Designator_Single]
-                                              ) [DesignatorArrayName]
-                                              Expr_Term(
-                                                Term_Factor(
-                                                  Factor_NumConst(
-                                                   2
-                                                  ) [Factor_NumConst]
-                                                ) [Term_Factor]
-                                              ) [Expr_Term]
-                                            ) [Designator_Array]
-                                          ) [Factor_Designator]
-                                          Division(
-                                          ) [Division]
-                                          Term_Factor(
-                                            Factor_Designator(
-                                              Designator_Array(
-                                                DesignatorArrayName(
-                                                  Designator_Single(
-                                                   niz
-                                                  ) [Designator_Single]
-                                                ) [DesignatorArrayName]
-                                                Expr_Term(
-                                                  Term_Factor(
-                                                    Factor_NumConst(
-                                                     0
-                                                    ) [Factor_NumConst]
-                                                  ) [Term_Factor]
-                                                ) [Expr_Term]
-                                              ) [Designator_Array]
-                                            ) [Factor_Designator]
-                                          ) [Term_Factor]
-                                        ) [Term_MulopFactor]
-                                      ) [Expr_Term]
-                                    ) [DesignatorStatement_Assign]
-                                  ) [DesignatorStatement_]
-                                ) [Statement_Multiple]
-                                PrintStatement(
-                                  Expr_Term(
-                                    Term_Factor(
-                                      Factor_Designator(
-                                        Designator_Single(
-                                         bodovi
-                                        ) [Designator_Single]
-                                      ) [Factor_Designator]
-                                    ) [Term_Factor]
-                                  ) [Expr_Term]
-                                  PrintNumConst_None(
-                                  ) [PrintNumConst_None]
-                                ) [PrintStatement]
-                              ) [Statement_Multiple]
-                              PrintStatement(
-                                Expr_Term(
-                                  Term_Factor(
-                                    Factor_Designator(
-                                      Designator_Array(
-                                        DesignatorArrayName(
-                                          Designator_Single(
-                                           niz
-                                          ) [Designator_Single]
-                                        ) [DesignatorArrayName]
-                                        Expr_Term(
-                                          Term_Factor(
-                                            Factor_NumConst(
-                                             2
-                                            ) [Factor_NumConst]
-                                          ) [Term_Factor]
-                                        ) [Expr_Term]
-                                      ) [Designator_Array]
-                                    ) [Factor_Designator]
-                                  ) [Term_Factor]
-                                ) [Expr_Term]
-                                PrintNumConst_None(
-                                ) [PrintNumConst_None]
-                              ) [PrintStatement]
-                            ) [Statement_Multiple]
-                            DesignatorFindAnyStatement(
-                              Designator_Single(
-                               br
-                              ) [Designator_Single]
-                              Assign(
-                              ) [Assign]
-                              Designator_Single(
-                               niz
-                              ) [Designator_Single]
-                              FindAnyStart(
-                              ) [FindAnyStart]
-                              Expr_AddopTerm(
-                                Expr_Term(
-                                  Term_Factor(
-                                    Factor_NumConst(
-                                     25
-                                    ) [Factor_NumConst]
-                                  ) [Term_Factor]
-                                ) [Expr_Term]
-                                Addition(
-                                ) [Addition]
-                                Term_Factor(
-                                  Factor_Designator(
-                                    Designator_Single(
-                                     pet
-                                    ) [Designator_Single]
-                                  ) [Factor_Designator]
-                                ) [Term_Factor]
-                              ) [Expr_AddopTerm]
-                            ) [DesignatorFindAnyStatement]
-                          ) [Statement_Multiple]
-                          PrintStatement(
-                            Expr_Term(
-                              Term_Factor(
-                                Factor_Designator(
-                                  Designator_Single(
-                                   br
-                                  ) [Designator_Single]
-                                ) [Factor_Designator]
-                              ) [Term_Factor]
-                            ) [Expr_Term]
-                            PrintNumConst_None(
-                            ) [PrintNumConst_None]
-                          ) [PrintStatement]
-                        ) [Statement_Multiple]
-                        DesignatorStatement_(
-                          DesignatorStatement_Assign(
-                            Designator_Single(
-                             nizch
-                            ) [Designator_Single]
-                            Assign(
-                            ) [Assign]
-                            Expr_Term(
-                              Term_Factor(
-                                Factor_NewArray(
-                                  Type(
-                                   char
-                                  ) [Type]
-                                  Expr_Term(
-                                    Term_Factor(
-                                      Factor_NumConst(
-                                       3
-                                      ) [Factor_NumConst]
-                                    ) [Term_Factor]
-                                  ) [Expr_Term]
-                                ) [Factor_NewArray]
-                              ) [Term_Factor]
-                            ) [Expr_Term]
-                          ) [DesignatorStatement_Assign]
-                        ) [DesignatorStatement_]
-                      ) [Statement_Multiple]
+                    Statement_None(
+                    ) [Statement_None]
+                    StatementWrapper(
                       DesignatorStatement_(
                         DesignatorStatement_Assign(
-                          Designator_Array(
-                            DesignatorArrayName(
-                              Designator_Single(
-                               nizch
-                              ) [Designator_Single]
-                            ) [DesignatorArrayName]
-                            Expr_Term(
-                              Term_Factor(
-                                Factor_NumConst(
-                                 0
-                                ) [Factor_NumConst]
-                              ) [Term_Factor]
-                            ) [Expr_Term]
-                          ) [Designator_Array]
+                          Designator_Single(
+                           i
+                          ) [Designator_Single]
                           Assign(
                           ) [Assign]
                           Expr_Term(
                             Term_Factor(
-                              Factor_CharConst(
-                               'a'
-                              ) [Factor_CharConst]
+                              Factor_NewArray(
+                                Type(
+                                 int
+                                ) [Type]
+                                Expr_Term(
+                                  Term_Factor(
+                                    Factor_NumConst(
+                                     3
+                                    ) [Factor_NumConst]
+                                  ) [Term_Factor]
+                                ) [Expr_Term]
+                              ) [Factor_NewArray]
                             ) [Term_Factor]
                           ) [Expr_Term]
                         ) [DesignatorStatement_Assign]
                       ) [DesignatorStatement_]
-                    ) [Statement_Multiple]
-                    DesignatorStatement_(
-                      DesignatorStatement_Assign(
-                        Designator_Array(
-                          DesignatorArrayName(
-                            Designator_Single(
-                             nizch
-                            ) [Designator_Single]
-                          ) [DesignatorArrayName]
-                          Expr_Term(
-                            Term_Factor(
-                              Factor_Designator(
-                                Designator_Single(
-                                 jedan
-                                ) [Designator_Single]
-                              ) [Factor_Designator]
-                            ) [Term_Factor]
-                          ) [Expr_Term]
-                        ) [Designator_Array]
-                        Assign(
-                        ) [Assign]
-                        Expr_Term(
-                          Term_Factor(
-                            Factor_CharConst(
-                             'b'
-                            ) [Factor_CharConst]
-                          ) [Term_Factor]
-                        ) [Expr_Term]
-                      ) [DesignatorStatement_Assign]
-                    ) [DesignatorStatement_]
+                    ) [StatementWrapper]
                   ) [Statement_Multiple]
+                  StatementWrapper(
+                    SkipStatement(
+                     4
+                    ) [SkipStatement]
+                  ) [StatementWrapper]
+                ) [Statement_Multiple]
+                StatementWrapper(
                   DesignatorStatement_(
-                    DesignatorStatement_Assign(
-                      Designator_Array(
-                        DesignatorArrayName(
-                          Designator_Single(
-                           nizch
-                          ) [Designator_Single]
-                        ) [DesignatorArrayName]
-                        Expr_AddopTerm(
-                          Expr_Term(
-                            Term_Factor(
-                              Factor_Designator(
-                                Designator_Single(
-                                 pet
-                                ) [Designator_Single]
-                              ) [Factor_Designator]
-                            ) [Term_Factor]
-                          ) [Expr_Term]
-                          Subtraction(
-                          ) [Subtraction]
-                          Term_Factor(
-                            Factor_NumConst(
-                             3
-                            ) [Factor_NumConst]
-                          ) [Term_Factor]
-                        ) [Expr_AddopTerm]
-                      ) [Designator_Array]
-                      Assign(
-                      ) [Assign]
+                    DesignatorStatement_ActPars(
+                      Designator_Single(
+                       f
+                      ) [Designator_Single]
+                      DesignatorFuncCallStart(
+                      ) [DesignatorFuncCallStart]
+                      OptionalActPars_None(
+                      ) [OptionalActPars_None]
+                    ) [DesignatorStatement_ActPars]
+                  ) [DesignatorStatement_]
+                ) [StatementWrapper]
+              ) [Statement_Multiple]
+              StatementWrapper(
+                DesignatorStatement_(
+                  DesignatorStatement_Assign(
+                    Designator_Array(
+                      DesignatorArrayName(
+                        Designator_Single(
+                         i
+                        ) [Designator_Single]
+                      ) [DesignatorArrayName]
                       Expr_Term(
                         Term_Factor(
-                          Factor_CharConst(
-                           'c'
-                          ) [Factor_CharConst]
+                          Factor_NumConst(
+                           0
+                          ) [Factor_NumConst]
                         ) [Term_Factor]
                       ) [Expr_Term]
-                    ) [DesignatorStatement_Assign]
-                  ) [DesignatorStatement_]
-                ) [Statement_Multiple]
-                PrintStatement(
-                  Expr_Term(
-                    Term_Factor(
-                      Factor_Designator(
-                        Designator_Array(
-                          DesignatorArrayName(
-                            Designator_Single(
-                             nizch
-                            ) [Designator_Single]
-                          ) [DesignatorArrayName]
-                          Expr_Term(
-                            Term_Factor(
-                              Factor_NumConst(
-                               1
-                              ) [Factor_NumConst]
-                            ) [Term_Factor]
-                          ) [Expr_Term]
-                        ) [Designator_Array]
-                      ) [Factor_Designator]
-                    ) [Term_Factor]
-                  ) [Expr_Term]
-                  PrintNumConst_None(
-                  ) [PrintNumConst_None]
-                ) [PrintStatement]
-              ) [Statement_Multiple]
-              PrintStatement(
-                Expr_Term(
-                  Term_Factor(
-                    Factor_Designator(
-                      Designator_Array(
-                        DesignatorArrayName(
-                          Designator_Single(
-                           nizch
-                          ) [Designator_Single]
-                        ) [DesignatorArrayName]
-                        Expr_Term(
-                          Term_MulopFactor(
-                            Factor_Designator(
-                              Designator_Single(
-                               jedan
-                              ) [Designator_Single]
-                            ) [Factor_Designator]
-                            Multiplication(
-                            ) [Multiplication]
-                            Term_Factor(
-                              Factor_NumConst(
-                               2
-                              ) [Factor_NumConst]
-                            ) [Term_Factor]
-                          ) [Term_MulopFactor]
-                        ) [Expr_Term]
-                      ) [Designator_Array]
-                    ) [Factor_Designator]
-                  ) [Term_Factor]
-                ) [Expr_Term]
-                PrintNumConst_None(
-                ) [PrintNumConst_None]
-              ) [PrintStatement]
-            ) [Statement_Multiple]
-            ReadStatement(
-              Designator_Single(
-               bodovi
-              ) [Designator_Single]
-            ) [ReadStatement]
-          ) [Statement_Multiple]
-          DesignatorStatement_(
-            DesignatorStatement_Assign(
-              Designator_Single(
-               bodovi
-              ) [Designator_Single]
-              Assign(
-              ) [Assign]
-              Expr_AddopTerm(
-                Expr_AddopTerm(
-                  Expr_MinusTerm(
-                    Term_Factor(
-                      Factor_Designator(
-                        Designator_Single(
-                         bodovi
-                        ) [Designator_Single]
-                      ) [Factor_Designator]
-                    ) [Term_Factor]
-                  ) [Expr_MinusTerm]
-                  Addition(
-                  ) [Addition]
-                  Term_MulopFactor(
-                    Factor_Expr(
-                      Expr_AddopTerm(
-                        Expr_Term(
-                          Term_MulopFactor(
-                            Factor_Designator(
-                              Designator_Single(
-                               pet
-                              ) [Designator_Single]
-                            ) [Factor_Designator]
-                            Multiplication(
-                            ) [Multiplication]
-                            Term_MulopFactor(
-                              Factor_Designator(
-                                Designator_Single(
-                                 a
-                                ) [Designator_Single]
-                              ) [Factor_Designator]
-                              Division(
-                              ) [Division]
-                              Term_Factor(
-                                Factor_NumConst(
-                                 2
-                                ) [Factor_NumConst]
-                              ) [Term_Factor]
-                            ) [Term_MulopFactor]
-                          ) [Term_MulopFactor]
-                        ) [Expr_Term]
-                        Subtraction(
-                        ) [Subtraction]
-                        Term_Factor(
-                          Factor_Designator(
-                            Designator_Single(
-                             jedan
-                            ) [Designator_Single]
-                          ) [Factor_Designator]
-                        ) [Term_Factor]
-                      ) [Expr_AddopTerm]
-                    ) [Factor_Expr]
-                    Multiplication(
-                    ) [Multiplication]
-                    Term_Factor(
-                      Factor_Designator(
-                        Designator_Single(
-                         bodovi
-                        ) [Designator_Single]
-                      ) [Factor_Designator]
-                    ) [Term_Factor]
-                  ) [Term_MulopFactor]
-                ) [Expr_AddopTerm]
-                Subtraction(
-                ) [Subtraction]
-                Term_Factor(
-                  Factor_Expr(
-                    Expr_AddopTerm(
-                      Expr_AddopTerm(
-                        Expr_Term(
-                          Term_MulopFactor(
-                            Factor_NumConst(
-                             3
-                            ) [Factor_NumConst]
-                            Modulo(
-                            ) [Modulo]
-                            Term_Factor(
-                              Factor_NumConst(
-                               2
-                              ) [Factor_NumConst]
-                            ) [Term_Factor]
-                          ) [Term_MulopFactor]
-                        ) [Expr_Term]
-                        Addition(
-                        ) [Addition]
-                        Term_MulopFactor(
-                          Factor_NumConst(
-                           3
-                          ) [Factor_NumConst]
-                          Multiplication(
-                          ) [Multiplication]
-                          Term_Factor(
-                            Factor_NumConst(
-                             2
-                            ) [Factor_NumConst]
-                          ) [Term_Factor]
-                        ) [Term_MulopFactor]
-                      ) [Expr_AddopTerm]
-                      Subtraction(
-                      ) [Subtraction]
+                    ) [Designator_Array]
+                    Assign(
+                    ) [Assign]
+                    Expr_Term(
                       Term_Factor(
                         Factor_NumConst(
-                         3
+                         2
                         ) [Factor_NumConst]
                       ) [Term_Factor]
-                    ) [Expr_AddopTerm]
-                  ) [Factor_Expr]
-                ) [Term_Factor]
-              ) [Expr_AddopTerm]
-            ) [DesignatorStatement_Assign]
-          ) [DesignatorStatement_]
+                    ) [Expr_Term]
+                  ) [DesignatorStatement_Assign]
+                ) [DesignatorStatement_]
+              ) [StatementWrapper]
+            ) [Statement_Multiple]
+            StatementWrapper(
+              DesignatorStatement_(
+                DesignatorStatement_Assign(
+                  Designator_Array(
+                    DesignatorArrayName(
+                      Designator_Single(
+                       i
+                      ) [Designator_Single]
+                    ) [DesignatorArrayName]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         1
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [Designator_Array]
+                  Assign(
+                  ) [Assign]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       3
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [DesignatorStatement_Assign]
+              ) [DesignatorStatement_]
+            ) [StatementWrapper]
+          ) [Statement_Multiple]
+          StatementWrapper(
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Array(
+                  DesignatorArrayName(
+                    Designator_Single(
+                     i
+                    ) [Designator_Single]
+                  ) [DesignatorArrayName]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       2
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [Designator_Array]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     1
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [StatementWrapper]
         ) [Statement_Multiple]
-        PrintStatement(
-          Expr_Term(
-            Term_Factor(
-              Factor_Designator(
-                Designator_Single(
-                 bodovi
-                ) [Designator_Single]
-              ) [Factor_Designator]
-            ) [Term_Factor]
-          ) [Expr_Term]
-          PrintNumConst_None(
-          ) [PrintNumConst_None]
-        ) [PrintStatement]
+        StatementWrapper(
+          PrintStatement(
+            Expr_Term(
+              Term_Factor(
+                Factor_Designator(
+                  Designator_Array(
+                    DesignatorArrayName(
+                      Designator_Single(
+                       i
+                      ) [Designator_Single]
+                    ) [DesignatorArrayName]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         2
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [Designator_Array]
+                ) [Factor_Designator]
+              ) [Term_Factor]
+            ) [Expr_Term]
+            PrintNumConst_None(
+            ) [PrintNumConst_None]
+          ) [PrintStatement]
+        ) [StatementWrapper]
       ) [Statement_Multiple]
     ) [MethodDecl]
   ) [MethodDecl_Multiple]
 ) [Program]
+Aug 23, 2023 11:50:03 PM rs.ac.bg.etf.pp1.SemanticAnalyzer visit
+INFO: Proveravam koliko puta je koriscen i
 =====================SYMBOL TABLE DUMP=========================
 Type int: int, -1, -1 
 Type char: char, -1, -1 
@@ -1151,19 +382,13 @@ Meth len: int, 0, 1
 
 Type bool: , 0, 1 
 Prog test301: notype, 0, 1 
-   Con nula: int, 0, 0 
-   Con jedan: int, 1, 0 
-   Con pet: int, 5, 0 
-   Var niz: Arr of int, 0, 0 
-   Var niz2: Arr of int, 1, 0 
-   Var a: int, 2, 0 
-   Var b: int, 3, 0 
-   Var nizch: Arr of char, 4, 0 
+   Meth f: notype, 0, 0 
+
    Meth main: notype, 0, 0 
-      Var bodovi: int, 0, 1 
-      Var br: , 1, 1 
+      Var i: Arr of int, 0, 1 
+      Var k: int, 1, 1 
 
 
 
-INFO  18:47:42,053 - ===================================
-INFO  18:47:42,056 - Kod uspesno generisan
+INFO  23:50:03,156 - ===================================
+INFO  23:50:03,160 - Kod uspesno generisan

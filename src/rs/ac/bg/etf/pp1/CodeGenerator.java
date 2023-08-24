@@ -58,6 +58,26 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 
+	// @Override
+	// public void visit(Start start){
+	// 	initMaxMethod();
+	// 	Obj methodObj = Tab.find("max");
+	// 	methodObj.setAdr(Code.pc);
+	// 	Code.put(Code.enter);
+	// 	Code.put(1); // level
+	// 	Code.put(1); // size
+	// 	Code.put(Code.load_n); // load arr -> arr
+		
+
+	// 	Code.put(Code.exit);
+	// 	Code.put(Code.return_);
+	// }
+
+	// public void initMaxMethod(){
+
+	// }
+
+
 	/* Method stuff */
 
 	@Override
@@ -89,7 +109,9 @@ public class CodeGenerator extends VisitorAdaptor {
     | "read" "(" Designator ")" ";"
     | "print" "(" Expr ["," numConst] ")" ";"
     | "{" {Statement} "}".
-*/
+*/	
+
+	
 
 	@Override
 	public void visit(ReadStatement readStatement){
@@ -168,7 +190,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(Factor_DesignatorFuncCall factorDesignatorFuncCall){
-		Obj functionObj = factorDesignatorFuncCall.getDesignator().obj;
+		Obj functionObj = factorDesignatorFuncCall.getFuncCallDesignator().getDesignator().obj;
 		int offset = functionObj.getAdr() - Code.pc;
 		Code.put(Code.call);
 		Code.put2(offset);
@@ -233,6 +255,8 @@ public class CodeGenerator extends VisitorAdaptor {
 		public static final String END_FINDANY = "END_FINDANY";
 		public static final String START_FINDANDREPLACE = "START_FINDANDREPLACE";
 		public static final String END_FINDANDREPLACE = "END_FINDANDREPLACE";
+		public static final String START_MAX = "START_MAX";
+		public static final String END_MAX = "END_MAX";
 		private Stack<Integer> condFact = new Stack<>();
 		private Stack<Integer> condTerm = new Stack<>();
 		private Stack<Integer> skipBlock = new Stack<>();
@@ -244,6 +268,8 @@ public class CodeGenerator extends VisitorAdaptor {
 		private Stack<Integer> endFindAny = new Stack<>();
 		private Stack<Integer> startFindAndReplace = new Stack<>();
 		private Stack<Integer> endFindAndReplace = new Stack<>();
+		private Stack<Integer> startMax = new Stack<>();
+		private Stack<Integer> endMax = new Stack<>();  
 		private HashMap<String, Stack<Integer>> stacks = new HashMap<>();
 		{
 			stacks.put(AND_CONDS, condFact);
@@ -257,6 +283,8 @@ public class CodeGenerator extends VisitorAdaptor {
 			stacks.put(END_FINDANY, endFindAny);
 			stacks.put(START_FINDANDREPLACE, startFindAndReplace);
 			stacks.put(END_FINDANDREPLACE, endFindAndReplace);
+			stacks.put(START_MAX, startMax);
+			stacks.put(END_MAX, endMax);
 		}
 		private Stack<String> loopStack = new Stack<>();
 
@@ -271,14 +299,14 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 
 		public void pushOnStartingPositionStack(String stackName){
-			if (!START_WHILE.equals(stackName) && !START_FOREACH.equals(stackName) && !START_FINDANY.equals(stackName) && !START_FINDANDREPLACE.equals(stackName))
+			if (!START_WHILE.equals(stackName) && !START_FOREACH.equals(stackName) && !START_FINDANY.equals(stackName) && !START_FINDANDREPLACE.equals(stackName) && !START_MAX.equals(stackName))
 				throw new RuntimeException("Only START_WHILE and START_FOREACH can be be used as starting position stacks");
 			push(stackName, Code.pc);
 			loopStack.push(stackName);
 		}
 
 		public int popFromStartingStack(String stackName){
-			if (!START_WHILE.equals(stackName) && !START_FOREACH.equals(stackName) && !START_FINDANY.equals(stackName) && !START_FINDANDREPLACE.equals(stackName))
+			if (!START_WHILE.equals(stackName) && !START_FOREACH.equals(stackName) && !START_FINDANY.equals(stackName) && !START_FINDANDREPLACE.equals(stackName) && !START_MAX.equals(stackName))
 				throw new RuntimeException("Only START_WHILE, START_FOREACH can be popped from starting stack");
 			loopStack.pop();
 			return stacks.get(stackName).pop();
@@ -301,7 +329,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 
 		public void patchAndPopFromEndStack(String stackName){
-			if (!END_STMT_BLOCK.equals(stackName) && !END_ELSE_BLOCK.equals(stackName) && !END_FOREACH.equals(stackName) && !END_FINDANY.equals(stackName) && !END_FINDANDREPLACE.equals(stackName)	)
+			if (!END_STMT_BLOCK.equals(stackName) && !END_ELSE_BLOCK.equals(stackName) && !END_FOREACH.equals(stackName) && !END_FINDANY.equals(stackName) && !END_FINDANDREPLACE.equals(stackName) && !END_MAX.equals(stackName)	)
 				throw new RuntimeException("Only END_STMT_BLOCK, END_ELSE_BLOCK and END_FOREACH can be patched and emptied");
 
 			Stack<Integer> stack = stacks.get(stackName);
@@ -312,6 +340,41 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	PatchingStacks patchingStacks = new PatchingStacks();
 	PatchingStacksOfSets patchingStacksOfSets = new PatchingStacksOfSets();
+
+	@Override
+	public void visit(MaxStatement maxStatement){
+		Designator designatorInt = maxStatement.getDesignator();
+		Designator designatorArr = maxStatement.getDesignator1();
+		Code.load(designatorArr.obj); // arr
+		Code.loadConst(0); // arr, 0
+		Code.put(Code.aload); // arr[0]
+		Code.store(designatorInt.obj); // res = arr[0] -> 
+		
+		Code.loadConst(-1); // push -1 -> -1
+		patchingStacks.pushOnStartingPositionStack(PatchingStacks.START_MAX);
+		Code.loadConst(1);
+		Code.put(Code.add); // idx (incremented)
+		Code.put(Code.dup); // idx, idx
+		Code.load(designatorArr.obj); // idx, idx, arr
+		Code.put(Code.arraylength); // idx, idx, len
+		Code.putFalseJump(Code.lt, 0);
+		patchingStacks.pushAfterJumpCall(PatchingStacks.END_MAX); // If idx > len, jumping to END_MAX
+		Code.load(designatorArr.obj); // idx, arr
+		Code.put(Code.dup2); // idx, arr, idx, arr
+		Code.put(Code.pop); // idx, arr, idx
+		Code.put(Code.aload); // idx, arr[idx]
+		Code.load(designatorInt.obj); // idx, arr[idx], res
+		Code.putFalseJump(Code.gt, patchingStacks.peekOnStartingStack());
+		Code.load(designatorArr.obj); // idx, arr
+		Code.put(Code.dup2); // idx, arr, idx, arr
+		Code.put(Code.pop); // idx, arr, idx
+		Code.put(Code.aload); // idx, arr[idx]
+		Code.store(designatorInt.obj); // idx
+		Code.putJump(patchingStacks.peekOnStartingStack());
+		patchingStacks.patchAndPopFromEndStack(PatchingStacks.END_MAX); // Patch END_MAX with current PC
+		Code.put(Code.pop); // remove idx -> 
+	}
+
 
 	private int mapRelOp(Relop relop){
 		switch(relop.getClass().getSimpleName()){
@@ -324,6 +387,37 @@ public class CodeGenerator extends VisitorAdaptor {
 			default: throw new RuntimeException("Unknown relop");
 		}
 	}
+
+	private int skipCounter = 0;
+	private boolean countingForSkip = false;
+	private int skipJumpAdr = 0;
+	public void countSkip(){
+		if (!countingForSkip) return;
+		skipCounter --;
+		if (skipCounter == 0){
+			countingForSkip = false;
+			Code.fixup(skipJumpAdr);
+		}
+	}
+	public void initSkipCounterIfNotInitialized(int skipCounter){
+		if (countingForSkip) return;
+		countingForSkip = true;
+		this.skipCounter = skipCounter + 1;
+		Code.putJump(0);
+		skipJumpAdr = Code.pc - 2;
+	}
+	
+	@Override 
+	public void visit(SkipStatement skipStatement){
+		initSkipCounterIfNotInitialized(skipStatement.getN1());
+	}
+
+	@Override
+	public void visit(StatementWrapper wrapper){
+		countSkip();
+	}
+
+
 
 	@Override
 	public void visit(CondFact_Expr conditionFactor){

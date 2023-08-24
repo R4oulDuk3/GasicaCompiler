@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/7/2023 22:46:12
+// 23/7/2023 23:28:23
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -59,6 +59,7 @@ public interface Visitor {
     public void visit(DesignatorArrayName DesignatorArrayName);
     public void visit(Designator_Array Designator_Array);
     public void visit(Designator_Single Designator_Single);
+    public void visit(FuncCallDesignator FuncCallDesignator);
     public void visit(Factor_Expr Factor_Expr);
     public void visit(Factor_NewObject Factor_NewObject);
     public void visit(Factor_NewArray Factor_NewArray);
@@ -86,6 +87,7 @@ public interface Visitor {
     public void visit(OptionalActParsOneOrMany_Multiple OptionalActParsOneOrMany_Multiple);
     public void visit(OptionalActPars_None OptionalActPars_None);
     public void visit(OptionalActPars_OneOrMany OptionalActPars_OneOrMany);
+    public void visit(DesignatorFuncCallStart DesignatorFuncCallStart);
     public void visit(DesignatorStatement_Decrement DesignatorStatement_Decrement);
     public void visit(DesignatorStatement_Increment DesignatorStatement_Increment);
     public void visit(DesignatorStatement_ActPars DesignatorStatement_ActPars);
@@ -105,6 +107,8 @@ public interface Visitor {
     public void visit(FindAnyStart FindAnyStart);
     public void visit(FindAndReplaceIterator FindAndReplaceIterator);
     public void visit(FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished);
+    public void visit(SkipStatement SkipStatement);
+    public void visit(MaxStatement MaxStatement);
     public void visit(IfStatement IfStatement);
     public void visit(BlockStatement BlockStatement);
     public void visit(ForeachStatement ForeachStatement);
@@ -118,6 +122,7 @@ public interface Visitor {
     public void visit(DesignatorFindAndReplaceStatement DesignatorFindAndReplaceStatement);
     public void visit(DesignatorFindAnyStatement DesignatorFindAnyStatement);
     public void visit(DesignatorStatement_ DesignatorStatement_);
+    public void visit(StatementWrapper StatementWrapper);
     public void visit(Statement_None Statement_None);
     public void visit(Statement_Multiple Statement_Multiple);
     public void visit(Param_Array Param_Array);
@@ -138,6 +143,8 @@ public interface Visitor {
     public void visit(Var_Single Var_Single);
     public void visit(VarDeclList_None VarDeclList_None);
     public void visit(VarDeclList_Multiple VarDeclList_Multiple);
+    public void visit(Final Final);
+    public void visit(VarDecl_FinalOneOrMany VarDecl_FinalOneOrMany);
     public void visit(VarDecl_OneOrMany VarDecl_OneOrMany);
     public void visit(NumCharBoolConst_None NumCharBoolConst_None);
     public void visit(NumCharBoolConst_Multiple NumCharBoolConst_Multiple);
@@ -151,6 +158,7 @@ public interface Visitor {
     public void visit(ConstVarDecl_Multiple ConstVarDecl_Multiple);
     public void visit(Type Type);
     public void visit(ProgramName ProgramName);
+    public void visit(Start Start);
     public void visit(Program Program);
 
 }

@@ -1,0 +1,37 @@
+INFO  19:57:02,960 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  19:57:02,986 - #2 program
+INFO  19:57:02,986 - #49 test302
+INFO  19:57:02,986 - #3 {
+INFO  19:57:02,987 - #13 void
+INFO  19:57:02,988 - #49 main
+INFO  19:57:02,988 - #6 (
+INFO  19:57:02,989 - #7 )
+INFO  19:57:02,990 - #3 {
+INFO  19:57:02,991 - #4 }
+INFO  19:57:02,991 - #4 }
+INFO  19:57:02,993 - Program(
+  ProgramName(
+   test302
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  Start(
+  ) [Start]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_None(
+      ) [VarDeclList_None]
+      Statement_None(
+      ) [Statement_None]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]

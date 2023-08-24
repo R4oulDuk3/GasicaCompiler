@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/7/2023 22:46:12
+// 23/7/2023 23:28:23
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -59,6 +59,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorArrayName DesignatorArrayName) { visit(); }
     public void visit(Designator_Array Designator_Array) { visit(); }
     public void visit(Designator_Single Designator_Single) { visit(); }
+    public void visit(FuncCallDesignator FuncCallDesignator) { visit(); }
     public void visit(Factor_Expr Factor_Expr) { visit(); }
     public void visit(Factor_NewObject Factor_NewObject) { visit(); }
     public void visit(Factor_NewArray Factor_NewArray) { visit(); }
@@ -86,6 +87,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(OptionalActParsOneOrMany_Multiple OptionalActParsOneOrMany_Multiple) { visit(); }
     public void visit(OptionalActPars_None OptionalActPars_None) { visit(); }
     public void visit(OptionalActPars_OneOrMany OptionalActPars_OneOrMany) { visit(); }
+    public void visit(DesignatorFuncCallStart DesignatorFuncCallStart) { visit(); }
     public void visit(DesignatorStatement_Decrement DesignatorStatement_Decrement) { visit(); }
     public void visit(DesignatorStatement_Increment DesignatorStatement_Increment) { visit(); }
     public void visit(DesignatorStatement_ActPars DesignatorStatement_ActPars) { visit(); }
@@ -105,6 +107,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FindAnyStart FindAnyStart) { visit(); }
     public void visit(FindAndReplaceIterator FindAndReplaceIterator) { visit(); }
     public void visit(FindAndReplaceCondExprFinished FindAndReplaceCondExprFinished) { visit(); }
+    public void visit(SkipStatement SkipStatement) { visit(); }
+    public void visit(MaxStatement MaxStatement) { visit(); }
     public void visit(IfStatement IfStatement) { visit(); }
     public void visit(BlockStatement BlockStatement) { visit(); }
     public void visit(ForeachStatement ForeachStatement) { visit(); }
@@ -118,6 +122,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorFindAndReplaceStatement DesignatorFindAndReplaceStatement) { visit(); }
     public void visit(DesignatorFindAnyStatement DesignatorFindAnyStatement) { visit(); }
     public void visit(DesignatorStatement_ DesignatorStatement_) { visit(); }
+    public void visit(StatementWrapper StatementWrapper) { visit(); }
     public void visit(Statement_None Statement_None) { visit(); }
     public void visit(Statement_Multiple Statement_Multiple) { visit(); }
     public void visit(Param_Array Param_Array) { visit(); }
@@ -138,6 +143,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Var_Single Var_Single) { visit(); }
     public void visit(VarDeclList_None VarDeclList_None) { visit(); }
     public void visit(VarDeclList_Multiple VarDeclList_Multiple) { visit(); }
+    public void visit(Final Final) { visit(); }
+    public void visit(VarDecl_FinalOneOrMany VarDecl_FinalOneOrMany) { visit(); }
     public void visit(VarDecl_OneOrMany VarDecl_OneOrMany) { visit(); }
     public void visit(NumCharBoolConst_None NumCharBoolConst_None) { visit(); }
     public void visit(NumCharBoolConst_Multiple NumCharBoolConst_Multiple) { visit(); }
@@ -151,6 +158,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ConstVarDecl_Multiple ConstVarDecl_Multiple) { visit(); }
     public void visit(Type Type) { visit(); }
     public void visit(ProgramName ProgramName) { visit(); }
+    public void visit(Start Start) { visit(); }
     public void visit(Program Program) { visit(); }
 
 

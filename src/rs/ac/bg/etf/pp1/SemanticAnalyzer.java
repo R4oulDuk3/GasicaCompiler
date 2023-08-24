@@ -2,7 +2,11 @@ package rs.ac.bg.etf.pp1;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Logger;
@@ -14,6 +18,7 @@ import rs.etf.pp1.symboltable.concepts.*;
 
 public class SemanticAnalyzer extends VisitorAdaptor {
     private Obj boolType;
+
     public SemanticAnalyzer() {
         Tab.init();
         boolType = Tab.insert(Obj.Type, "bool", new Struct(Struct.Bool));
@@ -27,6 +32,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             });
         });
     }
+
+
 
     public void dumpState() {
         Tab.dump();
@@ -237,6 +244,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         executeWithFailureConditions((Void) -> {
                 Tab.insert(Obj.Var, varDecl.getI1(), State.currentType);
                 report_info("Deklarisana promenljiva " + varDecl.getI1(), varDecl);
+                if (isFinal){
+                    addToFinalVars(varDecl.getI1());
+                }
             }, 
             new Pair<>((Void) -> State.symbolAlreadyDeclared(varDecl.getI1()), (Void) -> report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl))
         );
@@ -248,9 +258,51 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             (Void) -> {
                 Tab.insert(Obj.Var, varDecl.getI1(), new Struct(Struct.Array, State.currentType));
                 report_info("Deklarisana niz " + varDecl.getI1(), varDecl);
+                if (isFinal){
+                    addToFinalVars(varDecl.getI1());
+                }
             },
             new Pair<>((Void) -> State.symbolAlreadyDeclared(varDecl.getI1()), (Void) -> report_error("Greska: Promenljiva " + varDecl.getI1() + " je vec deklarisana", varDecl))
         );
+    }
+    
+    private void addToFinalVars(String varName) {
+        log.info("Dodajem u finalne " + varName);
+        String scopeName = getScopeName();
+        Set<String> finalVars = finalVarsInScope.getOrDefault(scopeName, new HashSet<String>());
+        Set<String> unusedFinalVars = unusedFinalVarsInScope.getOrDefault(scopeName, new HashSet<String>());
+        finalVars.add(varName);
+        unusedFinalVars.add(varName);
+        finalVarsInScope.put(scopeName, finalVars);
+        unusedFinalVarsInScope.put(scopeName, unusedFinalVars);
+    }
+
+
+
+    private String getScopeName() {
+        Obj method = State.currentMethod;
+        String scopeName;
+        if (method == Tab.noObj || method == null){
+            scopeName = method.getName();
+        } else {
+            scopeName = "global";
+        }
+        return scopeName;
+    }
+
+    private void tryAssigningToVar(String varName) throws Exception{
+        String scopeName = getScopeName();
+        Set<String> finalVars = finalVarsInScope.getOrDefault(scopeName, new HashSet<String>());
+        Set<String> unusedFinalVars = unusedFinalVarsInScope.getOrDefault(scopeName, new HashSet<String>());
+        if (!finalVars.contains(varName)){
+            return;
+        }
+        if (!unusedFinalVars.contains(varName)){
+            throw new Exception("Finalna variabla iskoriscena vise puta");
+        }
+        unusedFinalVars.remove(varName);
+        return;
+
     }
 
     @Override
@@ -287,6 +339,54 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                 State.currentMethodReturnType = Tab.noType;
             })
         );   
+    }
+
+    // @Override
+    // public void visit(Start Start){
+    //     // all consts and vars are declared, declaring methods
+    //     initMaxMethod();
+    // }
+
+    // public void initMaxMethod(){
+    //     Obj methObj = Tab.insert(Obj.Meth, "max", Tab.intType); // obj = Tab.insert(Obj.Meth, methodName.getI1(), State.currentMethodReturnType);
+    //     Tab.openScope(); // open max scope
+    //     // Obj obj =Tab.insert(Obj.Var, paramSingle.getI2(), State.currentType);
+    //     // registerParam(obj);
+    //     Obj arrObj = Tab.insert(Obj.Var, "arr", new Struct(Struct.Array, Tab.intType));
+    //     arrObj.setFpPos(1);
+    //     methObj.setLevel(methObj.getLevel()+1);
+    //     Tab.chainLocalSymbols(methObj);
+    //     Tab.closeScope();  // close max scope
+    // }
+
+    boolean isFinal = false;
+    Map<String, Set<String>> finalVarsInScope = new HashMap<>();
+    Map<String, Set<String>> unusedFinalVarsInScope = new HashMap<>();
+
+    @Override 
+    public void visit(Final finalSymbol){
+        isFinal = true;
+    }
+
+    @Override
+    public void visit(VarDecl_FinalOneOrMany varDecl_FinalOneOrMany){
+        isFinal = false;
+    }
+
+    @Override
+    public void visit (MaxStatement maxStatement){
+        Designator designatorArr = maxStatement.getDesignator1();
+        if (designatorArr.obj.getType().getKind() != Struct.Array){
+            report_error("Designator not an array", designatorArr);
+            return;
+        }
+        if (designatorArr.obj.getType().getElemType().getKind() != Struct.Int){
+            report_error("Dessignator array elems not of type int", designatorArr);
+        }
+        Designator designatorInt = maxStatement.getDesignator();
+        if (designatorInt.obj.getType().getKind() != Struct.Int ){
+            report_error("Assagined designator must be an integer", designatorInt);
+        }
     }
 
     @Override
@@ -384,7 +484,19 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (!isAssignable(designatorType, exprType)){
             report_error("Greska: Tipovi u dodeli se ne poklapaju na liniji: " + statement_DesignatorStatement_Assign.getLine(), assignop);
         }
+        String varName = statement_DesignatorStatement_Assign.getDesignator().obj.getName();
+        try {
+            if (statement_DesignatorStatement_Assign.getDesignator() instanceof Designator_Single){
+                log.info("Proveravam koliko puta je koriscen " + varName);
+                tryAssigningToVar(varName);
+            }
+        } catch (Exception e) {
+            report_error(e.getMessage(), statement_DesignatorStatement_Assign);
+        }
     }
+
+    
+    
     /*
      * DesignatorStatement = Designator ("++" | "--") ";".
         • Designator mora označavati promenljivu, element niza ili polje objekta unutrašnje klase.
@@ -853,11 +965,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
      @Override
      public void visit(Factor_DesignatorFuncCall factor_DesignatorFuncCall){
-         factor_DesignatorFuncCall.struct = factor_DesignatorFuncCall.getDesignator().obj.getType();
-        if (factor_DesignatorFuncCall.getDesignator().obj == null || factor_DesignatorFuncCall.getDesignator().obj.getKind() != Obj.Meth){
+         factor_DesignatorFuncCall.struct = factor_DesignatorFuncCall.getFuncCallDesignator().getDesignator().obj.getType();
+        if (factor_DesignatorFuncCall.getFuncCallDesignator().getDesignator().obj == null || factor_DesignatorFuncCall.getFuncCallDesignator().getDesignator().obj.getKind() != Obj.Meth){
             report_error("Greska: Designator mora označavati nestatičku metodu unutrašnje klase ili globalnu funkciju glavnog programa na liniji: " + factor_DesignatorFuncCall.getLine(), factor_DesignatorFuncCall);
         } else {
-            List<Struct> methodParams = getMethodParams(factor_DesignatorFuncCall.getDesignator());
+            List<Struct> methodParams = getMethodParams(factor_DesignatorFuncCall.getFuncCallDesignator().getDesignator());
             List<Struct> calledMethodParams = State.calledMethodParams;
             if (methodParams.size() != calledMethodParams.size()){
                 report_error(String.format("Broj parametara se ne pokpala [deklarisani: %d, dati: %d]", methodParams.size(), calledMethodParams.size()), factor_DesignatorFuncCall);

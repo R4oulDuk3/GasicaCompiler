@@ -1,0 +1,256 @@
+INFO  22:22:51,124 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  22:22:51,150 - #2 program
+INFO  22:22:51,150 - #51 test301
+INFO  22:22:51,151 - #3 {
+INFO  22:22:51,151 - #13 void
+INFO  22:22:51,152 - #51 main
+INFO  22:22:51,152 - #6 (
+INFO  22:22:51,153 - #7 )
+INFO  22:22:51,153 - #47 final
+INFO  22:22:51,154 - #51 int
+INFO  22:22:51,154 - #51 i
+INFO  22:22:51,155 - #41 [
+INFO  22:22:51,155 - #42 ]
+INFO  22:22:51,155 - #5 ;
+INFO  22:22:51,156 - #51 int
+INFO  22:22:51,156 - #51 k
+INFO  22:22:51,157 - #5 ;
+INFO  22:22:51,157 - #3 {
+INFO  22:22:51,157 - #51 i
+INFO  22:22:51,158 - #12 =
+INFO  22:22:51,158 - #17 new
+INFO  22:22:51,158 - #51 int
+INFO  22:22:51,159 - #41 [
+INFO  22:22:51,159 - #50 3
+INFO  22:22:51,159 - #42 ]
+INFO  22:22:51,160 - #5 ;
+INFO  22:22:51,160 - #51 i
+INFO  22:22:51,160 - #41 [
+INFO  22:22:51,160 - #50 0
+INFO  22:22:51,161 - #42 ]
+INFO  22:22:51,161 - #12 =
+INFO  22:22:51,161 - #50 2
+INFO  22:22:51,161 - #5 ;
+INFO  22:22:51,161 - #51 i
+INFO  22:22:51,161 - #41 [
+INFO  22:22:51,162 - #50 1
+INFO  22:22:51,162 - #42 ]
+INFO  22:22:51,162 - #12 =
+INFO  22:22:51,162 - #50 3
+INFO  22:22:51,162 - #5 ;
+INFO  22:22:51,162 - #51 i
+INFO  22:22:51,162 - #41 [
+INFO  22:22:51,162 - #50 2
+INFO  22:22:51,163 - #42 ]
+INFO  22:22:51,163 - #12 =
+INFO  22:22:51,163 - #50 1
+INFO  22:22:51,163 - #5 ;
+INFO  22:22:51,163 - #51 k
+INFO  22:22:51,163 - #12 =
+INFO  22:22:51,163 - #46 max
+INFO  22:22:51,164 - #6 (
+INFO  22:22:51,164 - #51 i
+INFO  22:22:51,164 - #7 )
+INFO  22:22:51,164 - #5 ;
+INFO  22:22:51,164 - #9 print
+INFO  22:22:51,164 - #6 (
+INFO  22:22:51,164 - #51 k
+INFO  22:22:51,164 - #7 )
+INFO  22:22:51,165 - #5 ;
+INFO  22:22:51,165 - #4 }
+INFO  22:22:51,165 - #4 }
+INFO  22:22:51,169 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  Start(
+  ) [Start]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_Multiple(
+          VarDeclList_None(
+          ) [VarDeclList_None]
+          VarDecl_FinalOneOrMany(
+            Final(
+            ) [Final]
+            Type(
+             int
+            ) [Type]
+            Var_Array(
+             i
+            ) [Var_Array]
+            Var_None(
+            ) [Var_None]
+          ) [VarDecl_FinalOneOrMany]
+        ) [VarDeclList_Multiple]
+        VarDecl_OneOrMany(
+          Type(
+           int
+          ) [Type]
+          Var_Single(
+           k
+          ) [Var_Single]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_Multiple(
+                Statement_Multiple(
+                  Statement_None(
+                  ) [Statement_None]
+                  DesignatorStatement_(
+                    DesignatorStatement_Assign(
+                      Designator_Single(
+                       i
+                      ) [Designator_Single]
+                      Assign(
+                      ) [Assign]
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_NewArray(
+                            Type(
+                             int
+                            ) [Type]
+                            Expr_Term(
+                              Term_Factor(
+                                Factor_NumConst(
+                                 3
+                                ) [Factor_NumConst]
+                              ) [Term_Factor]
+                            ) [Expr_Term]
+                          ) [Factor_NewArray]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                    ) [DesignatorStatement_Assign]
+                  ) [DesignatorStatement_]
+                ) [Statement_Multiple]
+                DesignatorStatement_(
+                  DesignatorStatement_Assign(
+                    Designator_Array(
+                      DesignatorArrayName(
+                        Designator_Single(
+                         i
+                        ) [Designator_Single]
+                      ) [DesignatorArrayName]
+                      Expr_Term(
+                        Term_Factor(
+                          Factor_NumConst(
+                           0
+                          ) [Factor_NumConst]
+                        ) [Term_Factor]
+                      ) [Expr_Term]
+                    ) [Designator_Array]
+                    Assign(
+                    ) [Assign]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         2
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [DesignatorStatement_Assign]
+                ) [DesignatorStatement_]
+              ) [Statement_Multiple]
+              DesignatorStatement_(
+                DesignatorStatement_Assign(
+                  Designator_Array(
+                    DesignatorArrayName(
+                      Designator_Single(
+                       i
+                      ) [Designator_Single]
+                    ) [DesignatorArrayName]
+                    Expr_Term(
+                      Term_Factor(
+                        Factor_NumConst(
+                         1
+                        ) [Factor_NumConst]
+                      ) [Term_Factor]
+                    ) [Expr_Term]
+                  ) [Designator_Array]
+                  Assign(
+                  ) [Assign]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       3
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [DesignatorStatement_Assign]
+              ) [DesignatorStatement_]
+            ) [Statement_Multiple]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Array(
+                  DesignatorArrayName(
+                    Designator_Single(
+                     i
+                    ) [Designator_Single]
+                  ) [DesignatorArrayName]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       2
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [Designator_Array]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     1
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          MaxStatement(
+            Designator_Single(
+             k
+            ) [Designator_Single]
+            Assign(
+            ) [Assign]
+            Designator_Single(
+             i
+            ) [Designator_Single]
+          ) [MaxStatement]
+        ) [Statement_Multiple]
+        PrintStatement(
+          Expr_Term(
+            Term_Factor(
+              Factor_Designator(
+                Designator_Single(
+                 k
+                ) [Designator_Single]
+              ) [Factor_Designator]
+            ) [Term_Factor]
+          ) [Expr_Term]
+          PrintNumConst_None(
+          ) [PrintNumConst_None]
+        ) [PrintStatement]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  22:22:51,216 - ===================================
+ERROR 22:22:51,216 - Error occured on semantic analysis. Code is not generated.

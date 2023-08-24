@@ -60,6 +60,7 @@ terminal MINUS, MULT, DIV, MOD, EQEQ, NOTEQ, GT, GTEQ, LT, LTEQ, AND, OR, INCREM
 terminal COLON, DOT, LBRACKET, RBRACKET, ARROW;
 
 terminal FINDANY, FINDANDREPLACE;
+terminal MAX, FINAL, SKIP;
 terminal Boolean BOOLCONST;
 terminal String CHARCONST;
 terminal Integer NUMBER ;
@@ -78,13 +79,17 @@ nonterminal OptionalMinus, ElseStatement, PrintNumConst, ConditionWrapper, FindA
 nonterminal ReturnType, WhileStart, ForeachStart, ForEachDesignator, DesignatorArrayName, WhileStatementStart;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Factor, Term, Expr, CondTerm, CondFact;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, MethodName, ForEachInterator, FindAndReplaceIterator;
+nonterminal Start, Final, StatementWrapper, FuncCallDesignator, DesignatorFuncCallStart;
 precedence left ELSE;
+
 
 /*
     Program = "program" ident {ConstDecl | VarDecl | ClassDecl } "{" {MethodDecl} "}".
 */
 
-Program ::= (Program) PROG ProgramName ConstVarDeclList LBRACE MethodDeclList RBRACE;
+Program ::= (Program) PROG ProgramName ConstVarDeclList LBRACE Start MethodDeclList RBRACE;
+
+Start ::= (Start) /* epsilon */;
 
 ProgramName ::= (ProgramName) IDENT;
 
@@ -114,7 +119,10 @@ ZeroOrManyNumCharBoolConst ::= (NumCharBoolConst_Multiple) ZeroOrManyNumCharBool
     VarDecl = Type ident ["[" "]"] {"," ident ["[" "]"]} ";"
 */
 
-VarDecl ::= (VarDecl_OneOrMany) Type OneOfVarDecl ZeroOrManyVarDecl SEMI;
+VarDecl ::= (VarDecl_OneOrMany) Type OneOfVarDecl ZeroOrManyVarDecl SEMI |
+            (VarDecl_FinalOneOrMany) Final Type OneOfVarDecl ZeroOrManyVarDecl SEMI;
+
+Final ::= (Final) FINAL;
 
 VarDeclList ::= (VarDeclList_Multiple) VarDeclList VarDecl
               | (VarDeclList_None) /* epsilon */;
@@ -169,8 +177,10 @@ Parameter ::= (Param_Single) Type IDENT
     | Designator "." "foreach" "(" ident "=>" Statement ")" ";" * za B i C nivo
 */
 
-StatementList ::= (Statement_Multiple) StatementList Statement
+StatementList ::= (Statement_Multiple) StatementList StatementWrapper
                 | (Statement_None) /* epsilon */;
+
+StatementWrapper ::= (StatementWrapper) Statement;
 
 Statement ::= (DesignatorStatement_) DesignatorStatement SEMI |
     (DesignatorFindAnyStatement) Designator Assignop Designator DOT FindAnyStart FINDANY LPAREN Expr RPAREN SEMI |
@@ -184,7 +194,9 @@ Statement ::= (DesignatorStatement_) DesignatorStatement SEMI |
     (PrintStatement) PRINT LPAREN Expr PrintNumConst RPAREN SEMI |
     (ForeachStatement) ForEachDesignator ForeachStart DOT FOREACH LPAREN ForEachInterator ARROW Statement RPAREN SEMI |
     (BlockStatement) LBRACE StatementList RBRACE |
-    (IfStatement) IF LPAREN ConditionWrapper RPAREN Statement ElseStatement;
+    (IfStatement) IF LPAREN ConditionWrapper RPAREN Statement ElseStatement |
+    (MaxStatement) Designator Assignop MAX LPAREN Designator RPAREN SEMI |
+    (SkipStatement) SKIP NUMBER SEMI;
 
 FindAndReplaceCondExprFinished ::= (FindAndReplaceCondExprFinished) /* epsilon */;
 
@@ -225,9 +237,11 @@ DesignatorStatement ::= (DesignatorStatement_Assign) Designator Assignop Expr
                         {: 
                             parser.report_error("DesignatorStatement_Error. Line " + eleft, null);
                         :} 
-                      | (DesignatorStatement_ActPars) Designator LPAREN OptionalActPars RPAREN
+                      | (DesignatorStatement_ActPars) Designator DesignatorFuncCallStart LPAREN OptionalActPars RPAREN
                       | (DesignatorStatement_Increment) Designator INCREMENT
                       | (DesignatorStatement_Decrement) Designator DECREMENT;
+
+DesignatorFuncCallStart ::= (DesignatorFuncCallStart) /* epsilon */;
 
 /*
     ActPars = Expr {"," Expr}.
@@ -292,13 +306,16 @@ Term ::= (Term_Factor) Factor
 */
 
 Factor ::= (Factor_Designator) Designator
-         | (Factor_DesignatorFuncCall) Designator LPAREN OptionalActPars RPAREN // No class methods for B
+         | (Factor_DesignatorFuncCall) FuncCallDesignator LPAREN OptionalActPars RPAREN // No class methods for B
          | (Factor_NumConst) NUMBER
          | (Factor_CharConst) CHARCONST
          | (Factor_BoolConst) BOOLCONST
          | (Factor_NewArray) NEW Type LBRACKET Expr RBRACKET
          | (Factor_NewObject) NEW Type LPAREN OptionalActPars RPAREN
          | (Factor_Expr) LPAREN Expr RPAREN;
+
+
+FuncCallDesignator ::= (FuncCallDesignator) Designator;
 
 /*
     Designator = ident {"." ident | "[" Expr "]"}.

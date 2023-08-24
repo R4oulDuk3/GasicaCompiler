@@ -53,7 +53,10 @@ import java_cup.runtime.Symbol;
 "foreach"       { return new_symbol(sym.FOREACH, yytext()); }
 "findAny"       { return new_symbol(sym.FINDANY, yytext()); }
 "findAndReplace" { return new_symbol(sym.FINDANDREPLACE, yytext()); }
-
+"max"		    { return new_symbol(sym.MAX, yytext()); }
+"final"			{ return new_symbol(sym.FINAL, yytext()); }
+"skip"          { return new_symbol(sym.SKIP, yytext()); }
+ 
 "+"             { return new_symbol(sym.PLUS, yytext()); }
 "-"             { return new_symbol(sym.MINUS, yytext()); }
 "*"             { return new_symbol(sym.MULT, yytext()); }

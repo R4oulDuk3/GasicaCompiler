@@ -1,0 +1,201 @@
+INFO  21:06:47,196 - Compiling source file: C:\Users\Gavrilo\eclipse-workspace\GasicaCompiler\test\program.mj
+INFO  21:06:47,222 - #2 program
+INFO  21:06:47,222 - #50 test301
+INFO  21:06:47,222 - #3 {
+INFO  21:06:47,223 - #13 void
+INFO  21:06:47,224 - #50 main
+INFO  21:06:47,225 - #6 (
+INFO  21:06:47,225 - #7 )
+INFO  21:06:47,226 - #50 int
+INFO  21:06:47,226 - #50 i
+INFO  21:06:47,227 - #41 [
+INFO  21:06:47,227 - #42 ]
+INFO  21:06:47,227 - #5 ;
+INFO  21:06:47,228 - #50 char
+INFO  21:06:47,228 - #50 c
+INFO  21:06:47,228 - #41 [
+INFO  21:06:47,228 - #42 ]
+INFO  21:06:47,228 - #5 ;
+INFO  21:06:47,229 - #3 {
+INFO  21:06:47,229 - #50 i
+INFO  21:06:47,229 - #12 =
+INFO  21:06:47,229 - #17 new
+INFO  21:06:47,230 - #50 int
+INFO  21:06:47,230 - #41 [
+INFO  21:06:47,231 - #49 3
+INFO  21:06:47,231 - #42 ]
+INFO  21:06:47,231 - #5 ;
+INFO  21:06:47,231 - #50 i
+INFO  21:06:47,232 - #41 [
+INFO  21:06:47,232 - #49 0
+INFO  21:06:47,232 - #42 ]
+INFO  21:06:47,232 - #12 =
+INFO  21:06:47,233 - #49 2
+INFO  21:06:47,233 - #5 ;
+INFO  21:06:47,233 - #50 i
+INFO  21:06:47,233 - #41 [
+INFO  21:06:47,233 - #49 1
+INFO  21:06:47,233 - #42 ]
+INFO  21:06:47,234 - #12 =
+INFO  21:06:47,234 - #49 3
+INFO  21:06:47,234 - #5 ;
+INFO  21:06:47,234 - #50 i
+INFO  21:06:47,234 - #41 [
+INFO  21:06:47,234 - #49 2
+INFO  21:06:47,235 - #42 ]
+INFO  21:06:47,235 - #12 =
+INFO  21:06:47,235 - #49 1
+INFO  21:06:47,235 - #5 ;
+INFO  21:06:47,235 - #46 max
+ERROR 21:06:47,235 - 
+Sintaksna greska na liniji 13
+INFO  21:06:47,235 - #6 (
+INFO  21:06:47,236 - #50 i
+INFO  21:06:47,236 - #7 )
+INFO  21:06:47,236 - #5 ;
+INFO  21:06:47,236 - #4 }
+INFO  21:06:47,236 - #4 }
+ERROR 21:06:47,240 - DesignatorStatement_Error. Line 1
+INFO  21:06:47,244 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  EmptyConstVarDeclList_None(
+  ) [EmptyConstVarDeclList_None]
+  Start(
+  ) [Start]
+  MethodDecl_Multiple(
+    MethodDecl_None(
+    ) [MethodDecl_None]
+    MethodDecl(
+      ReturnType_Void(
+      ) [ReturnType_Void]
+      MethodName(
+       main
+      ) [MethodName]
+      OptionalParams_None(
+      ) [OptionalParams_None]
+      VarDeclList_Multiple(
+        VarDeclList_Multiple(
+          VarDeclList_None(
+          ) [VarDeclList_None]
+          VarDecl_OneOrMany(
+            Type(
+             int
+            ) [Type]
+            Var_Array(
+             i
+            ) [Var_Array]
+            Var_None(
+            ) [Var_None]
+          ) [VarDecl_OneOrMany]
+        ) [VarDeclList_Multiple]
+        VarDecl_OneOrMany(
+          Type(
+           char
+          ) [Type]
+          Var_Array(
+           c
+          ) [Var_Array]
+          Var_None(
+          ) [Var_None]
+        ) [VarDecl_OneOrMany]
+      ) [VarDeclList_Multiple]
+      Statement_Multiple(
+        Statement_Multiple(
+          Statement_Multiple(
+            Statement_Multiple(
+              Statement_None(
+              ) [Statement_None]
+              DesignatorStatement_(
+                DesignatorStatement_Assign(
+                  Designator_Single(
+                   i
+                  ) [Designator_Single]
+                  Assign(
+                  ) [Assign]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NewArray(
+                        Type(
+                         int
+                        ) [Type]
+                        Expr_Term(
+                          Term_Factor(
+                            Factor_NumConst(
+                             3
+                            ) [Factor_NumConst]
+                          ) [Term_Factor]
+                        ) [Expr_Term]
+                      ) [Factor_NewArray]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [DesignatorStatement_Assign]
+              ) [DesignatorStatement_]
+            ) [Statement_Multiple]
+            DesignatorStatement_(
+              DesignatorStatement_Assign(
+                Designator_Array(
+                  DesignatorArrayName(
+                    Designator_Single(
+                     i
+                    ) [Designator_Single]
+                  ) [DesignatorArrayName]
+                  Expr_Term(
+                    Term_Factor(
+                      Factor_NumConst(
+                       0
+                      ) [Factor_NumConst]
+                    ) [Term_Factor]
+                  ) [Expr_Term]
+                ) [Designator_Array]
+                Assign(
+                ) [Assign]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     2
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [DesignatorStatement_Assign]
+            ) [DesignatorStatement_]
+          ) [Statement_Multiple]
+          DesignatorStatement_(
+            DesignatorStatement_Assign(
+              Designator_Array(
+                DesignatorArrayName(
+                  Designator_Single(
+                   i
+                  ) [Designator_Single]
+                ) [DesignatorArrayName]
+                Expr_Term(
+                  Term_Factor(
+                    Factor_NumConst(
+                     1
+                    ) [Factor_NumConst]
+                  ) [Term_Factor]
+                ) [Expr_Term]
+              ) [Designator_Array]
+              Assign(
+              ) [Assign]
+              Expr_Term(
+                Term_Factor(
+                  Factor_NumConst(
+                   3
+                  ) [Factor_NumConst]
+                ) [Term_Factor]
+              ) [Expr_Term]
+            ) [DesignatorStatement_Assign]
+          ) [DesignatorStatement_]
+        ) [Statement_Multiple]
+        DesignatorStatement_(
+          DesignatorStatement_Error(
+          ) [DesignatorStatement_Error]
+        ) [DesignatorStatement_]
+      ) [Statement_Multiple]
+    ) [MethodDecl]
+  ) [MethodDecl_Multiple]
+) [Program]
+INFO  21:06:47,270 - ===================================
+INFO  21:06:47,274 - Kod uspesno generisan
