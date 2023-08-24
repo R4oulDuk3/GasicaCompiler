@@ -156,7 +156,8 @@ VarDeclList ::= (VarDeclList_Multiple) VarDeclList:V1 VarDecl:V2 {: RESULT=new V
               | (VarDeclList_None) {: RESULT=new VarDeclList_None(); :} /* epsilon */;
 
 OneOfVarDecl ::= (Var_Single) IDENT:I1 {: RESULT=new Var_Single(I1); RESULT.setLine(I1left); :}
-               | (Var_Array) IDENT:I1 LBRACKET RBRACKET {: RESULT=new Var_Array(I1); RESULT.setLine(I1left); :};
+               | (Var_Array) IDENT:I1 LBRACKET RBRACKET {: RESULT=new Var_Array(I1); RESULT.setLine(I1left); :}
+               | (Var_Error) error:l {: parser.report_error("Greska pri deklaraciji globalne promenljive u liniji: " + lleft, null); :} {: RESULT=new Var_Error(); :};
 
 ZeroOrManyVarDecl ::= (Var_Multiple) ZeroOrManyVarDecl:Z1 COMMA OneOfVarDecl:O2 {: RESULT=new Var_Multiple(Z1, O2); RESULT.setLine(Z1left); :}
                     | (Var_None) {: RESULT=new Var_None(); :} /* epsilon */;
@@ -188,7 +189,8 @@ MoreParams ::= COMMA Parameter:P1 MoreParams:M2 {: RESULT=new MoreParamsDerived1
             | {: RESULT=new MoreParamsDerived2(); :} /* epsilon */;
 
 Parameter ::= (Param_Single) Type:T1 IDENT:I2 {: RESULT=new Param_Single(T1, I2); RESULT.setLine(T1left); :}
-            | (Param_Array) Type:T1 IDENT:I2 LBRACKET RBRACKET {: RESULT=new Param_Array(T1, I2); RESULT.setLine(T1left); :};
+            | (Param_Array) Type:T1 IDENT:I2 LBRACKET RBRACKET {: RESULT=new Param_Array(T1, I2); RESULT.setLine(T1left); :}
+            | (Param_Error) error:l {: parser.report_error("Greska pri deklaraciji formalnog parametra u liniji: " + lleft, null); :} {: RESULT=new Param_Error(); :};
 
 /*
     Statement = DesignatorStatement ";"
@@ -282,7 +284,11 @@ OptionalActParsOneOrMany ::= (OptionalActParsOneOrMany_Multiple) OptionalActPars
 ConditionWrapper ::= (ConditionWrapper) Condition:C1 {: RESULT=new ConditionWrapper(C1); RESULT.setLine(C1left); :};
 
 Condition ::= (Condition_OneOrMany) Condition:C1 OR CondTermWrapper:C2 {: RESULT=new Condition_OneOrMany(C1, C2); RESULT.setLine(C1left); :}
-            | (Condition_Single) CondTermWrapper:C1 {: RESULT=new Condition_Single(C1); RESULT.setLine(C1left); :};
+            | (Condition_Single) CondTermWrapper:C1 {: RESULT=new Condition_Single(C1); RESULT.setLine(C1left); :}
+            | (Condition_Error) error:e 
+              {: 
+                  parser.report_error("Condition_Error. Line " + eleft, null);
+              :} {: RESULT=new Condition_Error(); :};
 
 CondTermWrapper ::= (CondTermWrapper) CondTerm:C1 {: RESULT=new CondTermWrapper(C1); RESULT.setLine(C1left); :};
 

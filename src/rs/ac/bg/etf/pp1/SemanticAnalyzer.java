@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import java.lang.reflect.Method;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -353,9 +354,29 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }
     }
 
+    /* Error handling */
+        @Override
+	public void visit(DesignatorStatement_Error designatorStatement_Error){
+		report_error("Greska: Sintaksicki neispravan kod" + designatorStatement_Error.getClass().getSimpleName() + "]", designatorStatement_Error);
+	}
+
+    @Override
+    public void visit(Var_Error var_Error){
+        report_error("Greska: Sintaksicki neispravan kod[" + var_Error.getClass().getSimpleName() + "]", var_Error);
+    }
+
+    @Override
+    public void visit(Param_Error param_Error){
+        report_error("Greska: Sintaksicki neispravan kod [" + param_Error.getClass().getSimpleName() + "]", param_Error);
+    }
+    @Override
+    public void visit(Condition_Error statement_Error){
+        report_error("Greska: Sintaksicki neispravan kod [" + statement_Error.getClass().getSimpleName() + "]", statement_Error);
+    }
+
     /* Statements */
 
-    
+
     /*
      * Statement = DesignatorStatement ";".
      */

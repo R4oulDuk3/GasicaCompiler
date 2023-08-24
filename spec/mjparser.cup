@@ -120,7 +120,8 @@ VarDeclList ::= (VarDeclList_Multiple) VarDeclList VarDecl
               | (VarDeclList_None) /* epsilon */;
 
 OneOfVarDecl ::= (Var_Single) IDENT
-               | (Var_Array) IDENT LBRACKET RBRACKET;
+               | (Var_Array) IDENT LBRACKET RBRACKET
+               | (Var_Error) error:l {: parser.report_error("Greska pri deklaraciji globalne promenljive u liniji: " + lleft, null); :};
 
 ZeroOrManyVarDecl ::= (Var_Multiple) ZeroOrManyVarDecl COMMA OneOfVarDecl
                     | (Var_None) /* epsilon */;
@@ -152,7 +153,8 @@ MoreParams ::= COMMA Parameter MoreParams
             | /* epsilon */;
 
 Parameter ::= (Param_Single) Type IDENT
-            | (Param_Array) Type IDENT LBRACKET RBRACKET;
+            | (Param_Array) Type IDENT LBRACKET RBRACKET
+            | (Param_Error) error:l {: parser.report_error("Greska pri deklaraciji formalnog parametra u liniji: " + lleft, null); :};
 
 /*
     Statement = DesignatorStatement ";"
@@ -246,7 +248,11 @@ OptionalActParsOneOrMany ::= (OptionalActParsOneOrMany_Multiple) OptionalActPars
 ConditionWrapper ::= (ConditionWrapper) Condition;
 
 Condition ::= (Condition_OneOrMany) Condition OR CondTermWrapper
-            | (Condition_Single) CondTermWrapper;
+            | (Condition_Single) CondTermWrapper
+            | (Condition_Error) error:e 
+              {: 
+                  parser.report_error("Condition_Error. Line " + eleft, null);
+              :};
 
 CondTermWrapper ::= (CondTermWrapper) CondTerm;
 

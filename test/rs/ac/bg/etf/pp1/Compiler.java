@@ -43,7 +43,7 @@ public class Compiler {
 			
 	        Program prog = (Program)(s.value); 
 			// ispis sintaksnog stabla
-			log.info(prog.toString(""));
+			// log.info(prog.toString(""));
 
 			// Semantic analysis...
 			SemanticAnalyzer sa = new SemanticAnalyzer();

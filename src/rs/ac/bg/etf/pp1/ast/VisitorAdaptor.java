@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/7/2023 22:46:12
+// 24/7/2023 18:32:15
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -79,6 +79,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondTerm_Single CondTerm_Single) { visit(); }
     public void visit(CondTerm_OneOrMany CondTerm_OneOrMany) { visit(); }
     public void visit(CondTermWrapper CondTermWrapper) { visit(); }
+    public void visit(Condition_Error Condition_Error) { visit(); }
     public void visit(Condition_Single Condition_Single) { visit(); }
     public void visit(Condition_OneOrMany Condition_OneOrMany) { visit(); }
     public void visit(ConditionWrapper ConditionWrapper) { visit(); }
@@ -120,6 +121,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorStatement_ DesignatorStatement_) { visit(); }
     public void visit(Statement_None Statement_None) { visit(); }
     public void visit(Statement_Multiple Statement_Multiple) { visit(); }
+    public void visit(Param_Error Param_Error) { visit(); }
     public void visit(Param_Array Param_Array) { visit(); }
     public void visit(Param_Single Param_Single) { visit(); }
     public void visit(MoreParamsDerived2 MoreParamsDerived2) { visit(); }
@@ -134,6 +136,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDecl_Multiple MethodDecl_Multiple) { visit(); }
     public void visit(Var_None Var_None) { visit(); }
     public void visit(Var_Multiple Var_Multiple) { visit(); }
+    public void visit(Var_Error Var_Error) { visit(); }
     public void visit(Var_Array Var_Array) { visit(); }
     public void visit(Var_Single Var_Single) { visit(); }
     public void visit(VarDeclList_None VarDeclList_None) { visit(); }
